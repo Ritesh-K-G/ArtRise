@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Role Selection</title>
+    <style>
+      /* Define the keyframes */
+      @keyframes gradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      /* Apply the animation to the background */
+      body {
+        background: linear-gradient(to right, #f6d365, #fda085);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+      }
+
+      /* Set up basic styling for the cards */
+      .card-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        padding: 20px;
+      }
+
+      .card {
+        width: 200px;
+        height: 300px;
+        margin: 0 10px;
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        transition: transform 0.2s ease-in-out;
+      }
+
+      .card:hover {
+        transform: scale(1.05);
+      }
+
+      /* Set up styling for the different roles */
+      .user {
+        background-color: #3f51b5;
+      }
+
+      .artist {
+        background-color: #ff5722;
+      }
+
+      .critic {
+        background-color: #8bc34a;
+      }
+
+      /* Add animations to the role titles */
+      .card-title {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        font-size: 24px;
+        font-weight: bold;
+        padding: 10px;
+        margin: 0;
+        transform: translateY(100%);
+        transition: transform 0.2s ease-in-out;
+      }
+
+      .card:hover .card-title {
+        transform: translateY(0%);
+      }
+
+      /* Add styles for images and text */
+      .card-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .card-text {
+        padding: 20px;
+        color: #fff;
+        text-align: center;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card-container">
+      <div class="card user">
+        <img src="src/user.jpg" alt="User" class="card-image">
+        <h2 class="card-title">User</h2>
+        <div class="card-text">
+          <p>As a user, you can discover and explore new art, rate and comment on your favorite pieces, and connect with other art enthusiasts. You can also create and curate your own collections, and get recommendations based on your preferences and activity.</p>
+        </div>
+      </div>
+      <div class="card artist">
+        <img src="src/artist.jpg" alt="Artist" class="card-image">
+        <h2 class="card-title">Artist</h2>
+        <div class="card-text">
+          <p>As an artist, you can showcase your work, receive feedback and critiques, and connect with potential clients and collaborators. You can also participate in competitions and earn recognition for your talent. Additionally, you can access resources and tools to improve your skills and knowledge, and get exposure to new audiences and markets.</p>
+        </div>
+      </div>
+      <div class="card critic">
+        <img src="src/critic.jpg" alt="Critic" class="card-image">
+        <h2 class="card-title">Critic</h2>
+        <div class="card-text">
+          <p>As a critic, you can provide expert analysis</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
