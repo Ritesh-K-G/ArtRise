@@ -18,6 +18,7 @@
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($result);
         if(mysqli_num_rows($result) == 1){
+            $_SESSION['user_id'] = $row['user_id'];
             $_SESSION['user_name'] = $row['name'];
             echo '<script>alert("Successfully logged in");setTimeout(()=>{window.location.replace("homepage");},500);</script>';
             exit();

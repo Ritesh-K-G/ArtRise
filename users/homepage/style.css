@@ -92,7 +92,8 @@
     }
     
     .post-comments,
-    .post-likes {
+    .post-likes,
+    .post-favorites {
       cursor: pointer;
     }
   

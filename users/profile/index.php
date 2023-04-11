@@ -1,0 +1,107 @@
+<?php
+    session_start();
+    include "../../db_connect.php";
+    if(!isset($_SESSION['user_id'])) {
+      header('location: ../index.html');
+    }
+?>
+<!DOCTYPE html>
+<!---Coding By CoderGirl!--->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--<title> Profle Card UI Design | CoderGirl </title>-->
+  <!---Custom Css File!--->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="main">
+  <div class="profile-card">
+    <div class="image">
+      <img src="https://img.freepik.com/free-photo/amazing-cheerful-business-woman-standing-with-arms-crossed_171337-8487.jpg?size=626&ext=jpg" alt="" class="profile-pic">
+    </div>
+    <div class="data">
+      <h2>
+        <?php
+          $name = $_SESSION['user_name'];
+          echo $name;
+        ?>
+      </h2>
+      <span>Painter</span>
+    </div>
+    <div class="row">
+      <div class="info">
+        <h3>Rating</h3>
+        <span>4  &#9733;</span>
+      </div>
+      <div class="info">
+        <h3>Followers</h3>
+        <span>5000</span>
+      </div>
+      <div class="info">
+        <h3>Posts</h3>
+        <span>209</span>
+      </div>
+    </div>
+    <div class="buttons">
+      <a href="#" class="btn">Message</a>
+      <a href="#" class="btn">Follow Me</a>
+    </div>
+	<!-- Trigger/Open The Modal -->
+	<br>
+	<br>
+
+<button id="myBtn">POST</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div class="card-container">
+		<div class="card">
+		  <img src="https://i.pinimg.com/originals/c3/a6/68/c3a668a557f6232b387129780d2ff5a9.jpg" alt="Placeholder image">
+		  <h3>king Akbar</h3>
+		  <p>Akbar in its king outfit with its pet pegeon </p>
+		</div>
+	  
+		<div class="card">
+		  <img src="https://cdn.britannica.com/24/189624-050-F3C5BAA9/Mona-Lisa-oil-wood-panel-Leonardo-da.jpg?w=600&q=60" alt="Placeholder image">
+		  <h3>Mona Lisa</h3>
+		  <p>The woman sits markedly upright in a "pozzetto" armchair with her arms folded, a sign of her reserved posture. Her gaze is fixed on the observer.</p>
+		</div>
+	  
+		<div class="card">
+		  <img src="https://static.toiimg.com/thumb/61360647.cms?width=170&height=240&imgsize=27314" alt="Placeholder image">
+		  <h3>Michael Jackson</h3>
+		  <p>Michael Joseph Jackson (August 29, 1958 – June 25, 2009) was an American singer, songwriter, dancer, and philanthropist. Dubbed the "King of Pop",</p>
+		</div>
+	  
+		<div class="card">
+		  <img src="https://images.squarespace-cdn.com/content/v1/57f0b8c859cc68fe6a908fb7/1475729642651-RRGZTQ14003WXW68INRO/image-asset.jpeg?format=2500w" alt="Placeholder image">
+		  <h3>Desparte Man</h3>
+		  <p>This self-portrait is painted by the most influential man in France and a pioneering artist in the 19th century, no other than Gustave Courbet</p>
+		</div>
+	   
+		 <div class="card">
+         
+		 <p class="c1" >ADD ANOTHER POST
+		 </p>
+		</div>
+	  
+	  
+		<!-- Add more cards as needed -->
+	  
+	  </div>
+	  
+  </div>
+
+</div>
+  </div>
+</section>
+<script src="script.js"></script>
+</body>
+</html>
