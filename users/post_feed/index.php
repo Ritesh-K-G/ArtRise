@@ -34,7 +34,7 @@
         </ul>
     </nav>      
     <div class="feed-post-form">
-        <h2>Post your fitness journey, experience, advice</h2>
+        <h2>Post your artwork</h2>
         <form id="feeds-post" method="post" enctype="multipart/form-data">
             <textarea placeholder="What's on your mind?" name="description" id="description"></textarea>
             <div class="form-actions">

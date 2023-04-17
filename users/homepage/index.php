@@ -102,7 +102,7 @@
             </section>
             
             <!--==================== DISCOUNT ====================-->
-            <section class="section discount">
+            <section id="my_feed" class="section discount">
                 <div id="carding" class="discount__container container grid">
                   <div class="feed-card">
                     <div class="profile-picture">
@@ -141,9 +141,7 @@
                     </div>
                   </div>
                 </div>
-              
             </section>
-
                 <?php
                     $sql="SELECT * from content;";
                     $result=mysqli_query($conn,$sql);
@@ -152,7 +150,7 @@
                         while($row = mysqli_fetch_array($result))
                         {
                           echo '
-                          <section>
+                          <section id="my_feed">
                           <div id="carding" class="discount__container container grid">
                             <div class="feed-card">
                               <div class="profile-picture">
