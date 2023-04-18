@@ -187,7 +187,6 @@
         font-size: 20px;
         color: #999;
         margin: 0;
-        margin-top: 5px;
       }
       
       .profile-details ul {
@@ -217,7 +216,7 @@
       }
       
       .profile-about h2 {
-        font-size: 24px;
+        /* font-size: 24px; */
         margin-bottom: 10px;
       }
       

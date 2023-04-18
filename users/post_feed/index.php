@@ -37,58 +37,62 @@
                     <img src="../../assets/img/logo1.png" alt="" class="nav__logo-img">
                     ArtRise
                 </a>
-
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list">
                         <li class="nav__item">
-                            <a href="#" class="nav__link active-link">Home</a>
+                            <a href="../homepage/index.php" class="nav__link">Home</a>
                         </li>
-
                         <li class="nav__item">
                             <a href="#" class="nav__link">About</a>
                         </li>
-
                         <li class="nav__item">
                             <a href="#" class="nav__link">Contact</a>
                         </li>
-
                         <li class="nav__item">
                             <a href="../profile" class="nav__link">Profile</a>
                         </li>
-
-                        <a href="../post_feed" class="button button--ghost">+ Post</a>
+                        <a href="../post_feed" class="button button--ghost active-link">+ Post</a>
                     </ul>
-
                     <div class="nav__close" id="nav-close">
                         <i class='bx bx-x'></i>
                     </div>
-
                     <img src="../../assets/img/nav-img.png" alt="" class="nav__img">
                 </div>
-
                 <div class="nav__toggle" id="nav-toggle">
                     <i class='bx bx-grid-alt'></i>
                 </div>
-
             </nav>
         </header>
-
+        <!--==================== CATEGORY ====================-->
         <main class="main">
-            <!--==================== CATEGORY ====================-->
             <section class="section category">
-            <form action="#" method="post" enctype="multipart/form-data">
-                <label for="file">Choose art file:</label>
-                <input type="file" id="file" name="file" accept=".mp4,.jpg,.png,.jpeg">
-                <label for="description">Describe your artwork:</label>
-                <textarea placeholder="What's on your mind? Reflect upon your artwork here!!" name="description" id="description"></textarea>
-                <br><br>
-                <label>Choose Content type:</label>
-                <label><input type="radio" name="filetype" value="Artwork" checked> ART</label>
-                <label><input type="radio" name="filetype" value="Song"> SONG</label>
-                <label><input type="radio" name="filetype" value="Film"> SHORT-FILM</label>
-                <br><br>
-                <input type="submit" value="Upload">
-            </form>
+                <form action="#" method="post" enctype="multipart/form-data">
+                    <label for="file">Choose art file:</label>
+                    <input type="file" id="file" name="file" accept=".mp4,.jpg,.png,.jpeg">
+                    <label for="description">Describe your artwork:</label>
+                    <textarea placeholder="What's on your mind? Reflect upon your artwork here!!" name="description" id="description"></textarea>
+                    <br><br>
+                    <label>Choose Content type:</label>
+                    <div class="wrapper">
+                        <input type="radio" name="select" id="option-1" checked>
+                        <input type="radio" name="select" id="option-2">
+                        <input type="radio" name="select" id="option-3">
+                        <label for="option-1" class="option option-1">
+                            <div class="dot"></div>
+                            <span>Film</span>
+                        </label>
+                        <label for="option-2" class="option option-2">
+                            <div class="dot"></div>
+                            <span>Art</span>
+                        </label>
+                        <label for="option-3" class="option option-3">
+                            <div class="dot"></div>
+                            <span>Song</span>
+                        </label>
+                    </div>
+                    <br><br>
+                    <button>POST</button>
+                </form>
             </section>
         </main>
         <!--==================== FOOTER ====================-->
@@ -171,6 +175,6 @@
         
         <!--=============== MAIN JS ===============-->
         <script src="../../assets/js/main.js"></script>
-        <script src="script.js"></script>
+        <script src="logic.js"></script>
     </body>
 </html>
