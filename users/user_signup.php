@@ -5,6 +5,7 @@
     $name= $_GET['SignName'];
     $email = $_GET['SignEmail'];
     $password = $_GET['SignPass'];
+    $hashpass = password_hash($password, PASSWORD_DEFAULT);
     $age = $_GET['SignAge'];
     $contact = $_GET['SignContact'];
 
@@ -30,7 +31,7 @@
     }
     else{
         // $password=md5($password);
-        $sql = "INSERT INTO users (password,name,age,email,contact) Values('$password','$name','$age','$email','$contact');";
+        $sql = "INSERT INTO users (password,name,age,email,contact) Values('$hashpass','$name','$age','$email','$contact');";
 
         if($conn->query($sql) == true){
             echo '<script>alert(" Succesfully inserted");setTimeout(()=>{window.location.replace("./index.html");},500);</script>';

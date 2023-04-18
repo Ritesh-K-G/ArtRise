@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2023 at 04:22 PM
+-- Generation Time: Apr 18, 2023 at 04:55 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -20,22 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `artrise`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `content`
---
-
-CREATE TABLE `content` (
-  `content_id` int(11) NOT NULL,
-  `content` mediumblob NOT NULL,
-  `ratings` int(11) NOT NULL,
-  `likes` int(11) NOT NULL,
-  `type` int(11) NOT NULL,
-  `file` int(11) NOT NULL,
-  `upload_date` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -59,6 +43,22 @@ CREATE TABLE `critics` (
 
 INSERT INTO `critics` (`critics_id`, `name`, `type`, `email`, `contact`, `qualification`, `password`) VALUES
 (1, 'admin', 1, 'admin@gmail.com', '8766335673', 'art_critic', '123');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `critics_content`
+--
+
+CREATE TABLE `critics_content` (
+  `content_id` int(11) NOT NULL,
+  `content` mediumblob NOT NULL,
+  `rating` int(11) NOT NULL,
+  `critics_rated` int(11) NOT NULL,
+  `file_type` varchar(50) NOT NULL,
+  `art_type` varchar(50) NOT NULL,
+  `upload_date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -131,21 +131,37 @@ INSERT INTO `users` (`user_id`, `name`, `email`, `contact`, `age`, `password`) V
 (3, 'abc', 'a@g.com', '9', 2, '1'),
 (4, 'p', 'p@p.com', '102', 1, '1');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users_content`
+--
+
+CREATE TABLE `users_content` (
+  `content_id` int(11) NOT NULL,
+  `content` mediumblob NOT NULL,
+  `ratings` int(11) NOT NULL,
+  `likes` int(11) NOT NULL,
+  `type` int(11) NOT NULL,
+  `file` int(11) NOT NULL,
+  `upload_date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `content`
---
-ALTER TABLE `content`
-  ADD PRIMARY KEY (`content_id`);
 
 --
 -- Indexes for table `critics`
 --
 ALTER TABLE `critics`
   ADD PRIMARY KEY (`critics_id`);
+
+--
+-- Indexes for table `critics_content`
+--
+ALTER TABLE `critics_content`
+  ADD PRIMARY KEY (`content_id`);
 
 --
 -- Indexes for table `favourites`
@@ -182,14 +198,14 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- Indexes for table `users_content`
 --
+ALTER TABLE `users_content`
+  ADD PRIMARY KEY (`content_id`);
 
 --
--- AUTO_INCREMENT for table `content`
+-- AUTO_INCREMENT for dumped tables
 --
-ALTER TABLE `content`
-  MODIFY `content_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `critics`
@@ -198,10 +214,22 @@ ALTER TABLE `critics`
   MODIFY `critics_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `critics_content`
+--
+ALTER TABLE `critics_content`
+  MODIFY `content_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `users_content`
+--
+ALTER TABLE `users_content`
+  MODIFY `content_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -211,28 +239,28 @@ ALTER TABLE `users`
 -- Constraints for table `favourites`
 --
 ALTER TABLE `favourites`
-  ADD CONSTRAINT `fav_content_id` FOREIGN KEY (`content_id`) REFERENCES `content` (`content_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fav_content_id` FOREIGN KEY (`content_id`) REFERENCES `users_content` (`content_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fav_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `judges`
 --
 ALTER TABLE `judges`
-  ADD CONSTRAINT `judges_content_id` FOREIGN KEY (`content_id`) REFERENCES `content` (`content_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `judges_content_id` FOREIGN KEY (`content_id`) REFERENCES `critics_content` (`content_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `judges_critics_id` FOREIGN KEY (`critics_id`) REFERENCES `critics` (`critics_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `reviews`
 --
 ALTER TABLE `reviews`
-  ADD CONSTRAINT `reviews_content_id` FOREIGN KEY (`content_id`) REFERENCES `content` (`content_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `reviews_content_id` FOREIGN KEY (`content_id`) REFERENCES `users_content` (`content_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `reviews_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `uploads`
 --
 ALTER TABLE `uploads`
-  ADD CONSTRAINT `uploads_content_id` FOREIGN KEY (`content_id`) REFERENCES `content` (`content_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `uploads_content_id` FOREIGN KEY (`content_id`) REFERENCES `critics_content` (`content_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `uploads_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
