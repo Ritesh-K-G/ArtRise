@@ -10,13 +10,18 @@ form {
   padding: 20px;
 }
 
+#writing {
+  margin-top: 10px;
+}
+
 textarea {
   font-size: 16px;
-  padding: 30px;
+  padding: 10px;
   border: none;
   resize: none;
   height: 100px;
   margin-bottom: 20px;
+  margin-top: 5px;
   background-color: #f0f2f5;
   border-radius: 4px;
   box-shadow: 0 0 20px 2px rgba(0,0,0,.1);
@@ -66,7 +71,6 @@ button:focus-visible {
   padding: 20px 15px;
 }
 .wrapper .option{
-  background: #fff;
   height: 100%;
   width: 100%;
   display: flex;
@@ -76,7 +80,6 @@ button:focus-visible {
   border-radius: 5px;
   cursor: pointer;
   padding: 0 10px;
-  border: 2px solid lightgrey;
   transition: all 0.3s ease;
 }
 .wrapper .option .dot{
@@ -106,7 +109,6 @@ input[type="radio"]{
 #option-2:checked:checked ~ .option-2,
 #option-3:checked:checked ~ .option-3{
   border-color: rgb(39 10 84);
-  background: rgb(39 10 84);
 }
 #option-1:checked:checked ~ .option-1 .dot,
 #option-2:checked:checked ~ .option-2 .dot,

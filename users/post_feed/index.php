@@ -69,7 +69,7 @@
                 <form action="#" method="post" enctype="multipart/form-data">
                     <label for="file">Choose art file:</label>
                     <input type="file" id="file" name="file" accept=".mp4,.jpg,.png,.jpeg">
-                    <label for="description">Describe your artwork:</label>
+                    <label id="writing" for="description">Describe your artwork:</label>
                     <textarea placeholder="What's on your mind? Reflect upon your artwork here!!" name="description" id="description"></textarea>
                     <br><br>
                     <label>Choose Content type:</label>
