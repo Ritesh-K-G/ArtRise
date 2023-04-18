@@ -13,16 +13,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!--=============== FAVICON ===============-->
-        <link rel="shortcut icon" href="assets/img/logo1.png" type="image/x-icon">
+        <link rel="shortcut icon" href="../../assets/img/logo1.png" type="image/x-icon">
 
         <!--=============== BOXICONS ===============-->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 
         <!--=============== SWIPER CSS ===============--> 
-        <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+        <link rel="stylesheet" href="../../assets/css/swiper-bundle.min.css">
 
         <!--=============== CSS ===============--> 
-        <link rel="stylesheet" href="assets/css/styles.css">
+        <link rel="stylesheet" href="../../assets/css/styles.css">
 
         <link rel="stylesheet" href="style.css">
 
@@ -35,7 +35,7 @@
         <header class="header" id="header">
             <nav class="nav container">
                 <a href="#" class="nav__logo">
-                    <img src="assets/img/logo1.png" alt="" class="nav__logo-img">
+                    <img src="../../assets/img/logo1.png" alt="" class="nav__logo-img">
                     ArtRise
                 </a>
 
@@ -57,14 +57,14 @@
                             <a href="../profile" class="nav__link">Profile</a>
                         </li>
 
-                        <a href="../post_feed" class="button button--ghost">+ Post</a>
+                        <a href="../post_feed/index.php" class="button button--ghost">+ Post</a>
                     </ul>
 
                     <div class="nav__close" id="nav-close">
                         <i class='bx bx-x'></i>
                     </div>
 
-                    <img src="assets/img/nav-img.png" alt="" class="nav__img">
+                    <img src="../../assets/img/nav-img.png" alt="" class="nav__img">
                 </div>
 
                 <div class="nav__toggle" id="nav-toggle">
@@ -82,19 +82,19 @@
 
                 <div class="category__container container grid">
                     <div class="category__data">
-                        <img src="assets/img/img5.jpg" alt="" class="category__img">
+                        <img src="../../assets/img/img5.jpg" alt="" class="category__img">
                         <h3 class="category__title">Paintings</h3>
                         <p class="category__description">Choose the Paintings which touches your heart</p>
                     </div>
 
                     <div class="category__data">
-                        <img src="assets/img/img6.png" alt="" class="category__img">
+                        <img src="../../assets/img/img6.png" alt="" class="category__img">
                         <h3 class="category__title">Music</h3>
                         <p class="category__description">Pick your daily drive</p>
                     </div>
 
                     <div class="category__data">
-                        <img src="assets/img/img7.png" alt="" class="category__img">
+                        <img src="../../assets/img/img7.png" alt="" class="category__img">
                         <h3 class="category__title">sculpture</h3>
                         <p class="category__description">Pick the most loved sculpture</p>
                     </div>
@@ -203,7 +203,7 @@
                 <div class="footer__container container grid">
                     <div class="footer__content">
                         <a href="#" class="footer__logo">
-                            <img src="assets/img/logo.png" alt="" class="footer__logo-img">
+                            <img src="../../assets/img/logo.png" alt="" class="footer__logo-img">
                             Halloween
                         </a>
 
@@ -273,13 +273,13 @@
                 <i class='bx bx-up-arrow-alt scrollup__icon'></i>
             </a>        
         <!--=============== SCROLL REVEAL ===============-->
-        <script src="assets/js/scrollreveal.min.js"></script>
+        <script src="../../assets/js/scrollreveal.min.js"></script>
 
         <!--=============== SWIPER JS ===============-->
-        <script src="assets/js/swiper-bundle.min.js"></script>
+        <script src="../../assets/js/swiper-bundle.min.js"></script>
         
         <!--=============== MAIN JS ===============-->
-        <script src="assets/js/main.js"></script>
+        <script src="../../assets/js/main.js"></script>
         <script src="script.js"></script>
     </body>
 </html>
