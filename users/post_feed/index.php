@@ -7,8 +7,8 @@
     if (isset($_POST['submit'])) {
         $image = $_FILES['image']['name'];
         $temp_image = $_FILES['image']['tmp_name'];
-        move_uploaded_file($temp_image, "../../../uploads/" . $image);
-        $sql = "INSERT INTO content (content, likes) VALUES ('$image', 7)";
+        move_uploaded_file($temp_image, "../../uploads/" . $image);
+        $sql = "INSERT INTO users_content (content, likes) VALUES ('$image', 7)";
         if (mysqli_query($conn, $sql)) {
             echo "Data inserted successfully.";
         } else {

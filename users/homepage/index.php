@@ -143,7 +143,7 @@
                 </div>
             </section>
                 <?php
-                    $sql="SELECT * from content;";
+                    $sql="SELECT * from users_content;";
                     $result=mysqli_query($conn,$sql);
                     if(mysqli_num_rows($result) > 0)
                     {
@@ -164,7 +164,7 @@
                                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae erat ut velit vestibulum varius vitae nec libero.
                                 </div>
                                 <div class="post-image">';
-                                echo "<img src='../../../uploads/" . $row['content'] . "'>";
+                                echo "<img src='../../uploads/" . $row['content'] . "'>";
                                 echo'</div>
                                 <div class="like-comment">
                                 <div class="post-actions">
