@@ -53,7 +53,7 @@
                         </li>
 
                         <li class="nav__item">
-                            <a href="../profile" class="nav__link">Profile</a>
+                            <a href="#" class="nav__link">Profile</a>
                         </li>
                     </ul>
 
@@ -77,8 +77,15 @@
             <section class="section category">
                 <div class="profile-container">
                     <div class="profile-header">
-                        <div class="profile-image">
-                            <img id="dp" src="../../src/drawing.png" alt="Profile Picture">
+                        <div class="profile-card__img">
+                            <div class="profile-pic">
+                                <label class="-label" for="file">
+                                    <span class="glyphicon glyphicon-camera"></span>
+                                    <span>Change Image</span>
+                                </label>
+                                <input id="file" type="file" onchange="loadFile(event)" />
+                                <img src="../../src/singing.png" id="output" width="200" />
+                            </div>
                         </div>
                         <div class="profile-details">
                             <h1 id="name">Critics</h1>

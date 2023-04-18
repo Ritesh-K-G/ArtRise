@@ -37,11 +37,10 @@
                     <img src="../../assets/img/logo1.png" alt="" class="nav__logo-img">
                     ArtRise
                 </a>
-
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list">
                         <li class="nav__item">
-                            <a href="#" class="nav__link active-link">Home</a>
+                            <a href="#" class="nav__link">Home</a>
                         </li>
 
                         <li class="nav__item">
@@ -53,7 +52,7 @@
                         </li>
 
                         <li class="nav__item">
-                            <a href="../profile" class="nav__link">Profile</a>
+                            <a href="../profile" class="nav__link active-link">Profile</a>
                         </li>
 
                         <a href="../post_feed" class="button button--ghost">+ Post</a>
@@ -79,9 +78,17 @@
             <section class="section category">
                 <div class="profile-container">
                     <div class="profile-header">
-                        <div class="profile-image">
-                            <img id="dp" src="../../src/singing.png" alt="Profile Picture">
+                        <div class="profile-card__img">
+                            <div class="profile-pic">
+                                <label class="-label" for="file">
+                                    <span class="glyphicon glyphicon-camera"></span>
+                                    <span>Change Image</span>
+                                </label>
+                                <input id="file" type="file" onchange="loadFile(event)" />
+                                <img src="../../src/singing.png" id="output" width="200" />
+                            </div>
                         </div>
+
                         <div class="profile-details">
                             <h1 id="name">Ritesh Kumar Gupta</h1>
                             <p id="email">ritesh@gmail.com</p>
@@ -147,60 +154,6 @@
                   </div>
                 </div>
             </section>
-                <?php
-                    $sql="SELECT * from users_content;";
-                    $result=mysqli_query($conn,$sql);
-                    if(mysqli_num_rows($result) > 0)
-                    {
-                        while($row = mysqli_fetch_array($result))
-                        {
-                          echo '
-                          <section id="my_feed">
-                          <div id="carding" class="discount__container container grid">
-                            <div class="feed-card">
-                              <div class="profile-picture">
-                                <img src="https://m.media-amazon.com/images/I/415MsdCcduL.png" alt="Profile Picture">
-                              </div>
-                              <div class="feed-content">
-                                <div class="username">
-                                  John Doe
-                                </div>
-                                <div class="post-content">
-                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae erat ut velit vestibulum varius vitae nec libero.
-                                </div>
-                                <div class="post-image">';
-                                echo "<img src='../../uploads/" . $row['content'] . "'>";
-                                echo'</div>
-                                <div class="like-comment">
-                                <div class="post-actions">
-                                  <span class="post-likes"><i class="material-icons">thumb_up</i>';
-                                  echo $row["likes"];                                  
-                                  echo 'likes</span>
-                                  <span class="post-comments"><i class="material-icons">mode_comment</i> 7 comments</span>
-                                  <span class="post-favorites"><i class="material-icons">favorite_border</i> Add to favorites</span>
-                                </div>
-                                <div class="post-comments-section">
-                                  <div class="post-comment">
-                                    <p class="comment-author">Jane Doe</p>
-                                    <p class="comment-text">Great post!</p>
-                                  </div>
-                                  <div class="post-comment">
-                                    <p class="comment-author">Bob Smith</p>
-                                    <p class="comment-text">Thanks for sharing!</p>
-                                  </div>
-                                  <div class="add-comment">
-                                    <input type="text" placeholder="Write a comment">
-                                    <button>Post</button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          </section>';
-                        }
-                    }
-                    mysqli_close($conn);
-                ?>
       </main>
 
             
