@@ -1,0 +1,130 @@
+form {
+  background-color: rgb(28,12,54);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+  max-width: 1000px;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+textarea {
+  font-size: 16px;
+  padding: 30px;
+  border: none;
+  resize: none;
+  height: 100px;
+  margin-bottom: 20px;
+  background-color: #f0f2f5;
+  border-radius: 4px;
+  box-shadow: 0 0 20px 2px rgba(0,0,0,.1);
+  transition:0.7s;
+}
+
+/* button */
+button {
+  appearance: none;
+  background-color: transparent;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.0675) 0%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 100%);
+  background-position: 0 -1px;
+  background-size: 100% 200%;
+  border-image-outset: 5px;
+  border-image-slice: 12;
+  border-image-source: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkBAMAAAATLoWrAAAAD1BMVEX///9HcEz///////////9iTY1sAAAABXRSTlP/AFcwLxVr8qIAAAAtSURBVHgBY4AAQTCAcpiMQQAiBGYqMLAIogGHoSQkiAGGndAQjyHMJIclYQIAUPguwUoMKZkAAAAASUVORK5CYII=");
+  border-image-width: 8px;
+  border-style: solid;
+  border-width: 1px;
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 1em 2em;
+  position: relative;
+  text-transform: uppercase;
+  transition: background-position 0.25s ease;
+}
+button:hover, button:focus {
+  background-position: 0 calc(100% + 1px);
+  outline: none;
+}
+button:focus-visible {
+  outline: 1px dotted #fff;
+  outline-offset: 4px;
+}
+
+
+/* radio button */
+.wrapper{
+  display: inline-flex;
+  height: 100px;
+  width: 400px;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 5px;
+  padding: 20px 15px;
+}
+.wrapper .option{
+  background: #fff;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 0 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0 10px;
+  border: 2px solid lightgrey;
+  transition: all 0.3s ease;
+}
+.wrapper .option .dot{
+  height: 20px;
+  width: 20px;
+  background: #d9d9d9;
+  border-radius: 50%;
+  position: relative;
+}
+.wrapper .option .dot::before{
+  position: absolute;
+  content: "";
+  top: 4px;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  background: rgb(39 10 84);
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(1.5);
+  transition: all 0.3s ease;
+}
+input[type="radio"]{
+  display: none;
+}
+#option-1:checked:checked ~ .option-1,
+#option-2:checked:checked ~ .option-2,
+#option-3:checked:checked ~ .option-3{
+  border-color: rgb(39 10 84);
+  background: rgb(39 10 84);
+}
+#option-1:checked:checked ~ .option-1 .dot,
+#option-2:checked:checked ~ .option-2 .dot,
+#option-3:checked:checked ~ .option-3 .dot{
+  background: #fff;
+}
+#option-1:checked:checked ~ .option-1 .dot::before,
+#option-2:checked:checked ~ .option-2 .dot::before,
+#option-3:checked:checked ~ .option-3 .dot::before{
+  opacity: 1;
+  transform: scale(1);
+}
+.wrapper .option span{
+  font-size: 20px;
+  color: #808080;
+}
+#option-1:checked:checked ~ .option-1 span,
+#option-2:checked:checked ~ .option-2 span,
+#option-3:checked:checked ~ .option-3 span{
+  color: #fff;
+}
