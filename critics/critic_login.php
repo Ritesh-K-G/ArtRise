@@ -22,9 +22,9 @@
         if(mysqli_num_rows($result) == 1) {
             
             if(password_verify($password,$row['password'])){
-                echo '<script>alert("Logged in");setTimeout(()=>{window.location.replace("homepage.php");},500);</script>';
+                echo '<script>alert("Logged in");setTimeout(()=>{window.location.replace("homepage/index.php");},500);</script>';
+                $_SESSION['critics_id']= $row['critics_id'];
                 exit();
-                // $_SESSION['critics_id']= $row['critics_id'];
                 // $_SESSION['critics_name'] = $row['name'];
 
                 // $_SESSION['crtics_contact']= $row['contact'];

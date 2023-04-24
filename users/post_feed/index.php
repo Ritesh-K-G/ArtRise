@@ -4,6 +4,42 @@
     if(!isset($_SESSION['user_id'])) {
       header('location: ../index.html');
     }
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Get the file and its details
+        $file = $_FILES['file'];
+        $file_name = $file['name'];
+        $file_size = $file['size'];
+        $file_tmp = $file['tmp_name'];
+        $file_type = $file['type'];
+
+        // Get the description and content type
+        $description = $_POST['description'];
+        $content_type = $_POST['select'];
+
+        // Check if the file was uploaded successfully
+        if (isset($file_name) && $file_name != '') {
+            $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
+            $allowed_exts = array('jpg', 'jpeg', 'png', 'mp4');
+
+            if (in_array($file_ext, $allowed_exts)) {
+                // Create a unique file name and move the file to the server
+                $file_new_name = uniqid() . '.' . $file_ext;
+                $file_destination = '../../uploads/critics_content/' . $file_new_name;
+                move_uploaded_file($file_tmp, $file_destination);
+                $sql = "INSERT INTO critics_content (content, file_type, description, art_type)
+                        VALUES ('$file_new_name', '$file_type', '$description', '$content_type')";
+                mysqli_query($conn, $sql);
+                $new_id = mysqli_insert_id($conn); // retrieve the auto-generated ID
+                mysqli_close($conn);
+                echo "File uploaded successfully. New ID is: " . $new_id;
+                header('location: ../profile/index.php');
+            } else {
+                echo "Invalid file type.";
+            }
+        } else {
+            echo "Please select a file to upload.";
+        }
+    }
 ?>
 <!DOCTYPE html>
     <html lang="en">

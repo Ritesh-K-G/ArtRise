@@ -1,7 +1,7 @@
 <?php
     session_start();
     include "../../db_connect.php";
-    if(!isset($_SESSION['user_id'])) {
+    if(!isset($_SESSION['critics_id'])) {
       header('location: ../index.html');
     }
 ?>
@@ -123,26 +123,97 @@
                         <img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8&w=1000&q=80" alt="Post Image">
                       </div>
                       <div class="like-comment">
-                      <div class="post-actions">
-                        <span class="post-comments"><i class="material-icons">stars</i>Review it!</span>
-                      </div>
-                      <div class="post-comments-section">
-                        <div>
-                            <span class="star"></span>
-                            <span class="star"></span>
-                            <span class="star"></span>
-                            <span class="star"></span>
-                            <span class="star"></span>
+                        <div class="post-actions">
+                            <span class="post-comments"><i class="material-icons">stars</i>Review it!</span>
                         </div>
-                        <div class="add-comment">
-                          <input type="text" placeholder="Write the review">
-                          <button>Post</button>
+                        <div class="post-comments-section">
+                            <div>
+                                <span class="star"></span>
+                                <span class="star"></span>
+                                <span class="star"></span>
+                                <span class="star"></span>
+                                <span class="star"></span>
+                            </div>
+                            <div class="add-comment">
+                            <input type="text" placeholder="Write the review">
+                            <button>Post</button>
+                            </div>
                         </div>
-                      </div>
-                    </div>
+                     </div>
                   </div>
                 </div>
             </section>
+
+            <?php
+                // Query the database for artworks
+                $sql = "SELECT * FROM critics_content";
+                $result = mysqli_query($conn, $sql);
+
+                // Loop through the artworks and display them on the webpage
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $file_name = $row['content'];
+                    // $file_size = $row['file_size'];
+                    $file_type = $row['file_type'];
+                    // $file_path = $row['file_path'];
+                    $description = $row['description'];
+                    // $content_type = $row['art_type'];
+                    $file_path = "../../uploads/critics_content/" . $file_name;
+
+                    // Display the artwork on the webpage                    
+                    echo '
+                          <section id="my_feed">
+                          <div id="carding" class="discount__container container grid">
+                            <div class="feed-card">
+                              <div class="profile-picture">
+                                <img src="https://m.media-amazon.com/images/I/415MsdCcduL.png" alt="Profile Picture">
+                              </div>
+                              <div class="feed-content">
+                                <div class="username">
+                                  John Doe
+                                </div>
+                                <div class="post-content">';
+                                echo "<p>$description</p>";
+                                echo
+                                '</div>
+                                <div class="post-image">';
+                                if (strpos($file_type, 'image/') === 0) {
+                                    // echo "<img src='$file_path' alt='img'>";
+                                    echo "<img src='../../uploads/critics_content/" . $row['content'] . "'>";
+                                } else if (strpos($file_type, 'video/') === 0) {
+                                    echo "<video width='320' height='240' controls><source src='$file_path' type='$file_type'></video>";
+                                } else {
+                                    echo "<p>Unsupported file type: $file_type</p>";
+                                }
+                                echo'</div>
+                                <div class="like-comment">
+                                    <div class="post-actions">
+                                        <span class="post-comments"><i class="material-icons">stars</i>Review it!</span>
+                                    </div>
+                                    <div class="post-comments-section">
+                                        <div>
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                            <span class="star"></span>
+                                        </div>
+                                        <div class="add-comment">
+                                        <input type="text" placeholder="Write the review">
+                                        <button>Post</button>
+                                        </div>
+                                    </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          </section>';
+                }
+
+                mysqli_close($conn);
+            ?>
+
+
+
       </main>
 
             
