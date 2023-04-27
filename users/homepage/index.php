@@ -54,6 +54,10 @@
                         </li>
 
                         <li class="nav__item">
+                            <a href="../chat/index.php" class="nav__link">Chat</a>
+                        </li>
+
+                        <li class="nav__item">
                             <a href="../profile" class="nav__link">Profile</a>
                         </li>
 
