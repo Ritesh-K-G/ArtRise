@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 29, 2023 at 03:34 PM
+-- Generation Time: Apr 29, 2023 at 05:48 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -68,7 +68,7 @@ CREATE TABLE `critics_content` (
 --
 
 INSERT INTO `critics_content` (`content_id`, `content`, `user_id`, `name`, `description`, `rating`, `critics_rated`, `file_type`, `art_type`, `upload_date`) VALUES
-(3, 0x363433663833333862343733662e6a7067, 0, '', 'song singing', 4, 1, 'image/jpeg', 'on', '0000-00-00 00:00:00'),
+(3, 0x363433663833333862343733662e6a7067, 0, '', 'song singing', 25, 7, 'image/jpeg', 'on', '0000-00-00 00:00:00'),
 (6, 0x363433663836613536653435332e6a7067, 0, '', 'drawing girl', 0, 0, 'image/jpeg', 'on', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
@@ -101,10 +101,18 @@ CREATE TABLE `judges` (
 
 CREATE TABLE `reviews` (
   `user_id` int(11) NOT NULL,
+  `name` varchar(25) NOT NULL,
   `content_id` int(11) NOT NULL,
-  `isliked` int(11) NOT NULL,
   `comment` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `reviews`
+--
+
+INSERT INTO `reviews` (`user_id`, `name`, `content_id`, `comment`) VALUES
+(9, 'Ritesh', 3, 'Sneha is the best singer'),
+(9, 'Ritesh', 3, 'Best song ever');
 
 -- --------------------------------------------------------
 
@@ -158,6 +166,13 @@ CREATE TABLE `users_content` (
   `file_type` varchar(50) NOT NULL,
   `upload_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users_content`
+--
+
+INSERT INTO `users_content` (`content_id`, `creator_id`, `content`, `description`, `ratings`, `likes`, `art_type`, `file_type`, `upload_date`) VALUES
+(3, 0, 0x363433663833333862343733662e6a7067, 'song singing', 25, 656, 'on', 'image/jpeg', '0000-00-00 00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -241,7 +256,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users_content`
 --
 ALTER TABLE `users_content`
-  MODIFY `content_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `content_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
