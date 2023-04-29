@@ -20,10 +20,15 @@
         <!--=============== SWIPER CSS ===============--> 
         <link rel="stylesheet" href="../../assets/css/swiper-bundle.min.css">
 
+        <!--=============== NOTIFICATION CSS ===============--> 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
         <!--=============== CSS ===============--> 
         <link rel="stylesheet" href="../../assets/css/styles.css">
 
         <link rel="stylesheet" href="style.css">
+
+        <link rel="stylesheet" href="notif.css">
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
@@ -60,7 +65,30 @@
                             <a href="../profile" class="nav__link">Profile</a>
                         </li>
 
+                        <li class="nav__item">
+                          <a href="../user_logout.php" class="nav__link">Logout</a>
+                        </li>
+
                         <a href="../post_feed/index.php" class="button button--ghost">+ Post</a>
+
+                        <div class="notification">
+                          <div class="notification-bell">
+                            <i class="fa fa-bell-o"></i>
+                            <span class="btn__badge pulse-button">3</span>
+                          </div>
+                          <div class="notification-drop">
+                            <div class="item">
+                            <a href="#">Notification 1</a>
+                            </div>
+                            <div class="item">
+                            <a href="#">Notification 2</a>
+                            </div>
+                            <div class="item">
+                            <a href="#">Notification 3</a>
+                            </div>
+                          </div>
+                        </div>
+
                     </ul>
 
                     <div class="nav__close" id="nav-close">

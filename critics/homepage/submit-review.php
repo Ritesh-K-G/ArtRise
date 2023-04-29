@@ -22,7 +22,8 @@
                 WHERE content_id = '$content_id';";
         
         if (mysqli_query($conn, $sql)) {
-            echo '<script>alert(" data Updated");setTimeout(()=>{window.location.replace("index.php");},500);</script>';
+          echo 'nice';
+            // echo '<script>alert(" data Updated");setTimeout(()=>{window.location.replace("index.php");},500);</script>';
           } else {
             echo "Error: " . mysqli_error($conn);
           }
@@ -34,12 +35,24 @@
         $critic_rat = $row['critics_rated'];
         $rating_recv = $row['rating'];
 
-        if($critic_rat == 3 && $rating_recv >= 5)
-        {
-            $content = $row['content'];
-            // $sql3 = "insert into user_content (content, ratings, likes, type, file, upload_date) values ();"
-        }
+        echo 'hello';
+        echo $critic_rat;
+        echo $rating_recv;
 
+        if($critic_rat >= 3 && $rating_recv >= 5)
+        {
+          $content_id = $row['content_id'];
+          $content = $row['content'];
+          $user_id = $row['user_id'];
+          $description = $row['description'];
+          $rating = $row['rating'];
+          $art_type = $row['art_type'];
+          $file_type = $row['file_type'];
+          $upload_date = $row['upload_date'];
+          $sql3 = "insert into users_content (content_id, content, creator_id, description, ratings, art_type, file_type, upload_date)
+          values ('$content_id', '$content', '$user_id', '$description', '$rating', '$art_type', '$file_type', '$upload_date');";
+          $result= mysqli_query($conn, $sql3);
+        }
         
     }
 
