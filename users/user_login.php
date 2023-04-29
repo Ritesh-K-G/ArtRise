@@ -21,7 +21,7 @@
         if(mysqli_num_rows($result) == 1){
             if(password_verify($password,$row['password'])){
                 $_SESSION['user_id'] = $row['user_id'];
-                // $_SESSION['user_name'] = $row['name'];
+                $_SESSION['user_name'] = $row['name'];
                 echo '<script>alert("Successfully logged in");setTimeout(()=>{window.location.replace("homepage");},500);</script>';
                 // header("Location: homepage.php"); 
                 exit();
