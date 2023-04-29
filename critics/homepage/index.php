@@ -177,7 +177,6 @@
                                 '</div>
                                 <div class="post-image">';
                                 if (strpos($file_type, 'image/') === 0) {
-                                    // echo "<img src='$file_path' alt='img'>";
                                     echo "<img src='../../uploads/critics_content/" . $row['content'] . "'>";
                                 } else if (strpos($file_type, 'video/') === 0) {
                                     echo "<video width='320' height='240' controls><source src='$file_path' type='$file_type'></video>";

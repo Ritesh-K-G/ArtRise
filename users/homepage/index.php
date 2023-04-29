@@ -5,7 +5,6 @@
       header('location: ../index.html');
     }
 ?>
-
 <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -105,47 +104,7 @@
                 </div>
             </section>
             
-            <!--==================== DISCOUNT ====================-->
-            <section id="my_feed" class="section discount">
-                <div id="carding" class="discount__container container grid">
-                  <div class="feed-card">
-                    <div class="profile-picture">
-                      <img src="https://m.media-amazon.com/images/I/415MsdCcduL.png" alt="Profile Picture">
-                    </div>
-                    <div class="feed-content">
-                      <div class="username">
-                        John Doe
-                      </div>
-                      <div class="post-content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae erat ut velit vestibulum varius vitae nec libero.
-                      </div>
-                      <div class="post-image">
-                        <img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8&w=1000&q=80" alt="Post Image">
-                      </div>
-                      <div class="like-comment">
-                      <div class="post-actions">
-                        <span class="post-likes"><i class="material-icons">thumb_up</i> 42 likes</span>
-                        <span class="post-comments"><i class="material-icons">mode_comment</i> 7 comments</span>
-                        <span class="post-favorites"><i class="material-icons">favorite_border</i> Add to favorites</span>
-                      </div>
-                      <div class="post-comments-section">
-                        <div class="post-comment">
-                          <p class="comment-author">Jane Doe</p>
-                          <p class="comment-text">Great post!</p>
-                        </div>
-                        <div class="post-comment">
-                          <p class="comment-author">Bob Smith</p>
-                          <p class="comment-text">Thanks for sharing!</p>
-                        </div>
-                        <div class="add-comment">
-                          <input type="text" placeholder="Write a comment">
-                          <button>Post</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </section>
+            <!--==================== POST SECTION ====================-->
                 <?php
                     $sql="SELECT * from users_content;";
                     $result=mysqli_query($conn,$sql);
@@ -153,6 +112,8 @@
                     {
                         while($row = mysqli_fetch_array($result))
                         {
+                          $file_type = $row['file_type'];
+                          $content_id = $row['content_id'];
                           echo '
                           <section id="my_feed">
                           <div id="carding" class="discount__container container grid">
@@ -165,28 +126,40 @@
                                   John Doe
                                 </div>
                                 <div class="post-content">
-                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae erat ut velit vestibulum varius vitae nec libero.
+                                . $row["description"] .
                                 </div>
                                 <div class="post-image">';
-                                echo "<img src='../../uploads/" . $row['content'] . "'>";
+                                if (strpos($file_type, 'image/') === 0) {
+                                  echo "<img src='../../uploads/critics_content/" . $row['content'] . "'>";
+                                } else if (strpos($file_type, 'video/') === 0) {
+                                  echo "<video width='320' height='240' controls><source src='../../uploads/critics_content/" . $row['content'] . "' type='$file_type'></video>";
+                                }
                                 echo'</div>
                                 <div class="like-comment">
                                 <div class="post-actions">
                                   <span class="post-likes"><i class="material-icons">thumb_up</i>';
-                                  echo $row["likes"];                                  
+                                  echo $row["likes"];                            
                                   echo 'likes</span>
                                   <span class="post-comments"><i class="material-icons">mode_comment</i> 7 comments</span>
                                   <span class="post-favorites"><i class="material-icons">favorite_border</i> Add to favorites</span>
                                 </div>
-                                <div class="post-comments-section">
-                                  <div class="post-comment">
-                                    <p class="comment-author">Jane Doe</p>
-                                    <p class="comment-text">Great post!</p>
-                                  </div>
-                                  <div class="post-comment">
-                                    <p class="comment-author">Bob Smith</p>
-                                    <p class="comment-text">Thanks for sharing!</p>
-                                  </div>
+                                <div class="post-comments-section">';
+
+
+                                  // Comment section
+
+                                  // <div class="post-comment">
+                                  //   <p class="comment-author">Jane Doe</p>
+                                  //   <p class="comment-text">Great post!</p>
+                                  // </div>
+                                  // <div class="post-comment">
+                                  //   <p class="comment-author">Bob Smith</p>
+                                  //   <p class="comment-text">Thanks for sharing!</p>
+                                  // </div>
+
+
+
+                                  echo '
                                   <div class="add-comment">
                                     <input type="text" placeholder="Write a comment">
                                     <button>Post</button>
