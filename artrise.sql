@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 29, 2023 at 03:14 PM
+-- Generation Time: Apr 29, 2023 at 03:34 PM
 -- Server version: 10.4.27-MariaDB
--- PHP Version: 8.0.25
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -149,11 +149,13 @@ INSERT INTO `users` (`user_id`, `name`, `email`, `contact`, `age`, `password`) V
 
 CREATE TABLE `users_content` (
   `content_id` int(11) NOT NULL,
+  `creator_id` int(11) NOT NULL,
   `content` mediumblob NOT NULL,
+  `description` varchar(1000) NOT NULL,
   `ratings` int(11) NOT NULL,
   `likes` int(11) NOT NULL,
-  `type` int(11) NOT NULL,
-  `file` int(11) NOT NULL,
+  `art_type` varchar(50) NOT NULL,
+  `file_type` varchar(50) NOT NULL,
   `upload_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
