@@ -39,7 +39,7 @@
         echo $critic_rat;
         echo $rating_recv;
 
-        if($critic_rat >= 3 && $rating_recv >= 5)
+        if($critic_rat == 3 && $rating_recv >= 5)
         {
           $content_id = $row['content_id'];
           $content = $row['content'];
