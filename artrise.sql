@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 24, 2023 at 09:12 PM
+-- Generation Time: Apr 29, 2023 at 03:14 PM
 -- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- PHP Version: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,15 +33,16 @@ CREATE TABLE `critics` (
   `email` varchar(25) NOT NULL,
   `contact` varchar(10) NOT NULL,
   `qualification` varchar(25) NOT NULL,
-  `password` varchar(300) NOT NULL
+  `password` varchar(300) NOT NULL,
+  `about` varchar(1000) DEFAULT 'User has not added this field'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `critics`
 --
 
-INSERT INTO `critics` (`critics_id`, `name`, `email`, `contact`, `qualification`, `password`) VALUES
-(4, 'parth', 'parth@gmail.com', '2323132341', 'B-tech', '$2y$10$lgMbGiNYJWYNosXlpUXI8OgrjJ0nrjT0JmAWe9Jll3cfcgtpA3Zey');
+INSERT INTO `critics` (`critics_id`, `name`, `email`, `contact`, `qualification`, `password`, `about`) VALUES
+(4, 'parth', 'parth@gmail.com', '2323132341', 'B-tech', '$2y$10$lgMbGiNYJWYNosXlpUXI8OgrjJ0nrjT0JmAWe9Jll3cfcgtpA3Zey', 'i am a disco dancer');
 
 -- --------------------------------------------------------
 
@@ -52,6 +53,7 @@ INSERT INTO `critics` (`critics_id`, `name`, `email`, `contact`, `qualification`
 CREATE TABLE `critics_content` (
   `content_id` int(11) NOT NULL,
   `content` mediumblob NOT NULL,
+  `user_id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `description` varchar(1000) NOT NULL,
   `rating` int(11) NOT NULL DEFAULT 0,
@@ -65,9 +67,9 @@ CREATE TABLE `critics_content` (
 -- Dumping data for table `critics_content`
 --
 
-INSERT INTO `critics_content` (`content_id`, `content`, `name`, `description`, `rating`, `critics_rated`, `file_type`, `art_type`, `upload_date`) VALUES
-(3, 0x363433663833333862343733662e6a7067, '', 'song singing', 0, 0, 'image/jpeg', 'on', '0000-00-00 00:00:00'),
-(6, 0x363433663836613536653435332e6a7067, '', 'drawing girl', 0, 0, 'image/jpeg', 'on', '0000-00-00 00:00:00');
+INSERT INTO `critics_content` (`content_id`, `content`, `user_id`, `name`, `description`, `rating`, `critics_rated`, `file_type`, `art_type`, `upload_date`) VALUES
+(3, 0x363433663833333862343733662e6a7067, 0, '', 'song singing', 4, 1, 'image/jpeg', 'on', '0000-00-00 00:00:00'),
+(6, 0x363433663836613536653435332e6a7067, 0, '', 'drawing girl', 0, 0, 'image/jpeg', 'on', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -136,7 +138,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`user_id`, `name`, `email`, `contact`, `age`, `password`) VALUES
 (8, 'jinam', 'jinam@gmail.com', '1234457887', 69, '$2y$10$wDku1uQwRDu9mXvydSX7qerDtTFY38Isxn/R40UKTmXPKodaM.WmC'),
-(9, 'Ritesh', 'r@g.com', '123', 10, '$2y$10$TPScjiCd5rAt1cKMI0iS5ueQMzv1RmAMEHXP9R14MWobPjhq105nS');
+(9, 'Ritesh', 'r@g.com', '123', 10, '$2y$10$TPScjiCd5rAt1cKMI0iS5ueQMzv1RmAMEHXP9R14MWobPjhq105nS'),
+(10, 'parth', 'parth@gmail.com', '123445321', 19, '$2y$10$g/4Ac5hFfvuSKoE.5LbVieH22uzm/WOCoSyoBmhdf3eCE/BpzrEM2');
 
 -- --------------------------------------------------------
 
@@ -230,7 +233,7 @@ ALTER TABLE `critics_content`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `users_content`

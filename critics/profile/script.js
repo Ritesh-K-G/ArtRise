@@ -7,23 +7,6 @@ commentBtns.forEach(commentBtn => {
   });
 });
 
-const stars = document.querySelectorAll('.star');
-let lastClickedIndex = null;
-stars.forEach((star, index) => {
-  star.addEventListener('click', () => {
-    for (let i = 0; i < stars.length; i++) {
-      if (i <= index) {
-        stars[i].classList.add('clicked');
-        lastClickedIndex=i+1;
-      } else {
-        stars[i].classList.remove('clicked');
-      }
-    }
-    document.getElementById("star_index").value = lastClickedIndex;
-  });
-});
-
-
 
 var loadFile = function (event) {
   var image = document.getElementById("output");
