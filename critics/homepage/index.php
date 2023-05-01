@@ -4,6 +4,10 @@
     if(!isset($_SESSION['critics_id'])) {
       header('location: ../index.html');
     }
+    $critic_id= $_SESSION['critics_id'];
+    $sql = "SELECT * FROM critics WHERE critics_id = $critic_id";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
 ?>
 <!DOCTYPE html>
     <html lang="en">
@@ -88,18 +92,18 @@
                             </div>
                         </div>
                         <div class="profile-details">
-                            <h1 id="name">Critics</h1>
-                            <p id="email">critics@gmail.com</p>
+                        <h1 id="name"><?php echo $row['name']; ?></h1>
+                        <p id="email"><?php echo $row['email']; ?></p>
                         </div>
                     </div>
                     <div class="profile-body">
                         <div class="profile-about">
                             <h2>About Me</h2>
-                            <p>IIIT A critics</p>
+                            <p><?php echo $row['about']; ?></p>
                         </div>
                         <div class="profile-posts">
                             <h2>Qualification</h2>
-                            <p>IIIT A alumni</p>
+                            <p><?php echo $row['qualification']; ?></p>
                         </div>
                     </div>
                 </div>
@@ -145,8 +149,9 @@
             </section> -->
 
             <?php
+                $aty = $row['critic_type'];
                 // Query the database for artworks
-                $sql = "SELECT * FROM critics_content";
+                $sql = "SELECT * FROM critics_content where art_type = '$aty';";
                 $result = mysqli_query($conn, $sql);
 
                 // Loop through the artworks and display them on the webpage
@@ -158,6 +163,10 @@
                     $description = $row['description'];
                     // $content_type = $row['art_type'];
                     $file_path = "../../uploads/critics_content/" . $file_name;
+                    $user_id = $row['user_id'];
+                    $sql = "select * from users where user_id = '$user_id';";
+                    $result = mysqli_query($conn, $sql);
+                    $nrow = mysqli_fetch_assoc($result);
 
                     // Display the artwork on the webpage                    
                     echo '
@@ -169,6 +178,7 @@
                               </div>
                               <div class="feed-content">
                                 <div class="username">
+                        
                                   
                                 </div>
                                 <div class="post-content">';

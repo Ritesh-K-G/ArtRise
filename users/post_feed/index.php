@@ -108,14 +108,13 @@
                     <label id="writing" for="description">Describe your artwork:</label>
                     <textarea placeholder="What's on your mind? Reflect upon your artwork here!!" name="description" id="description"></textarea>
                     <br><br>
-                    <label>Choose Content type:</label>
                     <div class="wrapper">
-                        <input type="radio" name="select" id="option-1" checked>
+                        <!-- <input type="radio" name="select" id="option-1" checked>
                         <input type="radio" name="select" id="option-2">
                         <input type="radio" name="select" id="option-3">
                         <label for="option-1" class="option option-1">
                             <div class="dot"></div>
-                            <span>Film</span>
+                            <span>Writing</span>
                         </label>
                         <label for="option-2" class="option option-2">
                             <div class="dot"></div>
@@ -123,8 +122,15 @@
                         </label>
                         <label for="option-3" class="option option-3">
                             <div class="dot"></div>
-                            <span>Song</span>
-                        </label>
+                            <span>Music</span>
+                        </label> -->
+                        <label for="select">Choose Content type:</label>
+                        <select name="select" id="select">
+                            <option value="writing">Literary Arts</option>
+                            <option value="art">Art/Drawing</option>
+                            <option value="music">Music</option>
+                            <option value="visarts">Visual Arts</option>
+                        </select>
                     </div>
                     <br><br>
                     <button>POST</button>
