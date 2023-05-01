@@ -168,8 +168,8 @@
                                         <span class="post-likes">
                                         <form id="post" action="increase_likes.php" method="POST">
                                             <input type="hidden" name="post_id" value="' . $content_id . '">
-                                            <button type="submit">
-                                                <i class="material-icons">thumb_up</i>
+                                            <button type="submit" id="thumbs-up" class="thumbs-up-btn" style="color:white;background:linear-gradient(136deg, hwb(260 3% 80%) 0%, hsl(266, 48%, 16%) 100%);">
+                                                <i class="material-icons" onclick="changeColor_thumbsUp()">thumb_up</i>
                                             </button>
                                         </form>';
                                         echo $row["likes"];                         
@@ -181,7 +181,17 @@
                                         $numComments = mysqli_num_rows($result1);
                                         echo $numComments;
                                         echo '&nbsp;comments</span>
-                                        <span class="post-favorites"><i class="material-icons">favorite_border</i> Add to favorites</span>
+
+                                        
+                                        <span class="post-favorites">
+                                        <form id="post" action="add_favourites.php" method="POST">
+                                            <input type="hidden" name="fav_id" value="' . $content_id . '">
+                                            <button type="submit" id="fav_on" class="fav-btn" style="color:white;background:linear-gradient(136deg, hwb(260 3% 80%) 0%, hsl(266, 48%, 16%) 100%);">
+                                            <i class="material-icons" onclick="changeColor_Fav()">favorite_border</i></i>
+                                            </button>
+                                        </form>';
+                                        echo '&nbsp;Add to favorites
+                                        </span>
                                     </div>
                                     <div class="post-comments-section">
                                     ';
@@ -299,6 +309,20 @@
 
         <!--=============== SWIPER JS ===============-->
         <script src="../../assets/js/swiper-bundle.min.js"></script>
+
+        <!--=============== Icon color JS ===============-->
+        <script>
+            function changeColor_thumbsUp() {
+            var thumbsUp = document.getElementById('thumbs-up');
+            thumbsUp.style.color = 'red';
+        }
+        
+            function changeColor_Fav() {
+            var FavOn = document.getElementById('fav_on');
+            FavOn.style.color = 'red';
+            }
+
+        </script>
         
         <!--=============== MAIN JS ===============-->
         <script src="../../assets/js/main.js"></script>
