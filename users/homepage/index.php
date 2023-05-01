@@ -5,7 +5,6 @@
       header('location: ../index.html');
     }
 ?>
-
 <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -21,10 +20,15 @@
         <!--=============== SWIPER CSS ===============--> 
         <link rel="stylesheet" href="../../assets/css/swiper-bundle.min.css">
 
+        <!--=============== NOTIFICATION CSS ===============--> 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
         <!--=============== CSS ===============--> 
         <link rel="stylesheet" href="../../assets/css/styles.css">
 
         <link rel="stylesheet" href="style.css">
+
+        <link rel="stylesheet" href="notif.css">
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
@@ -61,7 +65,30 @@
                             <a href="../profile" class="nav__link">Profile</a>
                         </li>
 
+                        <li class="nav__item">
+                          <a href="../user_logout.php" class="nav__link">Logout</a>
+                        </li>
+
                         <a href="../post_feed/index.php" class="button button--ghost">+ Post</a>
+
+                        <div class="notification">
+                          <div class="notification-bell">
+                            <i class="fa fa-bell-o"></i>
+                            <span class="btn__badge pulse-button">3</span>
+                          </div>
+                          <div class="notification-drop">
+                            <div class="item">
+                            <a href="#">Notification 1</a>
+                            </div>
+                            <div class="item">
+                            <a href="#">Notification 2</a>
+                            </div>
+                            <div class="item">
+                            <a href="#">Notification 3</a>
+                            </div>
+                          </div>
+                        </div>
+
                     </ul>
 
                     <div class="nav__close" id="nav-close">
@@ -105,47 +132,7 @@
                 </div>
             </section>
             
-            <!--==================== DISCOUNT ====================-->
-            <section id="my_feed" class="section discount">
-                <div id="carding" class="discount__container container grid">
-                  <div class="feed-card">
-                    <div class="profile-picture">
-                      <img src="https://m.media-amazon.com/images/I/415MsdCcduL.png" alt="Profile Picture">
-                    </div>
-                    <div class="feed-content">
-                      <div class="username">
-                        John Doe
-                      </div>
-                      <div class="post-content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae erat ut velit vestibulum varius vitae nec libero.
-                      </div>
-                      <div class="post-image">
-                        <img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8&w=1000&q=80" alt="Post Image">
-                      </div>
-                      <div class="like-comment">
-                      <div class="post-actions">
-                        <span class="post-likes"><i class="material-icons">thumb_up</i> 42 likes</span>
-                        <span class="post-comments"><i class="material-icons">mode_comment</i> 7 comments</span>
-                        <span class="post-favorites"><i class="material-icons">favorite_border</i> Add to favorites</span>
-                      </div>
-                      <div class="post-comments-section">
-                        <div class="post-comment">
-                          <p class="comment-author">Jane Doe</p>
-                          <p class="comment-text">Great post!</p>
-                        </div>
-                        <div class="post-comment">
-                          <p class="comment-author">Bob Smith</p>
-                          <p class="comment-text">Thanks for sharing!</p>
-                        </div>
-                        <div class="add-comment">
-                          <input type="text" placeholder="Write a comment">
-                          <button>Post</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </section>
+            <!--==================== POST SECTION ====================-->
                 <?php
                     $sql="SELECT * from users_content;";
                     $result=mysqli_query($conn,$sql);
@@ -153,6 +140,8 @@
                     {
                         while($row = mysqli_fetch_array($result))
                         {
+                          $file_type = $row['file_type'];
+                          $content_id = $row['content_id'];
                           echo '
                           <section id="my_feed">
                           <div id="carding" class="discount__container container grid">
@@ -161,36 +150,65 @@
                                 <img src="https://m.media-amazon.com/images/I/415MsdCcduL.png" alt="Profile Picture">
                               </div>
                               <div class="feed-content">
-                                <div class="username">
-                                  John Doe
-                                </div>
-                                <div class="post-content">
-                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae erat ut velit vestibulum varius vitae nec libero.
-                                </div>
+                                <div class="username">';
+                                    echo $row['creator_id'];
+                                echo '</div>
+                                <div class="post-content">';
+                                    echo $row['description'];
+                                echo '</div>
                                 <div class="post-image">';
-                                echo "<img src='../../uploads/" . $row['content'] . "'>";
+                                if (strpos($file_type, 'image/') === 0) {
+                                  echo "<img src='../../uploads/critics_content/" . $row['content'] . "'>";
+                                } else if (strpos($file_type, 'video/') === 0) {
+                                  echo "<video width='320' height='240' controls><source src='../../uploads/critics_content/" . $row['content'] . "' type='$file_type'></video>";
+                                }
                                 echo'</div>
                                 <div class="like-comment">
-                                <div class="post-actions">
-                                  <span class="post-likes"><i class="material-icons">thumb_up</i>';
-                                  echo $row["likes"];                                  
-                                  echo 'likes</span>
-                                  <span class="post-comments"><i class="material-icons">mode_comment</i> 7 comments</span>
-                                  <span class="post-favorites"><i class="material-icons">favorite_border</i> Add to favorites</span>
-                                </div>
-                                <div class="post-comments-section">
-                                  <div class="post-comment">
-                                    <p class="comment-author">Jane Doe</p>
-                                    <p class="comment-text">Great post!</p>
-                                  </div>
-                                  <div class="post-comment">
-                                    <p class="comment-author">Bob Smith</p>
-                                    <p class="comment-text">Thanks for sharing!</p>
-                                  </div>
-                                  <div class="add-comment">
-                                    <input type="text" placeholder="Write a comment">
-                                    <button>Post</button>
-                                  </div>
+                                    <div class="post-actions">
+                                        <span class="post-likes">
+                                        <form id="post" action="increase_likes.php" method="POST">
+                                            <input type="hidden" name="post_id" value="' . $content_id . '">
+                                            <button type="submit">
+                                                <i class="material-icons">thumb_up</i>
+                                            </button>
+                                        </form>';
+                                        echo $row["likes"];                         
+                                        echo '&nbsp;likes</span>
+                                        <span class="post-comments"><i class="material-icons">mode_comment</i>';
+                                        
+                                        $sql1="SELECT * from reviews where content_id = $content_id;";
+                                        $result1=mysqli_query($conn,$sql1);
+                                        $numComments = mysqli_num_rows($result1);
+                                        echo $numComments;
+                                        echo '&nbsp;comments</span>
+                                        <span class="post-favorites"><i class="material-icons">favorite_border</i> Add to favorites</span>
+                                    </div>
+                                    <div class="post-comments-section">
+                                    ';
+
+                                    // Comment section
+                                    while($row1 = mysqli_fetch_array($result1)) 
+                                    {    
+                                        echo '
+                                        <div class="post-comment">
+                                          <p class="comment-author">';
+                                          echo $row1['name'];
+                                          echo '</p>
+                                          <p class="comment-text">';
+                                          echo $row1['comment'];
+                                          echo '</p>
+                                        </div>
+                                        ';
+                                    }
+
+                                    echo '
+                                    <form action="add_comment.php" method="post">
+                                        <div class="add-comment">
+                                            <input type="hidden" name="content_id_comment" value="' . $content_id . '">
+                                            <input type="text" name="comment" placeholder="Write a comment">
+                                            <button type="submit">Post</button>
+                                        </div>
+                                    </form>
                                 </div>
                               </div>
                             </div>

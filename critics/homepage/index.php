@@ -156,6 +156,7 @@
 
                 // Loop through the artworks and display them on the webpage
                 while ($row = mysqli_fetch_assoc($result)) {
+                    $content_id= $row['content_id'];
                     $file_name = $row['content'];
                     // $file_size = $row['file_size'];
                     $file_type = $row['file_type'];
@@ -187,7 +188,6 @@
                                 '</div>
                                 <div class="post-image">';
                                 if (strpos($file_type, 'image/') === 0) {
-                                    // echo "<img src='$file_path' alt='img'>";
                                     echo "<img src='../../uploads/critics_content/" . $row['content'] . "'>";
                                 } else if (strpos($file_type, 'video/') === 0) {
                                     echo "<video width='320' height='240' controls><source src='$file_path' type='$file_type'></video>";
@@ -199,19 +199,23 @@
                                     <div class="post-actions">
                                         <span class="post-comments"><i class="material-icons">stars</i>Review it!</span>
                                     </div>
-                                    <div class="post-comments-section">
-                                        <div>
-                                            <span class="star"></span>
-                                            <span class="star"></span>
-                                            <span class="star"></span>
-                                            <span class="star"></span>
-                                            <span class="star"></span>
+                                    <form action="submit-review.php" method="post">
+                                        <input type="hidden" name="content_id" value="' . $content_id . '">
+                                        <div class="post-comments-section">
+                                            <div>
+                                                <span class="star" ></span>
+                                                <span class="star"></span>
+                                                <span class="star"></span>
+                                                <span class="star"></span>
+                                                <span class="star"></span>
+                                            </div>
+                                            <div class="add-comment">
+                                                <input name="review" type="text" placeholder="Write the review">
+                                                <input id="star_index" name="star_index" type="hidden">
+                                                <button type="submit">Post</button>
+                                            </div>
                                         </div>
-                                        <div class="add-comment">
-                                        <input type="text" placeholder="Write the review">
-                                        <button>Post</button>
-                                        </div>
-                                    </div>
+                                    </form>
                                 </div>
                               </div>
                             </div>
@@ -309,7 +313,7 @@
         <script src="../../assets/js/swiper-bundle.min.js"></script>
         
         <!--=============== MAIN JS ===============-->
-        <script src="../../assets/js/main.js"></script>
+        <!-- <script src="../../assets/js/main.js"></script> -->
         <script src="logic.js"></script>
     </body>
 </html>

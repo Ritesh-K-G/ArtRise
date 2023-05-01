@@ -30,7 +30,6 @@
         exit();
     }
     else{
-        // $password=md5($password);
         $sql = "INSERT INTO users (password,name,age,email,contact) Values('$hashpass','$name','$age','$email','$contact');";
 
         if($conn->query($sql) == true){

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 24, 2023 at 09:12 PM
+-- Generation Time: Apr 29, 2023 at 05:48 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -33,15 +33,16 @@ CREATE TABLE `critics` (
   `email` varchar(25) NOT NULL,
   `contact` varchar(10) NOT NULL,
   `qualification` varchar(25) NOT NULL,
-  `password` varchar(300) NOT NULL
+  `password` varchar(300) NOT NULL,
+  `about` varchar(1000) DEFAULT 'User has not added this field'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `critics`
 --
 
-INSERT INTO `critics` (`critics_id`, `name`, `email`, `contact`, `qualification`, `password`) VALUES
-(4, 'parth', 'parth@gmail.com', '2323132341', 'B-tech', '$2y$10$lgMbGiNYJWYNosXlpUXI8OgrjJ0nrjT0JmAWe9Jll3cfcgtpA3Zey');
+INSERT INTO `critics` (`critics_id`, `name`, `email`, `contact`, `qualification`, `password`, `about`) VALUES
+(4, 'parth', 'parth@gmail.com', '2323132341', 'B-tech', '$2y$10$lgMbGiNYJWYNosXlpUXI8OgrjJ0nrjT0JmAWe9Jll3cfcgtpA3Zey', 'i am a disco dancer');
 
 -- --------------------------------------------------------
 
@@ -52,6 +53,7 @@ INSERT INTO `critics` (`critics_id`, `name`, `email`, `contact`, `qualification`
 CREATE TABLE `critics_content` (
   `content_id` int(11) NOT NULL,
   `content` mediumblob NOT NULL,
+  `user_id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `description` varchar(1000) NOT NULL,
   `rating` int(11) NOT NULL DEFAULT 0,
@@ -65,9 +67,9 @@ CREATE TABLE `critics_content` (
 -- Dumping data for table `critics_content`
 --
 
-INSERT INTO `critics_content` (`content_id`, `content`, `name`, `description`, `rating`, `critics_rated`, `file_type`, `art_type`, `upload_date`) VALUES
-(3, 0x363433663833333862343733662e6a7067, '', 'song singing', 0, 0, 'image/jpeg', 'on', '0000-00-00 00:00:00'),
-(6, 0x363433663836613536653435332e6a7067, '', 'drawing girl', 0, 0, 'image/jpeg', 'on', '0000-00-00 00:00:00');
+INSERT INTO `critics_content` (`content_id`, `content`, `user_id`, `name`, `description`, `rating`, `critics_rated`, `file_type`, `art_type`, `upload_date`) VALUES
+(3, 0x363433663833333862343733662e6a7067, 0, '', 'song singing', 25, 7, 'image/jpeg', 'on', '0000-00-00 00:00:00'),
+(6, 0x363433663836613536653435332e6a7067, 0, '', 'drawing girl', 0, 0, 'image/jpeg', 'on', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -99,10 +101,18 @@ CREATE TABLE `judges` (
 
 CREATE TABLE `reviews` (
   `user_id` int(11) NOT NULL,
+  `name` varchar(25) NOT NULL,
   `content_id` int(11) NOT NULL,
-  `isliked` int(11) NOT NULL,
   `comment` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `reviews`
+--
+
+INSERT INTO `reviews` (`user_id`, `name`, `content_id`, `comment`) VALUES
+(9, 'Ritesh', 3, 'Sneha is the best singer'),
+(9, 'Ritesh', 3, 'Best song ever');
 
 -- --------------------------------------------------------
 
@@ -136,7 +146,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`user_id`, `name`, `email`, `contact`, `age`, `password`) VALUES
 (8, 'jinam', 'jinam@gmail.com', '1234457887', 69, '$2y$10$wDku1uQwRDu9mXvydSX7qerDtTFY38Isxn/R40UKTmXPKodaM.WmC'),
-(9, 'Ritesh', 'r@g.com', '123', 10, '$2y$10$TPScjiCd5rAt1cKMI0iS5ueQMzv1RmAMEHXP9R14MWobPjhq105nS');
+(9, 'Ritesh', 'r@g.com', '123', 10, '$2y$10$TPScjiCd5rAt1cKMI0iS5ueQMzv1RmAMEHXP9R14MWobPjhq105nS'),
+(10, 'parth', 'parth@gmail.com', '123445321', 19, '$2y$10$g/4Ac5hFfvuSKoE.5LbVieH22uzm/WOCoSyoBmhdf3eCE/BpzrEM2');
 
 -- --------------------------------------------------------
 
@@ -146,13 +157,22 @@ INSERT INTO `users` (`user_id`, `name`, `email`, `contact`, `age`, `password`) V
 
 CREATE TABLE `users_content` (
   `content_id` int(11) NOT NULL,
+  `creator_id` int(11) NOT NULL,
   `content` mediumblob NOT NULL,
+  `description` varchar(1000) NOT NULL,
   `ratings` int(11) NOT NULL,
   `likes` int(11) NOT NULL,
-  `type` int(11) NOT NULL,
-  `file` int(11) NOT NULL,
+  `art_type` varchar(50) NOT NULL,
+  `file_type` varchar(50) NOT NULL,
   `upload_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users_content`
+--
+
+INSERT INTO `users_content` (`content_id`, `creator_id`, `content`, `description`, `ratings`, `likes`, `art_type`, `file_type`, `upload_date`) VALUES
+(3, 0, 0x363433663833333862343733662e6a7067, 'song singing', 25, 656, 'on', 'image/jpeg', '0000-00-00 00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -230,13 +250,13 @@ ALTER TABLE `critics_content`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `users_content`
 --
 ALTER TABLE `users_content`
-  MODIFY `content_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `content_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
