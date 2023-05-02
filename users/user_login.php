@@ -7,11 +7,11 @@
     $hashpass = password_hash($password, PASSWORD_DEFAULT);
 
     if(empty($id)){
-        echo '<script>alert(" Enter email ID");setTimeout(()=>{window.location.replace("index.html");},500);</script>';
+        echo '<script>alert(" Enter email ID");setTimeout(()=>{window.location.replace("index.php");},500);</script>';
         exit();
     }
     else if(empty($password)){
-        echo '<script>alert(" Enter Password");setTimeout(()=>{window.location.replace("index.html");},500);</script>';
+        echo '<script>alert(" Enter Password");setTimeout(()=>{window.location.replace("index.php");},500);</script>';
         exit();
     }
     else {

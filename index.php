@@ -2,7 +2,7 @@
     session_start();
     include "db_connect.php";
     if(isset($_SESSION['critics_id'])) {
-      header('location: critics/homepage/index.html');
+      header('location: critics/homepage/index.php');
     }
     else if(isset($_SESSION['user_id'])) {
         header('location: users/homepage/index.php');

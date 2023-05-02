@@ -2,7 +2,7 @@
 session_start();
 include "../../db_connect.php";
 if (!isset($_SESSION['critics_id'])) {
-    header('location: ../index.html');
+    header('location: ../index.php');
 }
 $critic_id = $_SESSION['critics_id'];
 $sql = "SELECT * FROM critics WHERE critics_id = $critic_id";
