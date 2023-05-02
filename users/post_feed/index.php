@@ -2,7 +2,7 @@
     session_start();
     include "../../db_connect.php";
     if(!isset($_SESSION['user_id'])) {
-      header('location: ../index.html');
+      header('location: ../index.php');
     }
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Get the file and its details

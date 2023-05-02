@@ -27,7 +27,7 @@
                 exit();
             }
             else{
-                echo '<script>alert("Wrong ID Password");setTimeout(()=>{window.location.replace("index.html");},500);</script>';
+                echo '<script>alert("Wrong ID Password");setTimeout(()=>{window.location.replace("index.php");},500);</script>';
             }
         }
         else{

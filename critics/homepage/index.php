@@ -2,7 +2,7 @@
     session_start();
     include "../../db_connect.php";
     if(!isset($_SESSION['critics_id'])) {
-      header('location: ../index.html');
+      header('location: ../index.php');
     }
 ?>
 <!DOCTYPE html>

@@ -2,7 +2,7 @@
     session_start();
     include "../../db_connect.php";
     if(!isset($_SESSION['user_id'])) {
-      header('location: ../index.html');
+      header('location: ../index.php');
     }
 ?>
 <!DOCTYPE html>
@@ -172,7 +172,7 @@
                                                 <i class="material-icons">thumb_up</i>
                                             </button>
                                         </form>';
-                                        echo $row["likes"];                         
+                                        echo $row["likes"];        
                                         echo '&nbsp;likes</span>
                                         <span class="post-comments"><i class="material-icons">mode_comment</i>';
                                         
