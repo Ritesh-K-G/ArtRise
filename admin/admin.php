@@ -2,19 +2,10 @@
     session_start();
     include "../db_connect.php";
     if(isset($_GET['id'])) {
-        // $id=$_GET['id'];
-        // $word = $_SESSION['ps_id'];
-        // $sql = "DELETE from books where ticket_code = '$id' and ps_id = '$word';";
-        // if($conn->query($sql)== true){
-        //     echo '<script> alert("Critic verified");setTimeout(()=>{window.location.replace("admin.php");},500); </script>';+
-        //     exit;
-        // }
-        // else{
-        //     echo "ERROR: $sql <br> $conn->error";
-        // }
-        // header("Location:admin.php");
-        // exit;
-        echo '<script> alert("hello");setTimeout(()=>{window.location.replace("admin.php");},500); </script>';
+        echo '<script> alert("Approve");setTimeout(()=>{window.location.replace("admin.php");},500); </script>';
+    }
+    if(isset($_GET['id1'])) {
+        echo '<script> alert("Discard");setTimeout(()=>{window.location.replace("admin.php");},500); </script>';
     }
 ?>
 <!DOCTYPE html>
@@ -71,6 +62,7 @@
                                         <th>Contact</th>
                                         <th>About</th>
                                         <th></th>
+                                        <th></th>
                                     </tr>
                                 </thead>';
                                 while($row = mysqli_fetch_array($result))
@@ -83,7 +75,10 @@
                                     "<td>" . $row["contact"]. "</td>".
                                     "<td>" . $row["about"]. "</td>".
                                     "<td> <a href='admin.php?id=".$row['critics_id']."'
-                                            class='dltscd'>Approve</a>  
+                                            class='approve'>Approve</a>  
+                                    </td>".
+                                    "<td> <a href='admin.php?id1=".$row['critics_id']."'
+                                            class='discard'>Discard</a>  
                                     </td>".
                                     "</tr>";
                                 }
