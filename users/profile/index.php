@@ -95,7 +95,7 @@
                             <ul>
                                 <li><a href="#">Posts</a></li>
                                 <li><a href="#">Likes</a></li>
-                                <li><a href="#">Friends</a></li>
+                                <li><a href="#">Favorites</a></li>
                             </ul>
                         </div>
                     </div>

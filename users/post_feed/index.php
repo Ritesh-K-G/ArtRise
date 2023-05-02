@@ -15,6 +15,7 @@
         // Get the description and content type
         $description = $_POST['description'];
         $content_type = $_POST['select'];
+        $uploader = $_SESSION['user_id'];
 
         // Check if the file was uploaded successfully
         if (isset($file_name) && $file_name != '') {
@@ -26,8 +27,8 @@
                 $file_new_name = uniqid() . '.' . $file_ext;
                 $file_destination = '../../uploads/critics_content/' . $file_new_name;
                 move_uploaded_file($file_tmp, $file_destination);
-                $sql = "INSERT INTO critics_content (content, file_type, description, art_type)
-                        VALUES ('$file_new_name', '$file_type', '$description', '$content_type')";
+                $sql = "INSERT INTO critics_content (content, user_id, file_type, description, art_type)
+                        VALUES ('$file_new_name','$uploader', '$file_type', '$description', '$content_type')";
                 mysqli_query($conn, $sql);
                 $new_id = mysqli_insert_id($conn); // retrieve the auto-generated ID
                 mysqli_close($conn);
@@ -108,23 +109,14 @@
                     <label id="writing" for="description">Describe your artwork:</label>
                     <textarea placeholder="What's on your mind? Reflect upon your artwork here!!" name="description" id="description"></textarea>
                     <br><br>
-                    <label>Choose Content type:</label>
                     <div class="wrapper">
-                        <input type="radio" name="select" id="option-1" checked>
-                        <input type="radio" name="select" id="option-2">
-                        <input type="radio" name="select" id="option-3">
-                        <label for="option-1" class="option option-1">
-                            <div class="dot"></div>
-                            <span>Film</span>
-                        </label>
-                        <label for="option-2" class="option option-2">
-                            <div class="dot"></div>
-                            <span>Art</span>
-                        </label>
-                        <label for="option-3" class="option option-3">
-                            <div class="dot"></div>
-                            <span>Song</span>
-                        </label>
+                        <label for="select">Choose Content type:</label>
+                        <select name="select" id="select">
+                            <option value="writing">Literary Arts</option>
+                            <option value="art">Art/Drawing</option>
+                            <option value="music">Music</option>
+                            <option value="visarts">Visual Arts</option>
+                        </select>
                     </div>
                     <br><br>
                     <button>POST</button>
