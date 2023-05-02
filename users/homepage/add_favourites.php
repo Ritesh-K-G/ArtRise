@@ -14,7 +14,7 @@
     if(mysqli_num_rows($result) == 0) {
 
         $sql1 = "INSERT into favourites (user_id, content_id) VALUES ($user_id, $content_id);";
-        $result1 = mysqli_query($conn, $sql1);
+        // $result1 = mysqli_query($conn, $sql1);
 
         if ($conn->query($sql1) === TRUE) {
             echo '<script>window.location.replace("index.php");</script>';
@@ -28,7 +28,7 @@
     else {
 
         $sql2 = "DELETE from favourites where content_id = $content_id";
-        $result2 = mysqli_query($conn, $sql2);
+        // $result2 = mysqli_query($conn, $sql2);
 
         if ($conn->query($sql2) === TRUE) {
             echo '<script>window.location.replace("index.php");</script>';
