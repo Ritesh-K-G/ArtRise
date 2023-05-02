@@ -2,7 +2,7 @@
     session_start();
     include "../../db_connect.php";
     if(!isset($_SESSION['user_id'])) {
-      header('location: ../index.html');
+      header('location: ../index.php');
     }
 ?>
 <!DOCTYPE html>
@@ -75,6 +75,12 @@
         <main class="main">
             
             <!--==================== CATEGORY ====================-->
+            <?php
+                $user_id=$_SESSION['user_id'];
+                $sql="Select * from users where user_id=$user_id;";
+                $result=mysqli_query($conn,$sql);
+                $row=mysqli_fetch_array($result);
+            ?>
             <section class="section category">
                 <div class="profile-container">
                     <div class="profile-header">
@@ -90,8 +96,16 @@
                         </div>
 
                         <div class="profile-details">
-                            <h1 id="name">Ritesh Kumar Gupta</h1>
-                            <p id="email">ritesh@gmail.com</p>
+                            <h1 id="name">
+                                <?php
+                                    echo $row['name'];
+                                ?>
+                            </h1>
+                            <p id="email">
+                                <?php
+                                    echo $row['email'];
+                                ?>
+                            </p>
                             <ul>
                                 <li><a href="#">Posts</a></li>
                                 <li><a href="#">Likes</a></li>

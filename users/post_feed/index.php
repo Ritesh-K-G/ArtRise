@@ -2,7 +2,7 @@
     session_start();
     include "../../db_connect.php";
     if(!isset($_SESSION['user_id'])) {
-      header('location: ../index.html');
+      header('location: ../index.php');
     }
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Get the file and its details
@@ -109,9 +109,9 @@
                     <label id="writing" for="description">Describe your artwork:</label>
                     <textarea placeholder="What's on your mind? Reflect upon your artwork here!!" name="description" id="description"></textarea>
                     <br><br>
-                    <div class="wrapper">
+                    <div id="selectedd">
                         <label for="select">Choose Content type:</label>
-                        <select name="select" id="select">
+                        <select class="format" name="select" id="selecteds">
                             <option value="writing">Literary Arts</option>
                             <option value="art">Art/Drawing</option>
                             <option value="music">Music</option>

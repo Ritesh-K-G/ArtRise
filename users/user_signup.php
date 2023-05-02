@@ -10,33 +10,33 @@
     $contact = $_GET['SignContact'];
 
     if(empty($name)){
-        echo '<script>alert(" Enter Name");setTimeout(()=>{window.location.replace("index.html");},500);</script>';
+        echo '<script>alert(" Enter Name");setTimeout(()=>{window.location.replace("index.php");},500);</script>';
         exit();
     }
     else if(empty($password)){
-        echo '<script>alert(" Enter Password");setTimeout(()=>{window.location.replace("index.html");},500);</script>';
+        echo '<script>alert(" Enter Password");setTimeout(()=>{window.location.replace("index.php");},500);</script>';
         exit();
     }
     else if(empty($age)){
-        echo '<script>alert(" Enter age");setTimeout(()=>{window.location.replace("index.html");},500);</script>';
+        echo '<script>alert(" Enter age");setTimeout(()=>{window.location.replace("index.php");},500);</script>';
         exit();
     }
     else if(empty($email)){
-        echo '<script>alert(" Enter email");setTimeout(()=>{window.location.replace("index.html");},500);</script>';
+        echo '<script>alert(" Enter email");setTimeout(()=>{window.location.replace("index.php");},500);</script>';
         exit();
     }
     else if(empty($contact)){
-        echo '<script>alert(" Enter contact");setTimeout(()=>{window.location.replace("index.html");},500);</script>';
+        echo '<script>alert(" Enter contact");setTimeout(()=>{window.location.replace("index.php");},500);</script>';
         exit();
     }
     else{
         $sql = "INSERT INTO users (password,name,age,email,contact) Values('$hashpass','$name','$age','$email','$contact');";
 
         if($conn->query($sql) == true){
-            echo '<script>alert(" Succesfully inserted");setTimeout(()=>{window.location.replace("./index.html");},500);</script>';
+            echo '<script>alert(" Succesfully inserted");setTimeout(()=>{window.location.replace("./index.php");},500);</script>';
         }
         else{
-            echo '<script>alert(" Some error occured");setTimeout(()=>{window.location.replace("./index.html");},500);</script>';
+            echo '<script>alert(" Some error occured");setTimeout(()=>{window.location.replace("./index.php");},500);</script>';
         }
     }
     $conn->close();
