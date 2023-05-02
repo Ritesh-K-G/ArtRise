@@ -44,7 +44,7 @@
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list">
                         <li class="nav__item">
-                            <a href="#" class="nav__link">Home</a>
+                            <a href="../homepage" class="nav__link">Home</a>
                         </li>
 
                         <li class="nav__item">
@@ -59,7 +59,6 @@
                             <a href="../profile" class="nav__link active-link">Profile</a>
                         </li>
 
-                        <a href="../post_feed" class="button button--ghost">+ Post</a>
                     </ul>
 
                     <div class="nav__close" id="nav-close">
