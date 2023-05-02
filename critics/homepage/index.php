@@ -58,10 +58,14 @@ $row = mysqli_fetch_assoc($result);
                         <a href="#" class="nav__link">Contact</a>
                     </li>
 
-                    <li class="nav__item">
-                        <a href="../profile" class="nav__link">Profile</a>
-                    </li>
-                </ul>
+                        <li class="nav__item">
+                            <a href="../profile" class="nav__link">Profile</a>
+                        </li>
+
+                        <li class="nav__item">
+                          <a href="../critic_logout.php" class="nav__link">Logout</a>
+                        </li>
+                    </ul>
 
                 <div class="nav__close" id="nav-close">
                     <i class='bx bx-x'></i>
