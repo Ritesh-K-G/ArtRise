@@ -1,0 +1,32 @@
+  #admin{
+    text-align: center;
+    justify-content: center;
+    width: 70%;
+    margin: auto;
+  }
+  table{
+    border-collapse: collapse;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+  }
+  table th{
+    color: #fff;
+  }
+  table td{
+    color: #fff;
+    font-size: 1.2em;
+    padding: 10px;
+    text-align: center;
+  }
+  .dltscd {
+    background: #fff;
+    color: darkred;
+    font-size: 1.2em;
+    padding: 5px 30px;
+    text-decoration: none;
+  }
+  .dltscd:hover{
+    background: darkred;
+    color: #fff;
+  }
