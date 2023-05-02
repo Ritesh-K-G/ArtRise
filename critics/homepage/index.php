@@ -149,7 +149,7 @@ $row = mysqli_fetch_assoc($result);
             echo '
                           <section id="my_feed">
                           <div id="carding" class="discount__container container grid">
-                            <div class="feed-card">
+                            <div class="feed-card" data-content-id="' . $content_id . '">
                               <div class="profile-picture">
                                 <img src="https://m.media-amazon.com/images/I/415MsdCcduL.png" alt="Profile Picture">
                               </div>
@@ -185,7 +185,7 @@ $row = mysqli_fetch_assoc($result);
                                             </div>
                                             <div class="add-comment">
                                                 <input name="review" type="text" placeholder="Write the review">
-                                                <input id="star_index" name="star_index" type="hidden">
+                                                <input id="star_index-input" name="star_index" type="hidden">
                                                 <button type="submit">Post</button>
                                             </div>
                                         </div>

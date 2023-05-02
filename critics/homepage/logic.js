@@ -7,23 +7,43 @@ commentBtns.forEach(commentBtn => {
   });
 });
 
-const stars = document.querySelectorAll('.star');
-let lastClickedIndex = null;
-stars.forEach((star, index) => {
-  star.addEventListener('click', () => {
-    for (let i = 0; i < stars.length; i++) {
-      if (i <= index) {
-        stars[i].classList.add('clicked');
-        lastClickedIndex=i+1;
-      } else {
-        stars[i].classList.remove('clicked');
+// const stars = document.querySelectorAll('.star');
+// let lastClickedIndex = null;
+// stars.forEach((star, index) => {
+//   star.addEventListener('click', () => {
+//     for (let i = 0; i < stars.length; i++) {
+//       if (i <= index) {
+//         stars[i].classList.add('clicked');
+//         lastClickedIndex=i+1;
+//       } else {
+//         stars[i].classList.remove('clicked');
+//       }
+//     }
+//     document.getElementById("star_index").value = lastClickedIndex;
+//   });
+// });
+
+const cards = document.querySelectorAll('.feed-card');
+cards.forEach((card) => {
+  const stars = card.querySelectorAll('.star');
+  let lastClickedIndex = null;
+  stars.forEach((star, index) => {
+    star.addEventListener('click', () => {
+      for (let i = 0; i < stars.length; i++) {
+        if (i <= index) {
+          stars[i].classList.add('clicked');
+          lastClickedIndex=i+1;
+        } else {
+          stars[i].classList.remove('clicked');
+        }
       }
-    }
-    document.getElementById("star_index").value = lastClickedIndex;
+      const starIndexInput = card.querySelector('#star_index-input');
+      if (starIndexInput) {
+        starIndexInput.value = lastClickedIndex;
+      }
+    });
   });
 });
-
-
 
 var loadFile = function (event) {
   var image = document.getElementById("output");
