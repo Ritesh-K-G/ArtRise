@@ -113,23 +113,37 @@
             <section class="section category">
                 <h2 class="section__title">Favorite Art <br> Category</h2>
 
-                <div class="category__container container grid">
+                <div class="category__containers">
                     <div class="category__data">
-                        <img src="../../assets/img/img5.jpg" alt="" class="category__img">
-                        <h3 class="category__title">Paintings</h3>
-                        <p class="category__description">Choose the Paintings which touches your heart</p>
+                        <a href="../drawing/index.php">
+                            <img src="../../src/drawing.jpg" alt="" id="imgForcat">
+                            <h3 class="category__title">Paintings</h3>
+                            <p style="color: white;">Paintings which touches your heart</p>
+                        </a>
                     </div>
 
                     <div class="category__data">
-                        <img src="../../assets/img/img6.png" alt="" class="category__img">
-                        <h3 class="category__title">Music</h3>
-                        <p class="category__description">Pick your daily drive</p>
+                        <a href="../music/index.php">
+                            <img src="../../src/music.jpg" alt="" id="imgForcat">
+                            <h3 class="category__title">Music</h3>
+                            <p style="color: white;">Pick your daily drive</p>
+                        </a>
                     </div>
 
                     <div class="category__data">
-                        <img src="../../assets/img/img7.png" alt="" class="category__img">
-                        <h3 class="category__title">sculpture</h3>
-                        <p class="category__description">Pick the most loved sculpture</p>
+                        <a href="../visual/index.php">
+                            <img src="../../src/visual.jpg" alt="" id="imgForcat">
+                            <h3 class="category__title">Visual</h3>
+                            <p style="color: white;">Enjoy the shorts</p>
+                        </a>
+                    </div>
+
+                    <div class="category__data">
+                        <a href="../literary/index.php">
+                            <img src="../../src/literature.jpg" alt="" id="imgForcat">
+                            <h3 class="category__title">Literature</h3>
+                            <p style="color: white;">Pick the most loved literature</p>
+                        </a>
                     </div>
                 </div>
             </section>

@@ -147,3 +147,19 @@
       background-color: #0e62c7;
       }
   
+
+
+      .category__containers {
+        display: flex; /* use flexbox to arrange items */
+        flex-wrap: wrap; /* allow items to wrap to next line if there's not enough space */
+        justify-content: space-between; /* evenly distribute items with space between them */
+        align-items: center; /* align items vertically in center */
+        margin-left: 200px;
+        margin-right: 200px;
+      }
+
+      #imgForcat{
+        width: 200px; /* set the width to fill the container */
+        height: 150px; /* set the height to a fixed value */
+        object-fit: cover; /* resize the image to cover the container */
+      }

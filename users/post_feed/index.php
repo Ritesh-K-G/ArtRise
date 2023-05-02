@@ -31,6 +31,9 @@
                         VALUES ('$file_new_name','$uploader', '$file_type', '$description', '$content_type')";
                 mysqli_query($conn, $sql);
                 $new_id = mysqli_insert_id($conn); // retrieve the auto-generated ID
+                $sql = "INSERT INTO uploads (user_id, content_id)
+                        VALUES ($uploader, $new_id)";
+                mysqli_query($conn, $sql);
                 mysqli_close($conn);
                 echo "File uploaded successfully. New ID is: " . $new_id;
                 header('location: ../profile/index.php');
