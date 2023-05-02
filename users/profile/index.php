@@ -107,9 +107,9 @@
                                 ?>
                             </p>
                             <ul>
-                                <li><a href="#">Posts</a></li>
-                                <li><a href="#">Likes</a></li>
-                                <li><a href="#">Favorites</a></li>
+                                <li><a href="#" onclick="myPost()">Posts</a></li>
+                                <li><a href="#" onclick="myLikes()">Likes</a></li>
+                                <li><a href="#" onclick="myFav()">Favorites</a></li>
                             </ul>
                         </div>
                     </div>
@@ -538,15 +538,6 @@
                     </div>
                 </div>
             </footer>
-            <!--=============== SCROLL UP ===============-->
-            <a href="#" class="scrollup" id="scroll-up">
-                <i class='bx bx-up-arrow-alt scrollup__icon'></i>
-            </a>        
-        <!--=============== SCROLL REVEAL ===============-->
-        <script src="../../assets/js/scrollreveal.min.js"></script>
-
-        <!--=============== SWIPER JS ===============-->
-        <script src="../../assets/js/swiper-bundle.min.js"></script>
         
         <!--=============== MAIN JS ===============-->
         <script src="../../assets/js/main.js"></script>
