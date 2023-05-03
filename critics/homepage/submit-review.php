@@ -43,10 +43,10 @@ if (empty($star_index) || empty($review)) {
   // echo $critic_rat;
   // echo $rating_recv;
 
+  $user_id = $row['user_id'];
   if ($critic_rat == 3 && $rating_recv >= 5) {
     $content_id = $row['content_id'];
     $content = $row['content'];
-    $user_id = $row['user_id'];
     $description = $row['description'];
     $rating = $row['rating'];
     $art_type = $row['art_type'];
@@ -55,6 +55,14 @@ if (empty($star_index) || empty($review)) {
     $sql3 = "insert into users_content (content_id, content, creator_id, description, ratings, art_type, file_type, upload_date)
           values ('$content_id', '$content', '$user_id', '$description', '$rating', '$art_type', '$file_type', '$upload_date');";
     $result = mysqli_query($conn, $sql3);
+    $msg = "Your Content with id = " . $content_id . " has been approved.";
+    $sql = "INSERT INTO notification (user_id, msg) VALUES ('$user_id', '$msg');";
+    mysqli_query($conn, $sql);
+  }
+  else if($critic_rat == 3) {
+    $msg = "Your Content with id = " . $content_id . " has been discarded.";
+    $sql = "INSERT INTO notification (user_id, msg) VALUES ('$user_id', '$msg');";
+    mysqli_query($conn, $sql);
   }
 }
 ?>
