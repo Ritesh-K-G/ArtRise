@@ -124,6 +124,9 @@
 
         <!--==================== DISCOUNT ====================-->
         <?php
+        echo '<section class="section category">
+        <h2 class="section__title">Posts Reviewed by You</h2>
+        </section>';
         // Query to get artworks reviewed by this critic
         $sql1 = "SELECT content_id FROM judges where critics_id = '$critic_id';";
         // $sql = "SELECT cc.*
@@ -176,33 +179,36 @@
             } else {
                 echo "<p>Unsupported file type: $file_type</p>";
             }
-            // echo '</div>
-            //                     <div class="like-comment">
-            //                         <div class="post-actions">
-            //                             <span class="post-comments"><i class="material-icons">stars</i>Review it!</span>
-            //                         </div>
-            //                         <form action="submit-review.php" method="post">
-            //                             <input type="hidden" name="content_id" value="' . $content_id . '">
-            //                             <div class="post-comments-section">
-            //                                 <div>
-            //                                     <span class="star" ></span>
-            //                                     <span class="star"></span>
-            //                                     <span class="star"></span>
-            //                                     <span class="star"></span>
-            //                                     <span class="star"></span>
-            //                                 </div>
-            //                                 <div class="add-comment">
-            //                                     <input name="review" type="text" placeholder="Write the review">
-            //                                     <input id="star_index" name="star_index" type="hidden">
-            //                                     <button type="submit">Post</button>
-            //                                 </div>
-            //                             </div>
-            //                         </form>
-            //                     </div>
-            //                   </div>
-            //                 </div>
-            //               </div>
-            //               </section>';
+            echo '</div> </div>
+            </div>
+          </div>
+          </section>';
+                                // <div class="like-comment">
+                                //     <div class="post-actions">
+                                //         <span class="post-comments"><i class="material-icons">stars</i>Review it!</span>
+                                //     </div>
+                                //     <form action="submit-review.php" method="post">
+                                //         <input type="hidden" name="content_id" value="' . $content_id . '">
+                                //         <div class="post-comments-section">
+                                //             <div>
+                                //                 <span class="star" ></span>
+                                //                 <span class="star"></span>
+                                //                 <span class="star"></span>
+                                //                 <span class="star"></span>
+                                //                 <span class="star"></span>
+                                //             </div>
+                                //             <div class="add-comment">
+                                //                 <input name="review" type="text" placeholder="Write the review">
+                                //                 <input id="star_index" name="star_index" type="hidden">
+                                //                 <button type="submit">Post</button>
+                                //             </div>
+                                //         </div>
+                                //     </form>
+                                // </div>
+                        //       </div>
+                        //     </div>
+                        //   </div>
+                        //   </section>';
             echo '<style>
                             #carding {
                                 border: none;
