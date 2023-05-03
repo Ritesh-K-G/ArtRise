@@ -2,12 +2,52 @@
     session_start();
     include "../db_connect.php";
 
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
+
+    require ("PHPMailer/PHPMailer.php");
+    require ("PHPMailer/SMTP.php");
+    require ("PHPMailer/Exception.php");
+
     $logname = $_GET['logname'];
     $logemail = $_GET['logemail'];
     $logpass = $_GET['logpass'];
     $loghash = password_hash($logpass, PASSWORD_DEFAULT);
     $logqualifi= $_GET['logqualifi'];
     $logtype= $_GET['logcontact'];
+
+    function sendMail($emailid, $v_code){
+        $mail = new PHPMailer(true);
+        try {
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'imironman497@gmail.com';
+            $mail->Password = 'bnqyuiuspzkxzsis';
+
+            $mail->SMTPSecure = 'ssl';
+            $mail->Port = 465;
+
+            $mail->setFrom('imironman497@gmail.com');
+            $mail->addAddress($emailid);
+            $mail->isHTML(true);
+
+            $mail->Subject = 'Email Verification from ArtRise';
+            $mail->Body = "Thanks for registration!
+                Click the link below to verify the email address
+                <a href='http://localhost/ArtRise/critics/verify.php?email=$emailid&v_code=$v_code'>Verify</a>";
+            
+            // echo $emailid;
+            // echo $v_code;
+            $mail->send();
+
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
     if(empty($logname)){
         echo '<script>alert(" Enter Your Name");setTimeout(()=>{window.location.replace("index.php");},500);</script>';
         exit();
@@ -29,13 +69,15 @@
         exit();
     }
     else{
-        $sql = "INSERT INTO critics_request (name,email,critic_type,qualification,password) Values('$logname','$logemail','$logtype','$logqualifi','$loghash');";
+        $v_code = bin2hex(random_bytes(16));
+        $sql = "INSERT INTO critics_request (name,email,critic_type,qualification,password,verification_code, is_verified) Values('$logname','$logemail','$logtype','$logqualifi','$loghash','$v_code','0');";
 
-        if($conn->query($sql) == true){
+        if(sendMail($logemail,$v_code) && $conn->query($sql) == true){
             echo '<script>alert(" Request to become  Critic sent to admin");setTimeout(()=>{window.location.replace("../index.php");},500);</script>';
         }
         else{
-            echo '<script>alert(" Some error occured");setTimeout(()=>{window.location.replace("../index.php");},500);</script>';
+            // echo '<script>alert(" Some error occured");setTimeout(()=>{window.location.replace("../index.php");},500);</script>';
+            echo '<script>alert(" Some error occured");</script>';
         }
     }
     $conn->close();
