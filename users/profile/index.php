@@ -6,71 +6,73 @@
     }
 ?>
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
 
-        <!--=============== FAVICON ===============-->
-        <link rel="shortcut icon" href="../../assets/img/logo1.png" type="image/x-icon">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!--=============== BOXICONS ===============-->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <!--=============== FAVICON ===============-->
+    <link rel="shortcut icon" href="../../assets/img/logo1.png" type="image/x-icon">
 
-        <!--=============== SWIPER CSS ===============--> 
-        <link rel="stylesheet" href="../../assets/css/swiper-bundle.min.css">
+    <!--=============== BOXICONS ===============-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 
-        <!--=============== CSS ===============--> 
-        <link rel="stylesheet" href="../../assets/css/styles.css">
+    <!--=============== SWIPER CSS ===============-->
+    <link rel="stylesheet" href="../../assets/css/swiper-bundle.min.css">
 
-        <link rel="stylesheet" href="./design.css">
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="../../assets/css/styles.css">
 
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="./design.css">
 
-        <title>ArtRise</title>
-    </head>
-    <body>
-        <!--==================== HEADER ====================-->
-        <header class="header" id="header">
-            <nav class="nav container">
-                <a href="#" class="nav__logo">
-                    <img src="../../assets/img/logo1.png" alt="" class="nav__logo-img">
-                    ArtRise
-                </a>
-                <div class="nav__menu" id="nav-menu">
-                    <ul class="nav__list">
-                        <li class="nav__item">
-                            <a href="#" class="nav__link">Home</a>
-                        </li>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
-                        <li class="nav__item">
-                            <a href="#" class="nav__link">About</a>
-                        </li>
+    <title>ArtRise</title>
+</head>
 
-                        <li class="nav__item">
-                            <a href="#" class="nav__link">Contact</a>
-                        </li>
+<body>
+    <!--==================== HEADER ====================-->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="nav__logo">
+                <img src="../../assets/img/logo1.png" alt="" class="nav__logo-img">
+                ArtRise
+            </a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">Home</a>
+                    </li>
 
-                        <li class="nav__item">
-                            <a href="../profile" class="nav__link active-link">Profile</a>
-                        </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">About</a>
+                    </li>
 
-                        <a href="../post_feed" class="button button--ghost">+ Post</a>
-                    </ul>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">Contact</a>
+                    </li>
 
-                    <div class="nav__close" id="nav-close">
-                        <i class='bx bx-x'></i>
-                    </div>
+                    <li class="nav__item">
+                        <a href="../profile" class="nav__link active-link">Profile</a>
+                    </li>
 
-                    <img src="../../assets/img/nav-img.png" alt="" class="nav__img">
+                    <a href="../post_feed" class="button button--ghost">+ Post</a>
+                </ul>
+
+                <div class="nav__close" id="nav-close">
+                    <i class='bx bx-x'></i>
                 </div>
 
-                <div class="nav__toggle" id="nav-toggle">
-                    <i class='bx bx-grid-alt'></i>
-                </div>
+                <img src="../../assets/img/nav-img.png" alt="" class="nav__img">
+            </div>
 
-            </nav>
-        </header>
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-grid-alt'></i>
+            </div>
+
+        </nav>
+    </header>
 
         <main class="main">
             
@@ -466,31 +468,30 @@
                 </div>
       </main>
 
-            
 
-        <!--==================== FOOTER ====================-->
-            <footer class="footer section">
-                <div class="footer__container container grid">
-                    <div class="footer__content">
-                        <a href="#" class="footer__logo">
-                            <img src="../../assets/img/logo.png" alt="" class="footer__logo-img">
-                            Halloween
-                        </a>
 
-                        <p class="footer__description">Enjoy the scariest night <br> of your life.</p>
-                        
-                        <div class="footer__social">
-                            <a href="https://www.facebook.com/" target="_blank" class="footer__social-link">
-                                <i class='bx bxl-facebook'></i>
-                            </a>
-                            <a href="https://www.instagram.com/" target="_blank" class="footer__social-link">
-                                <i class='bx bxl-instagram-alt' ></i>
-                            </a>
-                            <a href="https://twitter.com/" target="_blank" class="footer__social-link">
-                                <i class='bx bxl-twitter' ></i>
-                            </a>
-                        </div>
-                    </div>
+    <!--==================== FOOTER ====================-->
+    <footer class="footer section">
+        <div class="footer__container container grid">
+            <div class="footer__content">
+                <a href="#" class="footer__logo">
+                    <img src="../../assets/img/logo3.png" alt="" class="footer__logo-img">
+                </a>
+
+                <p class="footer__description"> Let your Art <br> Beautify the world.</p>
+
+                <div class="footer__social">
+                    <a href="https://www.facebook.com/" target="_blank" class="footer__social-link">
+                        <i class='bx bxl-facebook'></i>
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank" class="footer__social-link">
+                        <i class='bx bxl-instagram-alt'></i>
+                    </a>
+                    <a href="https://twitter.com/" target="_blank" class="footer__social-link">
+                        <i class='bx bxl-twitter'></i>
+                    </a>
+                </div>
+            </div>
 
                     <div class="footer__content">
                         <h3 class="footer__title">About</h3>

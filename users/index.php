@@ -52,7 +52,7 @@
 													password?</a></p>
 											<button type="submit" class="btn mt-4">submit</button>
 											</form>
-											<p class="mb-0 mt-4 text-right"><a href="../critics/index.html"
+											<p class="mb-0 mt-4 text-right"><a href="../critics/index.php"
 													class="link">Login as a critic</a></p>
 										</div>
 									</div>

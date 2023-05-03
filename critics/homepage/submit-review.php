@@ -22,8 +22,8 @@ if (empty($star_index) || empty($review)) {
                 WHERE content_id = '$content_id';";
 
   if (mysqli_query($conn, $sql)) {
-    echo 'nice';
-    // echo '<script>alert(" data Updated");setTimeout(()=>{window.location.replace("index.php");},500);</script>';
+    // echo 'nice';
+    echo '<script>alert(" data Updated");setTimeout(()=>{window.location.replace("index.php");},500);</script>';
   } else {
     echo "Error: " . mysqli_error($conn);
   }
@@ -39,9 +39,9 @@ if (empty($star_index) || empty($review)) {
   $critic_rat = $row['critics_rated'];
   $rating_recv = $row['rating'];
 
-  echo 'hello';
-  echo $critic_rat;
-  echo $rating_recv;
+  // echo 'hello';
+  // echo $critic_rat;
+  // echo $rating_recv;
 
   if ($critic_rat == 3 && $rating_recv >= 5) {
     $content_id = $row['content_id'];
