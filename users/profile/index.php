@@ -42,7 +42,7 @@
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
                     <li class="nav__item">
-                        <a href="#" class="nav__link">Home</a>
+                        <a href="../homepage" class="nav__link">Home</a>
                     </li>
 
                     <li class="nav__item">
@@ -50,14 +50,22 @@
                     </li>
 
                     <li class="nav__item">
-                        <a href="#" class="nav__link">Contact</a>
+                        <a href="../market/index.php" class="nav__link">Market</a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="../profile" class="nav__link active-link">Profile</a>
+                        <a href="../chat/index.php" class="nav__link">Chat</a>
                     </li>
 
-                    <a href="../post_feed" class="button button--ghost">+ Post</a>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">Profile</a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="../user_logout.php" class="nav__link">Logout</a>
+                    </li>
+
+                    <a href="../post_feed/index.php" class="button button--ghost">+ Post</a>
                 </ul>
 
                 <div class="nav__close" id="nav-close">

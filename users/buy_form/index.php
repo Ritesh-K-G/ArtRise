@@ -47,12 +47,12 @@
                             <a href="#" class="nav__link">About</a>
                         </li>
                         <li class="nav__item">
-                            <a href="#" class="nav__link">Contact</a>
+                            <a href="../market/index.php" class="nav__link active-link">Market</a>
                         </li>
                         <li class="nav__item">
                             <a href="../profile" class="nav__link">Profile</a>
                         </li>
-                        <a href="../post_feed" class="button button--ghost active-link">+ Post</a>
+                        <a href="../post_feed" class="button button--ghost">+ Post</a>
                     </ul>
                     <div class="nav__close" id="nav-close">
                         <i class='bx bx-x'></i>
