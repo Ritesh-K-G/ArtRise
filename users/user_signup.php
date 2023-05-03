@@ -1,6 +1,14 @@
 <?php
     session_start();
     include "../db_connect.php";
+    
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
+
+    require ("PHPMailer/PHPMailer.php");
+    require ("PHPMailer/SMTP.php");
+    require ("PHPMailer/Exception.php");
 
     $name= $_GET['SignName'];
     $email = $_GET['SignEmail'];
@@ -8,6 +16,37 @@
     $hashpass = password_hash($password, PASSWORD_DEFAULT);
     $age = $_GET['SignAge'];
     $contact = $_GET['SignContact'];
+
+    function sendMail($emailid, $v_code){
+        $mail = new PHPMailer(true);
+        try {
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'imironman497@gmail.com';
+            $mail->Password = 'bnqyuiuspzkxzsis';
+
+            $mail->SMTPSecure = 'ssl';
+            $mail->Port = 465;
+
+            $mail->setFrom('imironman497@gmail.com');
+            $mail->addAddress($emailid);
+            $mail->isHTML(true);
+
+            $mail->Subject = 'Email Verification from ArtRise';
+            $mail->Body = "Thanks for registration!
+                Click the link below to verify the email address
+                <a href='http://localhost/ArtRise/users/verify.php?email=$emailid&v_code=$v_code'>Verify</a>";
+            
+            // echo $emailid;
+            // echo $v_code;
+            $mail->send();
+
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
 
     if(empty($name)){
         echo '<script>alert(" Enter Name");setTimeout(()=>{window.location.replace("index.php");},500);</script>';
@@ -30,13 +69,16 @@
         exit();
     }
     else{
-        $sql = "INSERT INTO users (password,name,age,email,contact) Values('$hashpass','$name','$age','$email','$contact');";
+        $v_code = bin2hex(random_bytes(16));
+        $sql = "INSERT INTO users (password,name,age,email,contact,verification_code, is_verified) Values('$hashpass','$name','$age','$email','$contact','$v_code','0');";
 
-        if($conn->query($sql) == true){
+        if(sendMail($email,$v_code) && $conn->query($sql) == true ){
             echo '<script>alert(" Succesfully inserted");setTimeout(()=>{window.location.replace("./index.php");},500);</script>';
         }
         else{
             echo '<script>alert(" Some error occured");setTimeout(()=>{window.location.replace("./index.php");},500);</script>';
+            // echo '<script>alert(" Some error occured");</script>';
+
         }
     }
     $conn->close();

@@ -15,7 +15,7 @@
         exit();
     }
     else {
-        $sql= "SELECT * FROM users WHERE email='$id'"; 
+        $sql= "SELECT * FROM users WHERE email='$id' AND is_verified='1'"; 
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($result);
         if(mysqli_num_rows($result) == 1){
