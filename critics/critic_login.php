@@ -6,11 +6,11 @@
     $password = $_GET['logpass'];
     
     if(empty($id)){
-        echo '<script>alert(" Enter email ID");setTimeout(()=>{window.location.replace("index.html");},500);</script>';
+        echo '<script>alert(" Enter email ID");setTimeout(()=>{window.location.replace("index.php");},500);</script>';
         exit();
     }
     else if(empty($password)){
-        echo '<script>alert(" Enter Password");setTimeout(()=>{window.location.replace("index.html");},500);</script>';
+        echo '<script>alert(" Enter Password");setTimeout(()=>{window.location.replace("index.php");},500);</script>';
         exit();
     }
     else{
@@ -34,11 +34,11 @@
             
             }
             else{
-                echo '<script>alert("Wrong ID Password");setTimeout(()=>{window.location.replace("index.html");},500);</script>';
+                echo '<script>alert("Wrong ID Password");setTimeout(()=>{window.location.replace("index.php");},500);</script>';
             }
         }
         else{
-            echo '<script>alert(" Incorrect UserName or Password");setTimeout(()=>{window.location.replace("./index.html");},500);</script>';
+            echo '<script>alert(" Incorrect UserName or Password");setTimeout(()=>{window.location.replace("./index.php");},500);</script>';
             exit();
         }
     }

@@ -1,13 +1,13 @@
 <?php
-session_start();
-include "../../db_connect.php";
-if (!isset($_SESSION['critics_id'])) {
-    header('location: ../index.html');
-}
-$critic_id = $_SESSION['critics_id'];
-$sql = "SELECT * FROM critics WHERE critics_id = $critic_id";
-$result = mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($result);
+    session_start();
+    include "../../db_connect.php";
+    if(!isset($_SESSION['critics_id'])) {
+      header('location: ../index.php');
+    }
+    $critic_id= $_SESSION['critics_id'];
+    $sql = "SELECT * FROM critics WHERE critics_id = $critic_id";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">

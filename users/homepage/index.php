@@ -2,7 +2,7 @@
     session_start();
     include "../../db_connect.php";
     if(!isset($_SESSION['user_id'])) {
-      header('location: ../index.html');
+      header('location: ../index.php');
     }
 ?>
 <!DOCTYPE html>
@@ -13,6 +13,8 @@
 
         <!--=============== FAVICON ===============-->
         <link rel="shortcut icon" href="../../assets/img/logo1.png" type="image/x-icon">
+
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>  
 
         <!--=============== BOXICONS ===============-->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
@@ -111,29 +113,44 @@
             <section class="section category">
                 <h2 class="section__title">Favorite Art <br> Category</h2>
 
-                <div class="category__container container grid">
+                <div class="category__containers">
                     <div class="category__data">
-                        <img src="../../assets/img/img5.jpg" alt="" class="category__img">
-                        <h3 class="category__title">Paintings</h3>
-                        <p class="category__description">Choose the Paintings which touches your heart</p>
+                        <a href="../drawing/index.php">
+                            <img src="../../src/drawing.jpg" alt="" id="imgForcat">
+                            <h3 class="category__title">Paintings</h3>
+                            <p style="color: white;">Paintings which touches your heart</p>
+                        </a>
                     </div>
 
                     <div class="category__data">
-                        <img src="../../assets/img/img6.png" alt="" class="category__img">
-                        <h3 class="category__title">Music</h3>
-                        <p class="category__description">Pick your daily drive</p>
+                        <a href="../music/index.php">
+                            <img src="../../src/music.jpg" alt="" id="imgForcat">
+                            <h3 class="category__title">Music</h3>
+                            <p style="color: white;">Pick your daily drive</p>
+                        </a>
                     </div>
 
                     <div class="category__data">
-                        <img src="../../assets/img/img7.png" alt="" class="category__img">
-                        <h3 class="category__title">sculpture</h3>
-                        <p class="category__description">Pick the most loved sculpture</p>
+                        <a href="../visual/index.php">
+                            <img src="../../src/visual.jpg" alt="" id="imgForcat">
+                            <h3 class="category__title">Visual</h3>
+                            <p style="color: white;">Enjoy the shorts</p>
+                        </a>
+                    </div>
+
+                    <div class="category__data">
+                        <a href="../literary/index.php">
+                            <img src="../../src/literature.jpg" alt="" id="imgForcat">
+                            <h3 class="category__title">Literature</h3>
+                            <p style="color: white;">Pick the most loved literature</p>
+                        </a>
                     </div>
                 </div>
             </section>
             
             <!--==================== POST SECTION ====================-->
                 <?php
+                    $user_id=$_SESSION['user_id'];
                     $sql="SELECT * from users_content;";
                     $result=mysqli_query($conn,$sql);
                     if(mysqli_num_rows($result) > 0)
@@ -168,14 +185,19 @@
                                         <span class="post-likes">
                                         <form id="post" action="increase_likes.php" method="POST">
                                             <input type="hidden" name="post_id" value="' . $content_id . '">
-                                            <button type="submit" id="thumbs-up" class="thumbs-up-btn" style="color:white;background:linear-gradient(136deg, hwb(260 3% 80%) 0%, hsl(266, 48%, 16%) 100%);">
-                                                <i class="material-icons" onclick="changeColor_thumbsUp()">thumb_up</i>
+                                            <button type="submit" id="thumbs-up" class="thumbs-up-btn" style="color:white;background:linear-gradient(136deg, hwb(260 3% 80%) 0%, hsl(266, 48%, 16%) 100%);">';
+                                                $sql_likes= "SELECT * FROM likes WHERE content_id= $content_id AND user_id = $user_id";
+                                                $resultl = mysqli_query($conn, $sql_likes);
+                                                if(mysqli_num_rows($resultl) == 0)
+                                                    echo '<i class="material-icons" onclick="changeColor_thumbsUp()">thumb_up</i>';
+                                                else 
+                                                    echo '<i class="material-icons" style="color: blue;">thumb_up</i>';
+                                                echo '
                                             </button>
                                         </form>';
-                                        echo $row["likes"];                         
-                                        echo '&nbsp;likes</span>
-                                        <span class="post-comments"><i class="material-icons">mode_comment</i>';
-                                        
+                                        echo $row["likes"];        
+                                        echo '&nbsp;likes</span>';
+                                        echo '<span class="post-comments"><i class="material-icons">mode_comment</i>';
                                         $sql1="SELECT * from reviews where content_id = $content_id;";
                                         $result1=mysqli_query($conn,$sql1);
                                         $numComments = mysqli_num_rows($result1);
@@ -186,8 +208,14 @@
                                         <span class="post-favorites">
                                         <form id="post" action="add_favourites.php" method="POST">
                                             <input type="hidden" name="fav_id" value="' . $content_id . '">
-                                            <button type="submit" id="fav_on" class="fav-btn" style="color:white;background:linear-gradient(136deg, hwb(260 3% 80%) 0%, hsl(266, 48%, 16%) 100%);">
-                                            <i class="material-icons" onclick="changeColor_Fav()">favorite_border</i></i>
+                                            <button type="submit" id="fav_on" class="fav-btn" style="color:white;background:linear-gradient(136deg, hwb(260 3% 80%) 0%, hsl(266, 48%, 16%) 100%);">';
+                                                $sqlf= "SELECT * FROM favourites WHERE content_id= $content_id AND user_id = $user_id";
+                                                $resultf = mysqli_query($conn, $sqlf);                                        
+                                                if(mysqli_num_rows($resultf) == 0)
+                                                    echo '<i class="material-icons" onclick="changeColor_Fav()">favorite_border</i>';
+                                                else
+                                                    echo '<i class="material-icons" onclick="changeColor_Fav()" style="color: red;">favorite</i></i>';
+                                            echo '
                                             </button>
                                         </form>';
                                         echo '&nbsp;Add to favorites
