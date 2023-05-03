@@ -16,6 +16,7 @@
     $description = $_POST['description'];
     $content_type = $_POST['select'];
     $uploader = $_SESSION['user_id'];
+    $user_name = $_SESSION['user_name'];
 
     // Check if the file was uploaded successfully
     if (isset($file_name) && $file_name != '') {
@@ -34,8 +35,14 @@
                 $sql = "INSERT INTO uploads (user_id, content_id)
                         VALUES ($uploader, $new_id)";
                 mysqli_query($conn, $sql);
-                mysqli_close($conn);
                 echo "File uploaded successfully. New ID is: " . $new_id;
+                if (isset($_POST["sell"]) && $_POST["sell"] == "yes") {
+                    $cost = $_POST['cost'];
+                    $sql = "INSERT INTO market (content_id, content, seller, file_type, description, art_type, cost)
+                    VALUES ('$new_id', '$file_new_name', '$user_name', '$file_type', '$description', '$content_type', '$cost')";
+                    mysqli_query($conn, $sql);
+                }
+                mysqli_close($conn);
                 header('location: ../profile/index.php');
             } else {
                 echo "Invalid file type.";
@@ -112,7 +119,7 @@
                     <input type="file" id="file" name="file" accept=".mp4,.jpg,.png,.jpeg">
                     <label id="writing" for="description">Describe your artwork:</label>
                     <textarea placeholder="What's on your mind? Reflect upon your artwork here!!" name="description" id="description"></textarea>
-                    <br><br>
+                    <br>
                     <div id="selectedd">
                         <label for="select">Choose Content type:</label>
                         <select class="format" name="select" id="selecteds">
@@ -122,7 +129,15 @@
                             <option value="visarts">Visual Arts</option>
                         </select>
                     </div>
-                    <br><br>
+                    <br>
+                    <p>Do you want to put this artwork on sell?</p>
+                    <label><input type="radio" name="sell" value="yes" required>Yes</label>
+                    <label><input type="radio" name="sell" value="no" required>No</label>
+                    <div id="cost-field" style="display: none;">
+                        <label for="cost">Cost:</label>
+                        <input type="number" id="cost" name="cost" required>
+                    </div>
+                    <br>
                     <button>POST</button>
                 </form>
             </section>
@@ -208,6 +223,27 @@
     <!--=============== MAIN JS ===============-->
     <script src="../../assets/js/main.js"></script>
     <script src="logic.js"></script>
+    <script>
+        const sellYesRadio = document.querySelector('input[value="yes"]');
+        const sellNoRadio = document.querySelector('input[value="no"]');
+        const costField = document.querySelector('#cost-field');
+
+        sellYesRadio.addEventListener('change', () => {
+            if (sellYesRadio.checked) {
+            costField.style.display = 'block';
+            } else {
+            costField.style.display = 'none';
+            }
+        });
+
+        sellNoRadio.addEventListener('change', () => {
+            if (sellNoRadio.checked) {
+            costField.style.display = 'none';
+            } else {
+            costField.style.display = 'block';
+            }
+        });
+    </script>
 </body>
 
 </html>
