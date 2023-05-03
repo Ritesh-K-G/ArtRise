@@ -58,14 +58,14 @@ $row = mysqli_fetch_assoc($result);
                         <a href="#" class="nav__link">Contact</a>
                     </li>
 
-                        <li class="nav__item">
-                            <a href="../profile" class="nav__link">Profile</a>
-                        </li>
+                    <li class="nav__item">
+                        <a href="../profile" class="nav__link">Profile</a>
+                    </li>
 
-                        <li class="nav__item">
-                          <a href="../critic_logout.php" class="nav__link">Logout</a>
-                        </li>
-                    </ul>
+                    <li class="nav__item">
+                        <a href="../critic_logout.php" class="nav__link">Logout</a>
+                    </li>
+                </ul>
 
                 <div class="nav__close" id="nav-close">
                     <i class='bx bx-x'></i>
@@ -116,11 +116,15 @@ $row = mysqli_fetch_assoc($result);
         </section>
 
         <!--==================== DISCOUNT ====================-->
-        
+
         <?php
+        $sql1 = "select content_id from judges where critics_id = '$critic_id';";
+        $result1 = mysqli_query($conn, $sql1);
+        $content_row = mysqli_fetch_assoc($result1);
+
         $aty = $row['critic_type'];
         // Query the database for artworks
-        $sql = "SELECT * FROM critics_content where art_type = '$aty';";
+        $sql = "SELECT * FROM critics_content WHERE art_type = '$aty' AND content_id NOT IN (".implode(",", $content_row).")";
         // $sql = "SELECT cc.*
         // FROM critics_content cc
         // LEFT JOIN judges j ON cc.content_id = j.content_id AND j.critic_id = $critic_id
@@ -195,7 +199,7 @@ $row = mysqli_fetch_assoc($result);
                             </div>
                           </div>
                           </section>';
-                          echo '<style>
+            echo '<style>
                             #carding {
                                 border: none;
                             }
@@ -216,8 +220,7 @@ $row = mysqli_fetch_assoc($result);
         <div class="footer__container container grid">
             <div class="footer__content">
                 <a href="#" class="footer__logo">
-                    <img src="../../assets/img/logo1.png" alt="" class="footer__logo-img">
-                    Artrise
+                    <img src="../../assets/img/logo3.png" alt="" class="footer__logo-img">
                 </a>
 
                 <p class="footer__description"> Let your Art <br> Beautify the world.</p>
