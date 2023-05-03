@@ -72,22 +72,37 @@
                         </li>
 
                         <a href="../post_feed/index.php" class="button button--ghost">+ Post</a>
-
+                        <?php 
+                            $user_id = $_SESSION['user_id'];
+                            $sql = "SELECT * from notification where user_id = $user_id;";
+                            mysqli_query($conn, $sql);
+                            $result=mysqli_query($conn,$sql);
+                            $cnt = mysqli_num_rows($result);
+                        ?>
                         <div class="notification">
                           <div class="notification-bell">
                             <i class="fa fa-bell-o"></i>
-                            <span class="btn__badge pulse-button">3</span>
+                            <span class="btn__badge pulse-button">
+                                <?php
+                                    echo $cnt;
+                                ?>
+                            </span>
                           </div>
                           <div class="notification-drop">
-                            <div class="item">
-                            <a href="#">Notification 1</a>
-                            </div>
-                            <div class="item">
-                            <a href="#">Notification 2</a>
-                            </div>
-                            <div class="item">
-                            <a href="#">Notification 3</a>
-                            </div>
+                            <?php
+                                while($row = mysqli_fetch_array($result)) {
+                                    $msg = $row['msg'];
+                                    echo '
+                                    <a href="dltNtf.php">
+                                    <div class="item">
+                                        ' .
+                                            $msg
+                                        . '
+                                    </div>
+                                    </a>
+                                    ';
+                                }
+                            ?>
                           </div>
                         </div>
 

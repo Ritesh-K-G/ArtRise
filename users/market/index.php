@@ -14,28 +14,19 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
         <!--=============== FAVICON ===============-->
         <link rel="shortcut icon" href="../../assets/img/logo1.png" type="image/x-icon">
-
         <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>  
-
         <!--=============== BOXICONS ===============-->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-
         <!--=============== SWIPER CSS ===============--> 
         <link rel="stylesheet" href="../../assets/css/swiper-bundle.min.css">
-
         <!--=============== NOTIFICATION CSS ===============--> 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
         <!--=============== CSS ===============--> 
         <link rel="stylesheet" href="../../assets/css/styles.css">
-
         <link rel="stylesheet" href="style.css">
-
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-
         <title>ArtRise</title>
     </head>
     <body>
@@ -46,59 +37,44 @@
                     <img src="../../assets/img/logo1.png" alt="" class="nav__logo-img">
                     ArtRise
                 </a>
-
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list">
                         <li class="nav__item">
                             <a href="#" class="nav__link active-link">Home</a>
                         </li>
-
                         <li class="nav__item">
                             <a href="#" class="nav__link">About</a>
                         </li>
-
                         <li class="nav__item">
                             <a href="#" class="nav__link">Contact</a>
                         </li>
-
                         <li class="nav__item">
                             <a href="../chat/index.php" class="nav__link">Chat</a>
                         </li>
-
                         <li class="nav__item">
                             <a href="../profile" class="nav__link">Profile</a>
                         </li>
-
                         <li class="nav__item">
                           <a href="../user_logout.php" class="nav__link">Logout</a>
                         </li>
-
                         <a href="../post_feed/index.php" class="button button--ghost">+ Post</a>
                     </ul>
-
                     <div class="nav__close" id="nav-close">
                         <i class='bx bx-x'></i>
                     </div>
-
                     <img src="../../assets/img/nav-img.png" alt="" class="nav__img">
                 </div>
-
                 <div class="nav__toggle" id="nav-toggle">
                     <i class='bx bx-grid-alt'></i>
                 </div>
-
             </nav>
         </header>
-
-        <main class="main">
-            
+        <main class="main">            
             <!--==================== CATEGORY ====================-->
             <section class="section category">
                 <h2 class="section__title">Market zone</h2>
             </section>
             <div id="store">
-                
-            
             <!--==================== POST SECTION ====================-->
                 <?php
                     $user_id=$_SESSION['user_id'];
@@ -130,16 +106,17 @@
                                         </div>
                                         <div>
                                         <br>';
+                                        echo "<a href='index.php?id=" . $row['content_id'] ."'>";
                                             echo "
                                             <button>";
-                                                echo "<a href='index.php?id=" . $row['content_id'] ."'>";
                                                 echo '
                                                 Buy &nbsp; &#8377; 
                                                 ';
                                                 echo $row['cost'];
-                                                echo '</a>';
                                                 echo'
-                                            </button>
+                                            </button>';
+                                            echo '</a>';
+                                        echo'
                                         </div>
                                     </div>
                                 </div>
@@ -148,11 +125,9 @@
                         }
                     }
                     mysqli_close($conn);
-                ?>
-                
+                ?>                
             </div>
       </main>
-
         <!--==================== FOOTER ====================-->
             <footer class="footer section">
                 <div class="footer__container container grid">
@@ -161,7 +136,6 @@
                             <img src="../../assets/img/logo.png" alt="" class="footer__logo-img">
                             Halloween
                         </a>
-
                         <p class="footer__description">Enjoy the scariest night <br> of your life.</p>
                         
                         <div class="footer__social">
@@ -223,32 +197,17 @@
                     </div>
                 </div>
             </footer>
-            <!--=============== SCROLL UP ===============-->
-            <a href="#" class="scrollup" id="scroll-up">
-                <i class='bx bx-up-arrow-alt scrollup__icon'></i>
-            </a>        
-        <!--=============== SCROLL REVEAL ===============-->
-        <script src="../../assets/js/scrollreveal.min.js"></script>
-
-        <!--=============== SWIPER JS ===============-->
-        <script src="../../assets/js/swiper-bundle.min.js"></script>
-
         <!--=============== Icon color JS ===============-->
         <script>
             function changeColor_thumbsUp() {
-            var thumbsUp = document.getElementById('thumbs-up');
-            thumbsUp.style.color = 'red';
-        }
-        
+                var thumbsUp = document.getElementById('thumbs-up');
+                thumbsUp.style.color = 'red';
+            }        
             function changeColor_Fav() {
-            var FavOn = document.getElementById('fav_on');
-            FavOn.style.color = 'red';
+                var FavOn = document.getElementById('fav_on');
+                FavOn.style.color = 'red';
             }
-
         </script>
-        
-        <!--=============== MAIN JS ===============-->
-        <script src="../../assets/js/main.js"></script>
         <script src="script.js"></script>
     </body>
 </html>

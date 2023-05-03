@@ -4,9 +4,6 @@
     if(!isset($_SESSION['user_id'])) {
       header('location: ../index.php');
     }
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-       
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,7 +67,7 @@
         <!--==================== CATEGORY ====================-->
         <main class="main">
             <section class="section category">
-                <form action="#" method="post" enctype="multipart/form-data">
+                <form action="buy.php" method="post">
                     <label id="writing" for="description">Shipping address:</label>
                     <input placeholder="What's your address?" name="description" type="text" id="description" required>
                     <br>
@@ -86,10 +83,10 @@
                         <img id="qr" name="qr" src="../../src/QR.jpeg" style="max-height: 400px;>
                         <br>
                         <label for="file">Give screenshot of payment:</label>
-                        <input type="file" id="file" name="file" accept=".jpg,.png,.jpeg" required>
+                        <input type="file" id="file" name="qr_img" accept=".jpg,.png,.jpeg">
                     </div>
                     <br>
-                    <button>BUY</button>
+                    <button type="submit">BUY</button>
                 </form>
             </section>
         </main>
