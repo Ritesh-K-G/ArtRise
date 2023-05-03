@@ -7,7 +7,7 @@
     $logpass = $_GET['logpass'];
     $loghash = password_hash($logpass, PASSWORD_DEFAULT);
     $logqualifi= $_GET['logqualifi'];
-    $logcontact= $_GET['logcontact'];
+    $logtype= $_GET['logcontact'];
     if(empty($logname)){
         echo '<script>alert(" Enter Your Name");setTimeout(()=>{window.location.replace("index.php");},500);</script>';
         exit();
@@ -24,15 +24,15 @@
         echo '<script>alert(" Enter Your Qualification");setTimeout(()=>{window.location.replace("index.php");},500);</script>';
         exit();
     }
-    else if(empty($logcontact)){
-        echo '<script>alert(" Enter Your Contact");setTimeout(()=>{window.location.replace("index.php");},500);</script>';
+    else if(empty($logtype)){
+        echo '<script>alert(" Enter Your Art Speciality");setTimeout(()=>{window.location.replace("index.php");},500);</script>';
         exit();
     }
     else{
-        $sql = "INSERT INTO critics (name,email,contact,qualification,password) Values('$logname','$logemail','$logcontact','$logqualifi','$loghash');";
+        $sql = "INSERT INTO critics_request (name,email,critic_type,qualification,password) Values('$logname','$logemail','$logtype','$logqualifi','$loghash');";
 
         if($conn->query($sql) == true){
-            echo '<script>alert(" Your are now a critic");setTimeout(()=>{window.location.replace("../index.php");},500);</script>';
+            echo '<script>alert(" Request to become  Critic sent to admin");setTimeout(()=>{window.location.replace("../index.php");},500);</script>';
         }
         else{
             echo '<script>alert(" Some error occured");setTimeout(()=>{window.location.replace("../index.php");},500);</script>';

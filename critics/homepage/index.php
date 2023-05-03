@@ -58,14 +58,14 @@ $row = mysqli_fetch_assoc($result);
                         <a href="#" class="nav__link">Contact</a>
                     </li>
 
-                        <li class="nav__item">
-                            <a href="../profile" class="nav__link">Profile</a>
-                        </li>
+                    <li class="nav__item">
+                        <a href="../profile" class="nav__link">Profile</a>
+                    </li>
 
-                        <li class="nav__item">
-                          <a href="../critic_logout.php" class="nav__link">Logout</a>
-                        </li>
-                    </ul>
+                    <li class="nav__item">
+                        <a href="../critic_logout.php" class="nav__link">Logout</a>
+                    </li>
+                </ul>
 
                 <div class="nav__close" id="nav-close">
                     <i class='bx bx-x'></i>
@@ -116,92 +116,173 @@ $row = mysqli_fetch_assoc($result);
         </section>
 
         <!--==================== DISCOUNT ====================-->
-        
+
         <?php
-        $aty = $row['critic_type'];
-        // Query the database for artworks
-        $sql = "SELECT * FROM critics_content where art_type = '$aty';";
-        // $sql = "SELECT cc.*
-        // FROM critics_content cc
-        // LEFT JOIN judges j ON cc.content_id = j.content_id AND j.critic_id = $critic_id
-        // WHERE j.content_id IS NULL AND ART_TYPE = '$aty';";
+        $sql1 = "select content_id from judges where critics_id = '$critic_id';";
+        $result1 = mysqli_query($conn, $sql1);
+        // $content_row = mysqli_fetch_assoc($result1);
 
-        $result = mysqli_query($conn, $sql);
+        $content_ids = array();
 
-        // Loop through the artworks and display them on the webpage
-        while ($row = mysqli_fetch_assoc($result)) {
-            $content_id = $row['content_id'];
-            $file_name = $row['content'];
-            // $file_size = $row['file_size'];
-            $file_type = $row['file_type'];
-            // $file_path = $row['file_path'];
-            $description = $row['description'];
-            // $content_type = $row['art_type'];
-            $file_path = "../../uploads/critics_content/" . $file_name;
-            $user_id = $row['user_id'];
-            $sql = "select * from users where user_id = '$user_id';";
-            $result_inner = mysqli_query($conn, $sql);
-            $nrow = mysqli_fetch_assoc($result_inner);
-
-            $uploader_name = $nrow['name'];
-
-            // Display the artwork on the webpage                    
-            echo '
-                          <section id="my_feed">
-                          <div id="carding" class="discount__container container grid">
-                            <div class="feed-card" data-content-id="' . $content_id . '">
-                              <div class="profile-picture">
-                                <img src="https://m.media-amazon.com/images/I/415MsdCcduL.png" alt="Profile Picture">
-                              </div>
-                              <div class="feed-content">
-                                <div class="username">';
-            echo "<p>$uploader_name</p>";
-            echo '</div>
-                                <div class="post-content">';
-            echo "<p>$description</p>";
-            echo '</div>
-                                <div class="post-image">';
-            if (strpos($file_type, 'image/') === 0) {
-                echo "<img src='../../uploads/critics_content/" . $row['content'] . "'>";
-            } else if (strpos($file_type, 'video/') === 0) {
-                echo "<video width='320' height='240' controls><source src='$file_path' type='$file_type'></video>";
-            } else {
-                echo "<p>Unsupported file type: $file_type</p>";
-            }
-            echo '</div>
-                                <div class="like-comment">
-                                    <div class="post-actions">
-                                        <span class="post-comments"><i class="material-icons">stars</i>Review it!</span>
-                                    </div>
-                                    <form action="submit-review.php" method="post">
-                                        <input type="hidden" name="content_id" value="' . $content_id . '">
-                                        <div class="post-comments-section">
-                                            <div>
-                                                <span class="star" ></span>
-                                                <span class="star"></span>
-                                                <span class="star"></span>
-                                                <span class="star"></span>
-                                                <span class="star"></span>
-                                            </div>
-                                            <div class="add-comment">
-                                                <input name="review" type="text" placeholder="Write the review">
-                                                <input id="star_index-input" name="star_index" type="hidden">
-                                                <button type="submit">Post</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          </section>';
-                          echo '<style>
-                            #carding {
-                                border: none;
-                            }
-                            </style>';
+        while ($rown = mysqli_fetch_assoc($result1)) {
+            $content_ids[] = $rown['content_id'];
         }
 
+        $aty = $row['critic_type'];
+        // Query the database for artworks
+
+        if (!empty($content_ids)) {
+            $sql = "SELECT * FROM critics_content WHERE art_type = '$aty' AND content_id NOT IN (" . implode(",", $content_ids) . ");";
+            $result = mysqli_query($conn, $sql);
+            while ($row = mysqli_fetch_assoc($result)) {
+                $content_id = $row['content_id'];
+                $file_name = $row['content'];
+                // $file_size = $row['file_size'];
+                $file_type = $row['file_type'];
+                // $file_path = $row['file_path'];
+                $description = $row['description'];
+                // $content_type = $row['art_type'];
+                $file_path = "../../uploads/critics_content/" . $file_name;
+                $user_id = $row['user_id'];
+                $sql = "select * from users where user_id = '$user_id';";
+                $result_inner = mysqli_query($conn, $sql);
+                $nrow = mysqli_fetch_assoc($result_inner);
+
+                $uploader_name = $nrow['name'];
+
+                // Display the artwork on the webpage                    
+                echo '
+                              <section id="my_feed">
+                              <div id="carding" class="discount__container container grid">
+                                <div class="feed-card" data-content-id="' . $content_id . '">
+                                  <div class="profile-picture">
+                                    <img src="https://m.media-amazon.com/images/I/415MsdCcduL.png" alt="Profile Picture">
+                                  </div>
+                                  <div class="feed-content">
+                                    <div class="username">';
+                echo "<p>$uploader_name</p>";
+                echo '</div>
+                                    <div class="post-content">';
+                echo "<p>$description</p>";
+                echo '</div>
+                                    <div class="post-image">';
+                if (strpos($file_type, 'image/') === 0) {
+                    echo "<img src='../../uploads/critics_content/" . $row['content'] . "'>";
+                } else if (strpos($file_type, 'video/') === 0) {
+                    echo "<video width='320' height='240' controls><source src='$file_path' type='$file_type'></video>";
+                } else {
+                    echo "<p>Unsupported file type: $file_type</p>";
+                }
+                echo '</div>
+                                    <div class="like-comment">
+                                        <div class="post-actions">
+                                            <span class="post-comments"><i class="material-icons">stars</i>Review it!</span>
+                                        </div>
+                                        <form action="submit-review.php" method="post">
+                                            <input type="hidden" name="content_id" value="' . $content_id . '">
+                                            <div class="post-comments-section">
+                                                <div>
+                                                    <span class="star" ></span>
+                                                    <span class="star"></span>
+                                                    <span class="star"></span>
+                                                    <span class="star"></span>
+                                                    <span class="star"></span>
+                                                </div>
+                                                <div class="add-comment">
+                                                    <input name="review" type="text" placeholder="Write the review">
+                                                    <input id="star_index-input" name="star_index" type="hidden">
+                                                    <button type="submit">Post</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              </section>';
+                echo '<style>
+                                #carding {
+                                    border: none;
+                                }
+                                </style>';
+            }
+        } else {
+            $sql = "SELECT * FROM critics_content WHERE art_type = '$aty';";
+            $result = mysqli_query($conn, $sql);
+            while ($row = mysqli_fetch_assoc($result)) {
+                $content_id = $row['content_id'];
+                $file_name = $row['content'];
+                // $file_size = $row['file_size'];
+                $file_type = $row['file_type'];
+                // $file_path = $row['file_path'];
+                $description = $row['description'];
+                // $content_type = $row['art_type'];
+                $file_path = "../../uploads/critics_content/" . $file_name;
+                $user_id = $row['user_id'];
+                $sql = "select * from users where user_id = '$user_id';";
+                $result_inner = mysqli_query($conn, $sql);
+                $nrow = mysqli_fetch_assoc($result_inner);
+
+                $uploader_name = $nrow['name'];
+
+                // Display the artwork on the webpage                    
+                echo '
+                              <section id="my_feed">
+                              <div id="carding" class="discount__container container grid">
+                                <div class="feed-card" data-content-id="' . $content_id . '">
+                                  <div class="profile-picture">
+                                    <img src="https://m.media-amazon.com/images/I/415MsdCcduL.png" alt="Profile Picture">
+                                  </div>
+                                  <div class="feed-content">
+                                    <div class="username">';
+                echo "<p>$uploader_name</p>";
+                echo '</div>
+                                    <div class="post-content">';
+                echo "<p>$description</p>";
+                echo '</div>
+                                    <div class="post-image">';
+                if (strpos($file_type, 'image/') === 0) {
+                    echo "<img src='../../uploads/critics_content/" . $row['content'] . "'>";
+                } else if (strpos($file_type, 'video/') === 0) {
+                    echo "<video width='320' height='240' controls><source src='$file_path' type='$file_type'></video>";
+                } else {
+                    echo "<p>Unsupported file type: $file_type</p>";
+                }
+                echo '</div>
+                                    <div class="like-comment">
+                                        <div class="post-actions">
+                                            <span class="post-comments"><i class="material-icons">stars</i>Review it!</span>
+                                        </div>
+                                        <form action="submit-review.php" method="post">
+                                            <input type="hidden" name="content_id" value="' . $content_id . '">
+                                            <div class="post-comments-section">
+                                                <div>
+                                                    <span class="star" ></span>
+                                                    <span class="star"></span>
+                                                    <span class="star"></span>
+                                                    <span class="star"></span>
+                                                    <span class="star"></span>
+                                                </div>
+                                                <div class="add-comment">
+                                                    <input name="review" type="text" placeholder="Write the review">
+                                                    <input id="star_index-input" name="star_index" type="hidden">
+                                                    <button type="submit">Post</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              </section>';
+                echo '<style>
+                                #carding {
+                                    border: none;
+                                }
+                                </style>';
+            }
+        }
+        
         mysqli_close($conn);
         ?>
 
@@ -216,8 +297,7 @@ $row = mysqli_fetch_assoc($result);
         <div class="footer__container container grid">
             <div class="footer__content">
                 <a href="#" class="footer__logo">
-                    <img src="../../assets/img/logo1.png" alt="" class="footer__logo-img">
-                    Artrise
+                    <img src="../../assets/img/logo3.png" alt="" class="footer__logo-img">
                 </a>
 
                 <p class="footer__description"> Let your Art <br> Beautify the world.</p>
