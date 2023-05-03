@@ -90,17 +90,23 @@
                           </div>
                           <div class="notification-drop">
                             <?php
+                                if($cnt==0)
+                                    echo '
+                                    <div class="item">
+                                        <p>NO NOTIFICATION</p>
+                                    </div>
+                                    ';
                                 while($row = mysqli_fetch_array($result)) {
                                     $msg = $row['msg'];
-                                    echo '
-                                    <a href="dltNtf.php">
-                                    <div class="item">
-                                        ' .
+                                    echo "
+                                    <a href=dltNtf.php?id=" . $row['id'] . ">
+                                    <div class='item'>
+                                        " .
                                             $msg
-                                        . '
+                                        . "
                                     </div>
                                     </a>
-                                    ';
+                                    ";
                                 }
                             ?>
                           </div>
