@@ -189,7 +189,12 @@
                               </div>
                               <div class="feed-content">
                                 <div class="username">';
-                                    echo $row['creator_id'];
+                                $creator = $row['creator_id'];
+                                $sql = "select * from users where user_id = '$creator';";
+                                $result_inner = mysqli_query($conn, $sql);
+                                $nrow = mysqli_fetch_assoc($result_inner);
+                                $uploader_name = $nrow['name'];
+                                    echo $uploader_name;
                                 echo '</div>
                                 <div class="post-content">';
                                     echo $row['description'];
