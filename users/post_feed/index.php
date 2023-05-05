@@ -38,8 +38,8 @@
                 echo "File uploaded successfully. New ID is: " . $new_id;
                 if (isset($_POST["sell"]) && $_POST["sell"] == "yes") {
                     $cost = $_POST['cost'];
-                    $sql = "INSERT INTO market (content_id, content, seller, file_type, description, art_type, cost)
-                    VALUES ('$new_id', '$file_new_name', '$user_name', '$file_type', '$description', '$content_type', '$cost')";
+                    $sql = "INSERT INTO market (content_id, seller_id, content, seller, file_type, description, art_type, cost)
+                    VALUES ('$new_id', '$uploader', '$file_new_name', '$user_name', '$file_type', '$description', '$content_type', '$cost')";
                     mysqli_query($conn, $sql);
                 }
                 mysqli_close($conn);

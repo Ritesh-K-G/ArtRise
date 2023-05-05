@@ -283,7 +283,6 @@
                     mysqli_close($conn);
                 ?>
       </main>
-
         <!--==================== FOOTER ====================-->
             <footer class="footer section">
                 <div class="footer__container container grid">

@@ -28,6 +28,8 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <title>ArtRise</title>
 </head>
 
@@ -59,6 +61,10 @@
 
                     <li class="nav__item">
                         <a href="#" class="nav__link">Profile</a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="../cart/index.php" class="nav__link"><i class="fa fa-shopping-cart" style="font-size:30px;"></i></a>
                     </li>
 
                     <li class="nav__item">

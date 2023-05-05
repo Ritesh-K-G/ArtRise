@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2023 at 01:18 PM
+-- Generation Time: May 06, 2023 at 01:42 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -20,6 +20,31 @@ SET time_zone = "+00:00";
 --
 -- Database: `artrise`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `content_id` int(11) NOT NULL,
+  `seller_id` int(11) NOT NULL,
+  `content` mediumblob NOT NULL,
+  `seller` varchar(25) NOT NULL,
+  `file_type` varchar(50) NOT NULL,
+  `description` varchar(1000) NOT NULL,
+  `art_type` varchar(50) NOT NULL,
+  `cost` int(11) NOT NULL,
+  `buyer_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`content_id`, `seller_id`, `content`, `seller`, `file_type`, `description`, `art_type`, `cost`, `buyer_id`) VALUES
+(23, 11, 0x363435326234356134643466302e6d7034, 'Ritesh', 'video/mp4', 'My holy earth', 'art', 100000, 11);
 
 -- --------------------------------------------------------
 
@@ -86,7 +111,8 @@ INSERT INTO `critics_content` (`content_id`, `content`, `user_id`, `name`, `desc
 (24, 0x363435326234373633313239662e6a7067, 9, '', 'Drawing girl pic', 0, 0, 'image/jpeg', 'art', '0000-00-00 00:00:00'),
 (25, 0x363435326234393032383838642e6a7067, 9, '', 'Event poster', 0, 0, 'image/jpeg', 'visarts', '0000-00-00 00:00:00'),
 (26, 0x363435333930303038613836312e6a7067, 11, '', 'Avatar 3', 0, 0, 'image/jpeg', 'visarts', '0000-00-00 00:00:00'),
-(27, 0x363435333930383731646361302e706e67, 11, '', 'Power', 0, 0, 'image/png', 'writing', '0000-00-00 00:00:00');
+(27, 0x363435333930383731646361302e706e67, 11, '', 'Power', 0, 0, 'image/png', 'writing', '0000-00-00 00:00:00'),
+(28, 0x363435353930633730336436652e6a7067, 11, '', 'Rohee pics', 0, 0, 'image/jpeg', 'art', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -122,7 +148,8 @@ CREATE TABLE `favourites` (
 INSERT INTO `favourites` (`user_id`, `content_id`) VALUES
 (9, 17),
 (9, 18),
-(11, 17);
+(11, 17),
+(11, 18);
 
 -- --------------------------------------------------------
 
@@ -167,8 +194,8 @@ CREATE TABLE `likes` (
 --
 
 INSERT INTO `likes` (`user_id`, `content_id`) VALUES
-(9, 17),
-(11, 17);
+(11, 17),
+(11, 18);
 
 -- --------------------------------------------------------
 
@@ -192,9 +219,8 @@ CREATE TABLE `market` (
 --
 
 INSERT INTO `market` (`content_id`, `seller_id`, `content`, `seller`, `file_type`, `description`, `art_type`, `cost`) VALUES
-(23, 0, 0x363435326234356134643466302e6d7034, 'Ritesh', 'video/mp4', 'My holy earth', 'art', 100000),
-(24, 0, 0x363435326234373633313239662e6a7067, 'Ritesh', 'image/jpeg', 'Drawing girl pic', 'art', 2),
-(27, 0, 0x363435333930383731646361302e706e67, 'Ritesh K G', 'image/png', 'Power', 'writing', 50);
+(27, 11, 0x363435333930383731646361302e706e67, 'Ritesh K G', 'image/png', 'Power', 'writing', 50),
+(28, 11, 0x363435353930633730336436652e6a7067, 'Ritesh K G', 'image/jpeg', 'Rohee pics', 'art', 50000);
 
 -- --------------------------------------------------------
 
@@ -213,7 +239,8 @@ CREATE TABLE `notification` (
 --
 
 INSERT INTO `notification` (`id`, `user_id`, `msg`) VALUES
-(4, 11, 'Your Content with id = 25 has been sold.');
+(5, 11, 'Your Content with id = 24 has been sold.'),
+(6, 11, 'Your Content with id = 23 has been sold.');
 
 -- --------------------------------------------------------
 
@@ -227,6 +254,13 @@ CREATE TABLE `reviews` (
   `content_id` int(11) NOT NULL,
   `comment` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `reviews`
+--
+
+INSERT INTO `reviews` (`user_id`, `name`, `content_id`, `comment`) VALUES
+(11, 'Ritesh K G', 18, 'Sneha is the best singer');
 
 -- --------------------------------------------------------
 
@@ -252,7 +286,8 @@ INSERT INTO `uploads` (`content_id`, `user_id`) VALUES
 (24, 9),
 (25, 9),
 (26, 11),
-(27, 11);
+(27, 11),
+(28, 11);
 
 -- --------------------------------------------------------
 
@@ -305,11 +340,17 @@ CREATE TABLE `users_content` (
 
 INSERT INTO `users_content` (`content_id`, `creator_id`, `content`, `description`, `ratings`, `likes`, `art_type`, `file_type`, `upload_date`) VALUES
 (17, 9, 0x363434666135623839663062352e6a7067, 'Sample artwork for test', 12, 2, 'art', 'image/jpeg', '0000-00-00 00:00:00'),
-(18, 9, 0x363434666135636365313737382e6a7067, 'Sample artwork for test', 11, 0, 'art', 'image/jpeg', '0000-00-00 00:00:00');
+(18, 9, 0x363434666135636365313737382e6a7067, 'Sample artwork for test', 11, 1, 'art', 'image/jpeg', '0000-00-00 00:00:00');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD KEY `buyer_id` (`buyer_id`);
 
 --
 -- Indexes for table `critics`
@@ -349,6 +390,12 @@ ALTER TABLE `judges`
 ALTER TABLE `likes`
   ADD KEY `likes_user` (`user_id`),
   ADD KEY `likes_content` (`content_id`);
+
+--
+-- Indexes for table `market`
+--
+ALTER TABLE `market`
+  ADD KEY `seller_id` (`seller_id`);
 
 --
 -- Indexes for table `notification`
@@ -397,13 +444,13 @@ ALTER TABLE `critics`
 -- AUTO_INCREMENT for table `critics_content`
 --
 ALTER TABLE `critics_content`
-  MODIFY `content_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `content_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -420,6 +467,12 @@ ALTER TABLE `users_content`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `cart`
+--
+ALTER TABLE `cart`
+  ADD CONSTRAINT `buyer_id` FOREIGN KEY (`buyer_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `favourites`
@@ -441,6 +494,12 @@ ALTER TABLE `judges`
 ALTER TABLE `likes`
   ADD CONSTRAINT `likes_content` FOREIGN KEY (`content_id`) REFERENCES `users_content` (`content_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `likes_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `market`
+--
+ALTER TABLE `market`
+  ADD CONSTRAINT `seller_id` FOREIGN KEY (`seller_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `notification`
