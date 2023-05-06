@@ -51,7 +51,10 @@
                                 $sql = "select * from users where user_id = $friend;";
                                 $result1=mysqli_query($conn,$sql);
                                 $row1 = mysqli_fetch_array($result1);
-                                echo $row1['name'];
+                                if($friend != $user_id)
+                                  echo $row1['name'];
+                                else
+                                  echo "YOU";
                                 echo '</h4>
                                 <p>';
                                 echo $row['last_msg'];
@@ -76,7 +79,10 @@
                     $sql = "select * from users where user_id = $friend;";
                     $result1=mysqli_query($conn,$sql);
                     $row1 = mysqli_fetch_array($result1);
-                    echo $row1['name'];
+                    if($friend != $user_id)
+                      echo $row1['name'];
+                    else
+                      echo "YOU";
                     echo '</h3>
                     </div>
                     <div class="chat-messages">';
@@ -85,6 +91,7 @@
                     $result=mysqli_query($conn,$sql);
                     $row = mysqli_fetch_array($result);
                     $room = $row['room_id'];
+                    $_SESSION['room'] = $room;
                     $sql = "SELECT * from messages where room_id = $room;";
                     $result=mysqli_query($conn,$sql);
                     if(mysqli_num_rows($result) > 0)
@@ -92,20 +99,20 @@
                         while($row = mysqli_fetch_array($result))
                         {
                           if($row['sender']==$user_id)
-                            echo '<div class="message">';
-                          else
                             echo '<div class="message received">';
-                            echo '
-                                <p>' . $row['msg'] . '</p>
-                              </div>
+                          else
+                            echo '<div class="message">';
+                          echo '
+                            <p>' . $row['msg'] . '</p>
+                            </div>
                           ';
                         }
                     }
                 ?>
                 </div>
           <div class="chat-input">
-            <form>
-                <input type="text" placeholder="Type your message here">
+            <form action="send_msg.php">
+                <input type="text" name="msg" placeholder="Type your message here">
                 <button type="submit">Send</button>
             </form>
           </div>

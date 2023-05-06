@@ -73,6 +73,14 @@
         $sql = "INSERT INTO users (password,name,age,email,contact,verification_code, is_verified) Values('$hashpass','$name','$age','$email','$contact','$v_code','0');";
 
         if(sendMail($email,$v_code) && $conn->query($sql) == true ){
+            $new_id = mysqli_insert_id($conn);
+            $sql = "SELECT * from users;";
+            $result=mysqli_query($conn,$sql);
+            while($row = mysqli_fetch_array($result)) {
+                $f = $row['user_id'];
+                $sql = "INSERT INTO chatroom (user1, user2, last_msg) values($f, $new_id, 'Say Hello');";
+                $result1=mysqli_query($conn,$sql);
+            }
             echo '<script>alert(" Succesfully inserted");setTimeout(()=>{window.location.replace("./index.php");},500);</script>';
         }
         else{

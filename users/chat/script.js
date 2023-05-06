@@ -32,16 +32,16 @@ friendList.forEach(friend => {
 });
 
 // add event listener to chat input form
-chatForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const message = chatInput.value;
-  // create message element
-  const messageElement = document.createElement('div');
-  messageElement.classList.add('message', 'received');
-  messageElement.innerHTML = '<p>' + message + '</p>';
-  // add message to chat messages container
-  chatMessages.appendChild(messageElement);
-  chatMessages.scrollTop = chatMessages.scrollHeight;
-  // clear input field
-  chatInput.value = '';
-});
+// chatForm.addEventListener('submit', (e) => {
+//   e.preventDefault();
+//   const message = chatInput.value;
+//   // create message element
+//   const messageElement = document.createElement('div');
+//   messageElement.classList.add('message', 'received');
+//   messageElement.innerHTML = '<p>' + message + '</p>';
+//   // add message to chat messages container
+//   chatMessages.appendChild(messageElement);
+//   chatMessages.scrollTop = chatMessages.scrollHeight;
+//   // clear input field
+//   chatInput.value = '';
+// });
