@@ -4,6 +4,11 @@
     if(!isset($_SESSION['user_id'])) {
       header('location: ../index.php');
     }
+    if(isset($_GET['id1'])) {
+      // write query here
+      $_SESSION['friend'] = $_GET['id1'];
+      header('location: index.php');
+  }
 ?>
 
 <!DOCTYPE html>
@@ -37,11 +42,12 @@
                             $friend=$row['user2'];
                           else
                             $friend=$row['user1'];
-                          echo '
-                            <li class="friend">
-                              <img src="https://dummyimage.com/50x50/000/fff" alt="Profile Picture">
-                              <div class="friend-info">
-                                <h4>';
+                          echo "
+                            <li class='friend'>
+                            <a href='index.php?id1=" . $friend . "' style='color: white; text-decoration: none; display: flex;'>
+                              <img src='https://dummyimage.com/50x50/000/fff' alt='Profile Picture'>
+                              <div class='friend-info'>
+                                <h4>";
                                 $sql = "select * from users where user_id = $friend;";
                                 $result1=mysqli_query($conn,$sql);
                                 $row1 = mysqli_fetch_array($result1);
@@ -51,6 +57,7 @@
                                 echo $row['last_msg'];
                                 echo '</p>
                               </div>
+                              </a>
                             </li>
                           ';
                         }
