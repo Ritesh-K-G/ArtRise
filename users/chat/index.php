@@ -7,7 +7,19 @@
     if(isset($_GET['id1'])) {
       // write query here
       $_SESSION['friend'] = $_GET['id1'];
-      header('location: index.php');
+      header("Location: ".$_SERVER['PHP_SELF']);
+  }
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $msg = $_POST['msg'];
+    $user_id = $_SESSION['user_id'];
+    $friend = $_SESSION['friend'];
+    $room = $_SESSION['room'];
+
+    $sql= "INSERT INTO messages (room_id, msg, sender, receiver) values ($room, '$msg', $user_id, '$friend')";
+    $result = mysqli_query($conn, $sql);
+    $sql= "UPDATE chatroom set last_msg = '$msg' where room_id = $room";
+    $result = mysqli_query($conn, $sql);
+    header("Location: ".$_SERVER['PHP_SELF']);
   }
 ?>
 
@@ -18,13 +30,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Document</title>
+    <title>ArtRise Chat</title>
     <link rel="stylesheet" href="style.css">        
 </head>
 <body>
     <div class="chat-app">
         <div class="left-container" style="color: white">
           <div class="search-container">
+            <a href="../homepage/"><i class="fa fa-arrow-circle-left" style="font-size:30px; color: rgb(7,94,84);"></i></a>
+            &nbsp;
             <input type="text" placeholder="Search...">
             <button><i class="fa fa-search"></i></button>
           </div>
@@ -111,7 +125,7 @@
                 ?>
                 </div>
           <div class="chat-input">
-            <form action="send_msg.php">
+            <form action="#" method="post" enctype="multipart/form-data">
                 <input type="text" name="msg" placeholder="Type your message here">
                 <button type="submit">Send</button>
             </form>
