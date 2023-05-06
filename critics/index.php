@@ -53,7 +53,7 @@
 														password?</a></p>
 												<button type="submit" class="btn mt-4">submit</button>
 											</form>
-											<p class="mb-0 mt-4 text-right"><a href="../users/index.html"
+											<p class="mb-0 mt-4 text-right"><a href="../users/index.php"
 													class="link">Login as user</a></p>
 										</div>
 									</div>
