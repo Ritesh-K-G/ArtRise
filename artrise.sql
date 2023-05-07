@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 07, 2023 at 01:52 AM
+-- Generation Time: May 08, 2023 at 01:42 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `cart` (
   `content_id` int(11) NOT NULL,
   `seller_id` int(11) NOT NULL,
-  `content` mediumblob NOT NULL,
+  `content` varchar(200) NOT NULL,
   `seller` varchar(25) NOT NULL,
   `file_type` varchar(50) NOT NULL,
   `description` varchar(1000) NOT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`content_id`, `seller_id`, `content`, `seller`, `file_type`, `description`, `art_type`, `cost`, `buyer_id`) VALUES
-(23, 11, 0x363435326234356134643466302e6d7034, 'Ritesh', 'video/mp4', 'My holy earth', 'art', 100000, 11);
+(23, 11, '6452b45a4d4f0.mp4', 'Ritesh', 'video/mp4', 'My holy earth', 'art', 100000, 11);
 
 -- --------------------------------------------------------
 
@@ -73,7 +73,13 @@ INSERT INTO `chatroom` (`room_id`, `user1`, `user2`, `last_msg`) VALUES
 (7, 8, 8, 'Say Hello'),
 (8, 9, 9, 'Say Hello'),
 (9, 10, 10, 'Say Hello'),
-(10, 11, 11, 'hi');
+(10, 11, 11, 'hi'),
+(11, 8, 25, 'Say Hello'),
+(12, 9, 25, 'Say Hello'),
+(13, 10, 25, 'Say Hello'),
+(14, 11, 25, 'Say Hello'),
+(15, 24, 25, 'Say Hello'),
+(16, 25, 25, 'Say Hello');
 
 -- --------------------------------------------------------
 
@@ -84,6 +90,7 @@ INSERT INTO `chatroom` (`room_id`, `user1`, `user2`, `last_msg`) VALUES
 CREATE TABLE `critics` (
   `critics_id` int(11) NOT NULL,
   `name` varchar(25) NOT NULL,
+  `profile_pic` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `critic_type` varchar(20) DEFAULT NULL,
   `qualification` varchar(25) NOT NULL,
@@ -95,13 +102,13 @@ CREATE TABLE `critics` (
 -- Dumping data for table `critics`
 --
 
-INSERT INTO `critics` (`critics_id`, `name`, `email`, `critic_type`, `qualification`, `password`, `about`) VALUES
-(4, 'parth', 'parth@gmail.com', 'art', 'B-tech', '$2y$10$lgMbGiNYJWYNosXlpUXI8OgrjJ0nrjT0JmAWe9Jll3cfcgtpA3Zey', 'i am a disco dancer'),
-(5, 'Dhairya', 'dhairya@gmail.com', 'art', 'B-Tech', '$2y$10$NFzs/5inMNVNaEi1k6/5m.kLM7BwV0k9m63by3cI5C5xfiWFcE5VC', 'User has not added this field'),
-(6, 'Jinam Jain', 'jinam@gmail.com', 'art', 'B-Tech', '$2y$10$eNP0VAdqJcJhgNaAYNPh3O42Ink6ao6IHlVRdTqlTxYHLQEB6gI0e', 'User has not added this field'),
-(7, 'pankti@gmail.com', 'pankti@gmail.com', 'art', 'B-Tech', '$2y$10$D1/9Y28wvkG.Zvkrev3exe9AC5m.vA9oGUI/yQ2sQ.No8tjyFfSeC', 'User has not added this field'),
-(8, 'Ritesh', 'ritesh@gmail.com', 'writing', 'PhD', '$2y$10$Un9MvR10sPpJZqvdVretfeqvpl4qNc4Du5Yaf/My223YEJJcs8CUC', 'User has not added this field'),
-(9, 'Kuber Jain', 'kuber@gmail.com', 'art', 'God Level Developer', '$2y$10$uFQtGSDp3wXmIQrv7VDeIeAkwueW9HID7hFjuDJQHJIo1xYu1Dh4y', 'User has not added this field');
+INSERT INTO `critics` (`critics_id`, `name`, `profile_pic`, `email`, `critic_type`, `qualification`, `password`, `about`) VALUES
+(4, 'parth', 'noimage.png', 'parth@gmail.com', 'art', 'B-tech', '$2y$10$lgMbGiNYJWYNosXlpUXI8OgrjJ0nrjT0JmAWe9Jll3cfcgtpA3Zey', 'i am a disco dancer'),
+(5, 'Dhairya', 'noimage.png', 'dhairya@gmail.com', 'art', 'B-Tech', '$2y$10$NFzs/5inMNVNaEi1k6/5m.kLM7BwV0k9m63by3cI5C5xfiWFcE5VC', 'User has not added this field'),
+(6, 'Jinam Jain', 'noimage.png', 'jinam@gmail.com', 'art', 'B-Tech', '$2y$10$eNP0VAdqJcJhgNaAYNPh3O42Ink6ao6IHlVRdTqlTxYHLQEB6gI0e', 'User has not added this field'),
+(7, 'pankti@gmail.com', 'noimage.png', 'pankti@gmail.com', 'art', 'B-Tech', '$2y$10$D1/9Y28wvkG.Zvkrev3exe9AC5m.vA9oGUI/yQ2sQ.No8tjyFfSeC', 'User has not added this field'),
+(8, 'Ritesh', 'noimage.png', 'ritesh@gmail.com', 'writing', 'PhD', '$2y$10$Un9MvR10sPpJZqvdVretfeqvpl4qNc4Du5Yaf/My223YEJJcs8CUC', 'User has not added this field'),
+(9, 'Kuber Jain', 'noimage.png', 'kuber@gmail.com', 'art', 'God Level Developer', '$2y$10$uFQtGSDp3wXmIQrv7VDeIeAkwueW9HID7hFjuDJQHJIo1xYu1Dh4y', 'User has not added this field');
 
 -- --------------------------------------------------------
 
@@ -111,38 +118,37 @@ INSERT INTO `critics` (`critics_id`, `name`, `email`, `critic_type`, `qualificat
 
 CREATE TABLE `critics_content` (
   `content_id` int(11) NOT NULL,
-  `content` mediumblob NOT NULL,
+  `content` varchar(200) NOT NULL,
   `user_id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `description` varchar(1000) NOT NULL,
   `rating` int(11) NOT NULL DEFAULT 0,
   `critics_rated` int(11) NOT NULL DEFAULT 0,
   `file_type` varchar(50) NOT NULL,
-  `art_type` varchar(50) NOT NULL,
-  `upload_date` datetime NOT NULL
+  `art_type` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `critics_content`
 --
 
-INSERT INTO `critics_content` (`content_id`, `content`, `user_id`, `name`, `description`, `rating`, `critics_rated`, `file_type`, `art_type`, `upload_date`) VALUES
-(6, 0x363433663836613536653435332e6a7067, 8, '', 'drawing girl', 0, 0, 'image/jpeg', 'writing', '0000-00-00 00:00:00'),
-(15, 0x363434663936393938393562312e6a706567, 9, '', 'an ER diagram of dbms project.', 4, 1, 'image/jpeg', 'art', '0000-00-00 00:00:00'),
-(16, 0x363434663936636634386235632e6a706567, 10, '', 'Airline management system er diagram', 0, 0, 'image/jpeg', 'art', '0000-00-00 00:00:00'),
-(17, 0x363434666135623839663062352e6a7067, 9, '', 'Sample artwork for test', 12, 3, 'image/jpeg', 'art', '0000-00-00 00:00:00'),
-(18, 0x363434666135636365313737382e6a7067, 9, '', 'Sample artwork for test', 11, 3, 'image/jpeg', 'art', '0000-00-00 00:00:00'),
-(19, 0x363435323036353462356331622e6a7067, 9, '', 'A test artwork ', 4, 1, 'image/jpeg', 'art', '0000-00-00 00:00:00'),
-(20, 0x363435326234303761626635652e6a7067, 9, '', 'Please upvote', 0, 0, 'image/jpeg', 'visarts', '0000-00-00 00:00:00'),
-(21, 0x363435326234316630396362382e6a7067, 9, '', 'Please upvote', 0, 0, 'image/jpeg', 'visarts', '0000-00-00 00:00:00'),
-(22, 0x363435326234336163326366302e706e67, 9, '', 'Come to this show', 0, 0, 'image/png', 'writing', '0000-00-00 00:00:00'),
-(23, 0x363435326234356134643466302e6d7034, 9, '', 'My holy earth', 0, 0, 'video/mp4', 'art', '0000-00-00 00:00:00'),
-(24, 0x363435326234373633313239662e6a7067, 9, '', 'Drawing girl pic', 0, 0, 'image/jpeg', 'art', '0000-00-00 00:00:00'),
-(25, 0x363435326234393032383838642e6a7067, 9, '', 'Event poster', 0, 0, 'image/jpeg', 'visarts', '0000-00-00 00:00:00'),
-(26, 0x363435333930303038613836312e6a7067, 11, '', 'Avatar 3', 0, 0, 'image/jpeg', 'visarts', '0000-00-00 00:00:00'),
-(27, 0x363435333930383731646361302e706e67, 11, '', 'Power', 0, 0, 'image/png', 'writing', '0000-00-00 00:00:00'),
-(28, 0x363435353930633730336436652e6a7067, 11, '', 'Rohee pics', 0, 0, 'image/jpeg', 'art', '0000-00-00 00:00:00'),
-(29, 0x363435366131353530336538662e6a7067, 11, '', 'Legend warrior', 0, 0, 'image/jpeg', 'music', '0000-00-00 00:00:00');
+INSERT INTO `critics_content` (`content_id`, `content`, `user_id`, `name`, `description`, `rating`, `critics_rated`, `file_type`, `art_type`) VALUES
+(6, '643f86a56e453.jpg', 8, '', 'drawing girl', 0, 0, 'image/jpeg', 'writing'),
+(15, '644f9699895b1.jpeg', 9, '', 'an ER diagram of dbms project.', 4, 1, 'image/jpeg', 'art'),
+(16, '644f96cf48b5c.jpeg', 10, '', 'Airline management system er diagram', 0, 0, 'image/jpeg', 'art'),
+(17, '644fa5b89f0b5.jpg', 9, '', 'Sample artwork for test', 12, 3, 'image/jpeg', 'art'),
+(18, '644fa5cce1778.jpg', 9, '', 'Sample artwork for test', 11, 3, 'image/jpeg', 'art'),
+(19, '64520654b5c1b.jpg', 9, '', 'A test artwork ', 4, 1, 'image/jpeg', 'art'),
+(20, '6452b407abf5e.jpg', 9, '', 'Please upvote', 0, 0, 'image/jpeg', 'visarts'),
+(21, '6452b41f09cb8.jpg', 9, '', 'Please upvote', 0, 0, 'image/jpeg', 'visarts'),
+(22, '6452b43ac2cf0.png', 9, '', 'Come to this show', 0, 0, 'image/png', 'writing'),
+(23, '6452b45a4d4f0.mp4', 9, '', 'My holy earth', 0, 0, 'video/mp4', 'art'),
+(24, '6452b4763129f.jpg', 9, '', 'Drawing girl pic', 0, 0, 'image/jpeg', 'art'),
+(25, '6452b4902888d.jpg', 9, '', 'Event poster', 0, 0, 'image/jpeg', 'visarts'),
+(26, '645390008a861.jpg', 11, '', 'Avatar 3', 0, 0, 'image/jpeg', 'visarts'),
+(27, '645390871dca0.png', 11, '', 'Power', 0, 0, 'image/png', 'writing'),
+(28, '645590c703d6e.jpg', 11, '', 'Rohee pics', 0, 0, 'image/jpeg', 'art'),
+(29, '6456a15503e8f.jpg', 11, '', 'Legend warrior', 0, 0, 'image/jpeg', 'music');
 
 -- --------------------------------------------------------
 
@@ -176,10 +182,11 @@ CREATE TABLE `favourites` (
 --
 
 INSERT INTO `favourites` (`user_id`, `content_id`) VALUES
-(9, 17),
 (9, 18),
+(11, 18),
 (11, 17),
-(11, 18);
+(11, 18),
+(10, 17);
 
 -- --------------------------------------------------------
 
@@ -224,7 +231,8 @@ CREATE TABLE `likes` (
 --
 
 INSERT INTO `likes` (`user_id`, `content_id`) VALUES
-(11, 17);
+(11, 17),
+(10, 17);
 
 -- --------------------------------------------------------
 
@@ -235,7 +243,7 @@ INSERT INTO `likes` (`user_id`, `content_id`) VALUES
 CREATE TABLE `market` (
   `content_id` int(11) NOT NULL,
   `seller_id` int(11) NOT NULL,
-  `content` mediumblob NOT NULL,
+  `content` varchar(200) NOT NULL,
   `seller` varchar(25) NOT NULL,
   `file_type` varchar(50) NOT NULL,
   `description` varchar(1000) NOT NULL,
@@ -248,9 +256,9 @@ CREATE TABLE `market` (
 --
 
 INSERT INTO `market` (`content_id`, `seller_id`, `content`, `seller`, `file_type`, `description`, `art_type`, `cost`) VALUES
-(27, 11, 0x363435333930383731646361302e706e67, 'Ritesh K G', 'image/png', 'Power', 'writing', 50),
-(28, 11, 0x363435353930633730336436652e6a7067, 'Ritesh K G', 'image/jpeg', 'Rohee pics', 'art', 50000),
-(29, 11, 0x363435366131353530336538662e6a7067, 'Ritesh K G', 'image/jpeg', 'Legend warrior', 'music', 1000);
+(27, 11, '645390871dca0.png', 'Ritesh K G', 'image/png', 'Power', 'writing', 50),
+(28, 11, '645590c703d6e.jpg', 'Ritesh K G', 'image/jpeg', 'Rohee pics', 'art', 50000),
+(29, 11, '6456a15503e8f.jpg', 'Ritesh K G', 'image/jpeg', 'Legend warrior', 'music', 1000);
 
 -- --------------------------------------------------------
 
@@ -367,6 +375,7 @@ INSERT INTO `uploads` (`content_id`, `user_id`) VALUES
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
   `name` varchar(25) NOT NULL,
+  `profile_pic` varchar(500) NOT NULL,
   `email` varchar(50) NOT NULL,
   `contact` varchar(10) NOT NULL,
   `age` int(11) NOT NULL,
@@ -379,11 +388,11 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `name`, `email`, `contact`, `age`, `password`, `verification_code`, `is_verified`) VALUES
-(8, 'jinam', 'jinam@gmail.com', '1234457887', 69, '$2y$10$wDku1uQwRDu9mXvydSX7qerDtTFY38Isxn/R40UKTmXPKodaM.WmC', '', 0),
-(9, 'Ritesh', 'r@g.com', '123', 10, '$2y$10$TPScjiCd5rAt1cKMI0iS5ueQMzv1RmAMEHXP9R14MWobPjhq105nS', '', 0),
-(10, 'parth', 'parth@gmail.com', '123445321', 19, '$2y$10$g/4Ac5hFfvuSKoE.5LbVieH22uzm/WOCoSyoBmhdf3eCE/BpzrEM2', '', 0),
-(11, 'Ritesh K G', 'ritesh.kumargupta.7549@gmail.com', '7903653934', 20, '$2y$10$.NhNdm7vWDj/jLcEdxSwYuk2jPoXac.n1V63qdD0znyf6X2MS3rle', 'e8b0d244ae3527c19f3e5d6dd48fdf25', 1);
+INSERT INTO `users` (`user_id`, `name`, `profile_pic`, `email`, `contact`, `age`, `password`, `verification_code`, `is_verified`) VALUES
+(8, 'jinam', 'noimage.png', 'jinam@gmail.com', '1234457887', 69, '$2y$10$wDku1uQwRDu9mXvydSX7qerDtTFY38Isxn/R40UKTmXPKodaM.WmC', '', 0),
+(9, 'Ritesh', 'noimage.png', 'r@g.com', '123', 10, '$2y$10$TPScjiCd5rAt1cKMI0iS5ueQMzv1RmAMEHXP9R14MWobPjhq105nS', '', 0),
+(10, 'parth', 'noimage.png', 'parth@gmail.com', '123445321', 19, '$2y$10$g/4Ac5hFfvuSKoE.5LbVieH22uzm/WOCoSyoBmhdf3eCE/BpzrEM2', '', 1),
+(11, 'Ritesh K G', 'noimage.png', 'ritesh.kumargupta.7549@gmail.com', '7903653934', 20, '$2y$10$.NhNdm7vWDj/jLcEdxSwYuk2jPoXac.n1V63qdD0znyf6X2MS3rle', 'e8b0d244ae3527c19f3e5d6dd48fdf25', 1);
 
 -- --------------------------------------------------------
 
@@ -394,22 +403,21 @@ INSERT INTO `users` (`user_id`, `name`, `email`, `contact`, `age`, `password`, `
 CREATE TABLE `users_content` (
   `content_id` int(11) NOT NULL,
   `creator_id` int(11) NOT NULL,
-  `content` mediumblob NOT NULL,
+  `content` varchar(200) NOT NULL,
   `description` varchar(1000) NOT NULL,
   `ratings` int(11) NOT NULL,
   `likes` int(11) NOT NULL,
   `art_type` varchar(50) NOT NULL,
-  `file_type` varchar(50) NOT NULL,
-  `upload_date` datetime NOT NULL
+  `file_type` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users_content`
 --
 
-INSERT INTO `users_content` (`content_id`, `creator_id`, `content`, `description`, `ratings`, `likes`, `art_type`, `file_type`, `upload_date`) VALUES
-(17, 9, 0x363434666135623839663062352e6a7067, 'Sample artwork for test', 12, 2, 'art', 'image/jpeg', '0000-00-00 00:00:00'),
-(18, 9, 0x363434666135636365313737382e6a7067, 'Sample artwork for test', 11, 0, 'art', 'image/jpeg', '0000-00-00 00:00:00');
+INSERT INTO `users_content` (`content_id`, `creator_id`, `content`, `description`, `ratings`, `likes`, `art_type`, `file_type`) VALUES
+(17, 9, '644fa5b89f0b5.jpg', 'Sample artwork for test', 12, 3, 'art', 'image/jpeg'),
+(18, 9, '644fa5cce1778.jpg', 'Sample artwork for test', 11, 0, 'art', 'image/jpeg');
 
 --
 -- Indexes for dumped tables
@@ -519,7 +527,7 @@ ALTER TABLE `users_content`
 -- AUTO_INCREMENT for table `chatroom`
 --
 ALTER TABLE `chatroom`
-  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `critics`
@@ -549,7 +557,7 @@ ALTER TABLE `notification`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `users_content`
