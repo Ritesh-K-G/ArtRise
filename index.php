@@ -42,17 +42,6 @@
                         <li class="nav__item">
                             <a href="#" class="nav__link active-link">Home</a>
                         </li>
-
-                        <li class="nav__item">
-                            <a href="#" class="nav__link">About</a>
-                        </li>
-
-                        <li class="nav__item">
-                            <a href="#" class="nav__link">Contact</a>
-                        </li>
-
-                        
-
                         <a href="users" class="button button--ghost">Login</a>
                     </ul>
 

@@ -50,14 +50,6 @@
                     </li>
 
                     <li class="nav__item">
-                        <a href="#" class="nav__link">About</a>
-                    </li>
-
-                    <li class="nav__item">
-                        <a href="#" class="nav__link">Contact</a>
-                    </li>
-
-                    <li class="nav__item">
                         <a href="../profile" class="nav__link active-link">Profile</a>
                     </li>
 
