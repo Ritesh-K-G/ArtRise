@@ -7,7 +7,7 @@ commentBtns.forEach(commentBtn => {
   });
 });
 
-document.getElementById("my_posts").style.display="none";
+document.getElementById("my_posts").style.display="block";
 document.getElementById("my_fav").style.display="none";
 document.getElementById("my_likes").style.display="none";
 
