@@ -22,6 +22,7 @@
             if(password_verify($password,$row['password'])){
                 $_SESSION['user_id'] = $row['user_id'];
                 $_SESSION['user_name'] = $row['name'];
+                $_SESSION['friend'] = $row['user_id'];
                 echo '<script>alert("Successfully logged in");setTimeout(()=>{window.location.replace("homepage");},500);</script>';
                 // header("Location: homepage.php"); 
                 exit();

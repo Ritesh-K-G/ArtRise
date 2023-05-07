@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2023 at 01:42 AM
+-- Generation Time: May 07, 2023 at 01:52 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -45,6 +45,35 @@ CREATE TABLE `cart` (
 
 INSERT INTO `cart` (`content_id`, `seller_id`, `content`, `seller`, `file_type`, `description`, `art_type`, `cost`, `buyer_id`) VALUES
 (23, 11, 0x363435326234356134643466302e6d7034, 'Ritesh', 'video/mp4', 'My holy earth', 'art', 100000, 11);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chatroom`
+--
+
+CREATE TABLE `chatroom` (
+  `room_id` int(11) NOT NULL,
+  `user1` int(11) NOT NULL,
+  `user2` int(11) NOT NULL,
+  `last_msg` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `chatroom`
+--
+
+INSERT INTO `chatroom` (`room_id`, `user1`, `user2`, `last_msg`) VALUES
+(1, 8, 9, 'Say Hello'),
+(2, 8, 10, 'Say Hello'),
+(3, 9, 10, 'Say Hello'),
+(4, 8, 11, '180'),
+(5, 9, 11, 'hi'),
+(6, 10, 11, 'Yo'),
+(7, 8, 8, 'Say Hello'),
+(8, 9, 9, 'Say Hello'),
+(9, 10, 10, 'Say Hello'),
+(10, 11, 11, 'hi');
 
 -- --------------------------------------------------------
 
@@ -112,7 +141,8 @@ INSERT INTO `critics_content` (`content_id`, `content`, `user_id`, `name`, `desc
 (25, 0x363435326234393032383838642e6a7067, 9, '', 'Event poster', 0, 0, 'image/jpeg', 'visarts', '0000-00-00 00:00:00'),
 (26, 0x363435333930303038613836312e6a7067, 11, '', 'Avatar 3', 0, 0, 'image/jpeg', 'visarts', '0000-00-00 00:00:00'),
 (27, 0x363435333930383731646361302e706e67, 11, '', 'Power', 0, 0, 'image/png', 'writing', '0000-00-00 00:00:00'),
-(28, 0x363435353930633730336436652e6a7067, 11, '', 'Rohee pics', 0, 0, 'image/jpeg', 'art', '0000-00-00 00:00:00');
+(28, 0x363435353930633730336436652e6a7067, 11, '', 'Rohee pics', 0, 0, 'image/jpeg', 'art', '0000-00-00 00:00:00'),
+(29, 0x363435366131353530336538662e6a7067, 11, '', 'Legend warrior', 0, 0, 'image/jpeg', 'music', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -194,8 +224,7 @@ CREATE TABLE `likes` (
 --
 
 INSERT INTO `likes` (`user_id`, `content_id`) VALUES
-(11, 17),
-(11, 18);
+(11, 17);
 
 -- --------------------------------------------------------
 
@@ -220,7 +249,46 @@ CREATE TABLE `market` (
 
 INSERT INTO `market` (`content_id`, `seller_id`, `content`, `seller`, `file_type`, `description`, `art_type`, `cost`) VALUES
 (27, 11, 0x363435333930383731646361302e706e67, 'Ritesh K G', 'image/png', 'Power', 'writing', 50),
-(28, 11, 0x363435353930633730336436652e6a7067, 'Ritesh K G', 'image/jpeg', 'Rohee pics', 'art', 50000);
+(28, 11, 0x363435353930633730336436652e6a7067, 'Ritesh K G', 'image/jpeg', 'Rohee pics', 'art', 50000),
+(29, 11, 0x363435366131353530336538662e6a7067, 'Ritesh K G', 'image/jpeg', 'Legend warrior', 'music', 1000);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `messages`
+--
+
+CREATE TABLE `messages` (
+  `room_id` int(11) NOT NULL,
+  `msg_id` int(11) NOT NULL,
+  `msg` varchar(500) NOT NULL,
+  `sender` int(11) NOT NULL,
+  `receiver` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `messages`
+--
+
+INSERT INTO `messages` (`room_id`, `msg_id`, `msg`, `sender`, `receiver`) VALUES
+(10, 1, 'Hi, It is me Ritesh and I am going to implement chat functionality here', 11, 11),
+(4, 4, 'Hello Jinmiran', 11, 8),
+(4, 5, 'hello', 11, 8),
+(4, 6, 'Hi', 11, 8),
+(5, 7, 'Messaging to my duplicate', 11, 9),
+(6, 8, 'Yo Garg', 11, 10),
+(10, 9, 'hello', 11, 11),
+(10, 10, 'thats me original ', 11, 11),
+(10, 11, 'u', 11, 11),
+(10, 12, 'hi', 11, 11),
+(4, 13, 'Hello Jinmiran', 11, 8),
+(5, 14, 'hello', 11, 9),
+(6, 15, 'hello', 11, 10),
+(5, 16, 'Chat implemented', 11, 9),
+(5, 76, 'hi', 11, 9),
+(5, 77, 'hi', 11, 9),
+(6, 78, 'Yo', 11, 10),
+(4, 79, '180', 11, 8);
 
 -- --------------------------------------------------------
 
@@ -287,7 +355,8 @@ INSERT INTO `uploads` (`content_id`, `user_id`) VALUES
 (25, 9),
 (26, 11),
 (27, 11),
-(28, 11);
+(28, 11),
+(29, 11);
 
 -- --------------------------------------------------------
 
@@ -340,7 +409,7 @@ CREATE TABLE `users_content` (
 
 INSERT INTO `users_content` (`content_id`, `creator_id`, `content`, `description`, `ratings`, `likes`, `art_type`, `file_type`, `upload_date`) VALUES
 (17, 9, 0x363434666135623839663062352e6a7067, 'Sample artwork for test', 12, 2, 'art', 'image/jpeg', '0000-00-00 00:00:00'),
-(18, 9, 0x363434666135636365313737382e6a7067, 'Sample artwork for test', 11, 1, 'art', 'image/jpeg', '0000-00-00 00:00:00');
+(18, 9, 0x363434666135636365313737382e6a7067, 'Sample artwork for test', 11, 0, 'art', 'image/jpeg', '0000-00-00 00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -351,6 +420,12 @@ INSERT INTO `users_content` (`content_id`, `creator_id`, `content`, `description
 --
 ALTER TABLE `cart`
   ADD KEY `buyer_id` (`buyer_id`);
+
+--
+-- Indexes for table `chatroom`
+--
+ALTER TABLE `chatroom`
+  ADD PRIMARY KEY (`room_id`);
 
 --
 -- Indexes for table `critics`
@@ -398,6 +473,12 @@ ALTER TABLE `market`
   ADD KEY `seller_id` (`seller_id`);
 
 --
+-- Indexes for table `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`msg_id`);
+
+--
 -- Indexes for table `notification`
 --
 ALTER TABLE `notification`
@@ -435,6 +516,12 @@ ALTER TABLE `users_content`
 --
 
 --
+-- AUTO_INCREMENT for table `chatroom`
+--
+ALTER TABLE `chatroom`
+  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT for table `critics`
 --
 ALTER TABLE `critics`
@@ -444,7 +531,13 @@ ALTER TABLE `critics`
 -- AUTO_INCREMENT for table `critics_content`
 --
 ALTER TABLE `critics_content`
-  MODIFY `content_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `content_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT for table `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT for table `notification`

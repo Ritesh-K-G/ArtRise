@@ -36,4 +36,5 @@
             echo "Error updating likes: " . $conn->error;
         }
         $conn->close();
-}
+    }
+?>
