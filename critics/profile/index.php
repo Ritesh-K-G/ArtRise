@@ -82,7 +82,7 @@
                                 <span>Change Image</span>
                             </label>
                             <input id="file" type="file" onchange="loadFile(event)" />
-                            <img src="../../src/singing.png" id="output" width="200" />
+                            <?php echo "<img src='../../src/" . $row['profile_pic'] ."' id='output' width='200' />"; ?>
                         </div>
                     </div>
 

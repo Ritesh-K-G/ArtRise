@@ -103,10 +103,9 @@
                                     <span>Change Image</span>
                                 </label>
                                 <input id="file" type="file" onchange="loadFile(event)" />
-                                <img src="../../src/singing.png" id="output" width="200" />
+                                <?php echo "<img src='../../src/" . $row['profile_pic'] ."' id='output' width='200' />"; ?>
                             </div>
                         </div>
-
                         <div class="profile-details">
                             <h1 id="name">
                                 <?php
@@ -138,22 +137,27 @@
                         $sql="SELECT * from users_content where content_id 
                         in (select content_id from uploads where user_id=$user_id);";
                         $result=mysqli_query($conn,$sql);
+                
                         if(mysqli_num_rows($result) > 0)
                         {
                             while($row = mysqli_fetch_array($result))
                             {
                             $file_type = $row['file_type'];
                             $content_id = $row['content_id'];
+                            $creator_id= $row['creator_id'];
+                            $sql1="select * from users where user_id=$creator_id;";
+                            $resultu=mysqli_query($conn,$sql1);
+                            $rowu = mysqli_fetch_array($resultu);
                             echo '
                             <section id="my_feed">
                             <div id="carding" class="discount__container container grid">
                                 <div class="feed-card">
                                 <div class="profile-picture">
-                                    <img src="https://m.media-amazon.com/images/I/415MsdCcduL.png" alt="Profile Picture">
+                                    <img src="../../src/'.$rowu['profile_pic'].'" alt="Profile Picture">
                                 </div>
                                 <div class="feed-content">
                                     <div class="username">';
-                                        echo $row['creator_id'];
+                                        echo $rowu['name'];
                                     echo '</div>
                                     <div class="post-content">';
                                         echo $row['description'];
@@ -257,16 +261,20 @@
                             {
                             $file_type = $row['file_type'];
                             $content_id = $row['content_id'];
+                            $creator_id= $row['creator_id'];
+                            $sql1="select * from users where user_id=$creator_id;";
+                            $resultu=mysqli_query($conn,$sql1);
+                            $rowu = mysqli_fetch_array($resultu);
                             echo '
                             <section id="my_feed">
                             <div id="carding" class="discount__container container grid">
                                 <div class="feed-card">
                                 <div class="profile-picture">
-                                    <img src="https://m.media-amazon.com/images/I/415MsdCcduL.png" alt="Profile Picture">
+                                    <img src="../../src/'.$rowu['profile_pic'].'" alt="Profile Picture">
                                 </div>
                                 <div class="feed-content">
                                     <div class="username">';
-                                        echo $row['creator_id'];
+                                        echo $rowu['name'];
                                     echo '</div>
                                     <div class="post-content">';
                                         echo $row['description'];
@@ -370,16 +378,20 @@
                             {
                             $file_type = $row['file_type'];
                             $content_id = $row['content_id'];
+                            $creator_id= $row['creator_id'];
+                            $sql1="select * from users where user_id=$creator_id;";
+                            $resultu=mysqli_query($conn,$sql1);
+                            $rowu = mysqli_fetch_array($resultu);
                             echo '
                             <section id="my_feed">
                             <div id="carding" class="discount__container container grid">
                                 <div class="feed-card">
                                 <div class="profile-picture">
-                                    <img src="https://m.media-amazon.com/images/I/415MsdCcduL.png" alt="Profile Picture">
+                                    <img src="../../src/'.$rowu['profile_pic'].'" alt="Profile Picture">
                                 </div>
                                 <div class="feed-content">
                                     <div class="username">';
-                                        echo $row['creator_id'];
+                                        echo $rowu['name'];
                                     echo '</div>
                                     <div class="post-content">';
                                         echo $row['description'];

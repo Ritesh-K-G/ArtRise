@@ -86,7 +86,7 @@ $row = mysqli_fetch_assoc($result);
                                 <span>Change Image</span>
                             </label>
                             <input id="file" type="file" onchange="loadFile(event)" />
-                            <img src="../../src/singing.png" id="output" width="200" />
+                            <?php echo "<img src='../../src/" . $row['profile_pic'] ."' id='output' width='200' />"; ?>
                         </div>
                     </div>
                     <div class="profile-details">
@@ -148,7 +148,7 @@ $row = mysqli_fetch_assoc($result);
                               <div id="carding" class="discount__container container grid">
                                 <div class="feed-card" data-content-id="' . $content_id . '">
                                   <div class="profile-picture">
-                                    <img src="https://m.media-amazon.com/images/I/415MsdCcduL.png" alt="Profile Picture">
+                                    <img src="../../src/'.$nrow['profile_pic'].'" alt="Profile Picture">
                                   </div>
                                   <div class="feed-content">
                                     <div class="username">';

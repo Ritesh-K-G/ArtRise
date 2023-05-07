@@ -70,7 +70,8 @@
     }
     else{
         $v_code = bin2hex(random_bytes(16));
-        $sql = "INSERT INTO users (password,name,age,email,contact,verification_code, is_verified) Values('$hashpass','$name','$age','$email','$contact','$v_code','0');";
+        $path='noimage.png';
+        $sql = "INSERT INTO users (password,name,profile_pic,age,email,contact,verification_code, is_verified) Values('$hashpass','$name','$path'.'$age','$email','$contact','$v_code','0');";
 
         if(sendMail($email,$v_code) && $conn->query($sql) == true ){
             $new_id = mysqli_insert_id($conn);
