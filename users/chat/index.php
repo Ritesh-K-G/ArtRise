@@ -30,6 +30,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="../../assets/img/logo1.png" type="image/x-icon">
     <title>ArtRise Chat</title>
     <link rel="stylesheet" href="style.css">        
 </head>
@@ -56,8 +57,11 @@
                             $friend=$row['user2'];
                           else
                             $friend=$row['user1'];
+                          if($_SESSION['friend']!=$friend)
+                            echo "<li class='friend'>";
+                          else
+                          echo "<li class='friend active'>";
                           echo "
-                            <li class='friend'>
                             <a href='index.php?id1=" . $friend . "' style='color: white; text-decoration: none; display: flex;'>
                               <img src='https://dummyimage.com/50x50/000/fff' alt='Profile Picture'>
                               <div class='friend-info'>
