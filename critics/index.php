@@ -84,11 +84,23 @@
 														autocomplete="off">
 													<i class="input-icon uil uil-graduation-cap"></i>
 												</div>
-												<div class="form-group mt-2">
+												<!-- <div class="form-group mt-2">
 													<input type="text" name="logcontact" class="form-style"
 														placeholder="Your Contact" id="logcontact" autocomplete="off">
 													<i class="input-icon uil uil-mobile-android"></i>
-												</div>
+												</div> -->
+
+												<div class="form-group mt-2">
+													<input type="text" name="logcontact" class="form-style" list="specialisations" 
+														placeholder="Specialisation" id="logcontact" autocomplete="off" oninput="validateInput()">
+													<i class="input-icon uil uil-star"></i>
+													<datalist id="specialisations">
+														<option value="writing">
+														<option value="art">
+														<option value="music">
+														<option value="visarts">
+													</datalist>
+												</div>											
 												<button type="submit" class="btn mt-4">submit</button>
 											</form>
 										</div>
@@ -102,5 +114,23 @@
 		</div>
 	</div>
 </body>
+<script>
+function validateInput() {
+    var input = document.getElementById('logcontact').value;
+    var options = document.getElementById('specialisations').options;
+    var match = false;
+
+    for (var i = 0; i < options.length; i++) {
+        if (input === options[i].value) {
+            match = true;
+            break;
+        }
+    }
+
+    if (!match) {
+        document.getElementById('logcontact').value = '';
+    }
+}
+</script>
 
 </html>
