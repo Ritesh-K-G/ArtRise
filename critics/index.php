@@ -117,7 +117,7 @@
 <script>
 function validateInput() {
     var input = document.getElementById('logcontact').value;
-    var options = document.getElementById('browsers').options;
+    var options = document.getElementById('specialisations').options;
     var match = false;
 
     for (var i = 0; i < options.length; i++) {
