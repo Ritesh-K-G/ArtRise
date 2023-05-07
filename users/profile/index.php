@@ -129,17 +129,6 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="profile-body">
-                        <div class="profile-about">
-                            <h2>About Me</h2>
-                            <p>IIIT A student</p>
-                        </div>
-                        <div class="profile-posts">
-                            <h2>Posts</h2>
-                            <p>Bada clg bade professor bada dimaag</p>
-                            <!-- Add posts here -->
-                        </div>
-                    </div>
                 </div>
             </section>
             

@@ -35,11 +35,11 @@ $user_id = $_SESSION['user_id'];
 //         $conn->close();
 // }
 
-$sql1 = "INSERT into favourites (user_id, content_id) VALUES ($user_id, $content_id);";
-// $result1 = mysqli_query($conn, $sql1);
+$sql2 = "DELETE from favourites where content_id = $content_id";
+// $result2 = mysqli_query($conn, $sql2);
 
-if ($conn->query($sql1) === TRUE) {
-        // echo "Success";
+if ($conn->query($sql2) === TRUE) {
+    // echo "Success";
 } else {
     echo "Error updating likes: " . $conn->error;
 }
