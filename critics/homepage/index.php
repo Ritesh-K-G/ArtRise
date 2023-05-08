@@ -119,6 +119,11 @@ $row = mysqli_fetch_assoc($result);
         while ($rown = mysqli_fetch_assoc($result1)) {
             $content_ids[] = $rown['content_id'];
         }
+        $sql1 = "select content_id from critics_content where critics_rated>=3;";
+        $result1 = mysqli_query($conn, $sql1);
+        while ($rown = mysqli_fetch_assoc($result1)) {
+            $content_ids[] = $rown['content_id'];
+        }
 
         $aty = $row['critic_type'];
         // Query the database for artworks
