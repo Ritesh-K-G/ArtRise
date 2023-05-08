@@ -48,10 +48,6 @@
                     </li>
 
                     <li class="nav__item">
-                        <a href="#" class="nav__link">About</a>
-                    </li>
-
-                    <li class="nav__item">
                         <a href="../market/index.php" class="nav__link">Market</a>
                     </li>
 
@@ -259,29 +255,31 @@
 
     <!--==================== FOOTER ====================-->
     <footer class="footer section">
-        <div class="footer__container container grid">
-            <div class="footer__content">
-                <a href="#" class="footer__logo">
-                    <img src="../../assets/img/logo3.png" alt="" class="footer__logo-img">
-                </a>
+                <div class="footer__container container grid">
+                    <div class="footer__content">
+                        <a href="#" class="footer__logo">
+                            <img src="../../assets/img/logo1.png" alt="" class="footer__logo-img">
+                            ArtRise
+                        </a>
 
-                <p class="footer__description"> Let your Art <br> Beautify the world.</p>
-
-                <div class="footer__social">
-                    <a href="https://www.facebook.com/" target="_blank" class="footer__social-link">
-                        <i class='bx bxl-facebook'></i>
-                    </a>
-                    <a href="https://www.instagram.com/" target="_blank" class="footer__social-link">
-                        <i class='bx bxl-instagram-alt'></i>
-                    </a>
-                    <a href="https://twitter.com/" target="_blank" class="footer__social-link">
-                        <i class='bx bxl-twitter'></i>
-                    </a>
-                </div>
-            </div>
+                        <p class="footer__description">Enjoy the thrill of creativity</p>
+                        
+                        <div class="footer__social">
+                            <a href="https://www.facebook.com/" target="_blank" class="footer__social-link">
+                                <i class='bx bxl-facebook'></i>
+                            </a>
+                            <a href="https://www.instagram.com/" target="_blank" class="footer__social-link">
+                                <i class='bx bxl-instagram-alt' ></i>
+                            </a>
+                            <a href="https://twitter.com/" target="_blank" class="footer__social-link">
+                                <i class='bx bxl-twitter' ></i>
+                            </a>
+                        </div>
+                    </div>
 
                     <div class="footer__content">
                         <h3 class="footer__title">About</h3>
+                        
                         <ul class="footer__links">
                             <li>
                                 <a href="#" class="footer__link">About Us</a>
@@ -289,42 +287,31 @@
                             <li>
                                 <a href="#" class="footer__link">Features</a>
                             </li>
-                            <li>
-                                <a href="#" class="footer__link">News</a>
-                            </li>
                         </ul>
                     </div>
+
                     <div class="footer__content">
                         <h3 class="footer__title">Our Services</h3>
                         
                         <ul class="footer__links">
                             <li>
-                                <a href="#" class="footer__link">Pricing</a>
+                                <a href="users/index.php" class="footer__link">Dive into Art</a>
                             </li>
                             <li>
-                                <a href="#" class="footer__link">Discounts</a>
+                                <a href="users/index.php" class="footer__link">Dive into Music </a>
                             </li>
                             <li>
-                                <a href="#" class="footer__link">Shipping mode</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="footer__content">
-                        <h3 class="footer__title">Our Company</h3>
-                        
-                        <ul class="footer__links">
-                            <li>
-                                <a href="#" class="footer__link">Blog</a>
+                                <a href="users/index.php" class="footer__link">Dive into Visual Treats</a>
                             </li>
                             <li>
-                                <a href="#" class="footer__link">About us</a>
-                            </li>
-                            <li>
-                                <a href="#" class="footer__link">Our mision</a>
+                                <a href="users/index.php" class="footer__link">Dive into Literature</a>
                             </li>
                         </ul>
                     </div>
                 </div>
+
+                <span class="footer__copy">&#169; ArtRise. All rigths reserved</span>
+
             </footer>
         
         <!--=============== MAIN JS ===============-->

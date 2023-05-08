@@ -46,11 +46,7 @@
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list">
                         <li class="nav__item">
-                            <a href="../homepage/" class="nav__link active-link">Home</a>
-                        </li>
-
-                        <li class="nav__item">
-                            <a href="#" class="nav__link">About</a>
+                            <a href="#" class="nav__link active-link">Home</a>
                         </li>
 
                         <li class="nav__item">
@@ -221,7 +217,7 @@
       </main>
 
         <!--==================== FOOTER ====================-->
-            <footer class="footer section">
+        <footer class="footer section">
                 <div class="footer__container container grid">
                     <div class="footer__content">
                     <a href="#" class="footer__logo">
@@ -245,6 +241,7 @@
 
                     <div class="footer__content">
                         <h3 class="footer__title">About</h3>
+                        
                         <ul class="footer__links">
                             <li>
                                 <a href="#" class="footer__link">About Us</a>
@@ -252,42 +249,31 @@
                             <li>
                                 <a href="#" class="footer__link">Features</a>
                             </li>
-                            <li>
-                                <a href="#" class="footer__link">News</a>
-                            </li>
                         </ul>
                     </div>
+
                     <div class="footer__content">
                         <h3 class="footer__title">Our Services</h3>
                         
                         <ul class="footer__links">
                             <li>
-                                <a href="#" class="footer__link">Pricing</a>
+                                <a href="../drawing/index.php" class="footer__link">Dive into Art</a>
                             </li>
                             <li>
-                                <a href="#" class="footer__link">Discounts</a>
+                                <a href="../music/index.php" class="footer__link">Dive into Music </a>
                             </li>
                             <li>
-                                <a href="#" class="footer__link">Shipping mode</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="footer__content">
-                        <h3 class="footer__title">Our Company</h3>
-                        
-                        <ul class="footer__links">
-                            <li>
-                                <a href="#" class="footer__link">Blog</a>
+                                <a href="../visual/index.php" class="footer__link">Dive into Visual Treats</a>
                             </li>
                             <li>
-                                <a href="#" class="footer__link">About us</a>
-                            </li>
-                            <li>
-                                <a href="#" class="footer__link">Our mision</a>
+                                <a href="#" class="footer__link">Dive into Literature</a>
                             </li>
                         </ul>
                     </div>
                 </div>
+
+                <span class="footer__copy">&#169; ArtRise. All rigths reserved</span>
+
             </footer>
             <!--=============== SCROLL UP ===============-->
             <a href="#" class="scrollup" id="scroll-up">

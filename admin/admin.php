@@ -12,8 +12,9 @@
         $qual = $row1['qualification'];
         $pass = $row1['password'];
 
-        $sql = "insert into critics (name, email, critic_type, qualification, password) 
-                values ('$name', '$email', '$type', '$qual','$pass');";
+        $path='noimage.png';
+        $sql = "insert into critics (name, profile_pic, email, critic_type, qualification, password) 
+                values ('$name','$path','$email', '$type', '$qual','$pass');";
         $result2 = mysqli_query($conn, $sql);
         $sql = "delete from critics_request where email ='$email'; ";
         $result2 = mysqli_query($conn, $sql);
