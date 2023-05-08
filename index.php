@@ -39,9 +39,6 @@
 
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list">
-                        <li class="nav__item">
-                            <a href="#" class="nav__link active-link">Home</a>
-                        </li>
                         <a href="users" class="button button--ghost">Login</a>
                     </ul>
 
@@ -78,14 +75,13 @@
                                 </div>
     
                                 <div class="home__data">
-                                    <h3 class="home__subtitle">#1 Top Scariest Ghost</h3>
+                                    <h3 class="home__subtitle">#1 Top Rated in Art</h3>
                                     <h1 class="home__title">UOOOO <br> TRICK OR <br> TREAT!!</h1>
                                     <p class="home__description">This painting is a personification of my situation, which is why I captioned it 'Trapped by reality, freed by imagination.' For me art, be it sketching or painting, has always been therapeutic, more so during this lockdown.
                                     </p>
 
                                     <div class="home__buttons">
-                                        <a href="#" class="button">Book Now</a>
-                                        <a href="#" class="button--link button--flex">Track Record <i class='bx bx-right-arrow-alt button__icon'></i></a>
+                                        <a href="users/index.php" class="button">Buy Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -105,15 +101,14 @@
                                 </div>
     
                                 <div class="home__data">
-                                    <h3 class="home__subtitle">#2 top Best Place</h3>
+                                    <h3 class="home__subtitle">#2 Top rated in Art</h3>
                                     <h1 class="home__title">BRING BACK <br> MY COTTON <br> CANDY</h1>
                                     <p class="home__description">Person Sitting on Mountain Cliff.
 
                                     </p>
 
                                     <div class="home__buttons">
-                                        <a href="#" class="button">Book Now</a>
-                                        <a href="#" class="button--link button--flex">Track Record <i class='bx bx-right-arrow-alt button__icon'></i></a>
+                                        <a href="users/index.php" class="button">Buy Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -133,14 +128,13 @@
                                 </div>
     
                                 <div class="home__data">
-                                    <h3 class="home__subtitle">#3 Top Worship Place</h3>
+                                    <h3 class="home__subtitle">#3 Top Rated in Art</h3>
                                     <h1 class="home__title">HABIBI <br> COME TO <br> DUBAI</h1>
                                     <p class="home__description">Pagoda Towers were originally used as a place for religious ceremonies, worship, and meditation, but today they are also used for secular purposes such as landmarks or as tourist attractions.
                                     </p>
 
                                     <div class="home__buttons">
-                                        <a href="#" class="button">Book Now</a>
-                                        <a href="#" class="button--link button--flex">Track Record <i class='bx bx-right-arrow-alt button__icon'></i></a>
+                                        <a href="users/index.php" class="button">Buy Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -156,21 +150,27 @@
 
                 <div class="category__container container grid">
                     <div class="category__data">
-                        <img src="assets/img/img5.jpg" alt="" class="category__img">
+                    <a href="users/index.php">
+                        <img src="src/drawing.jpg" alt="" class="category__img">
                         <h3 class="category__title">Paintings</h3>
-                        <p class="category__description">Choose the Paintings which touches your heart</p>
+                        <p class="category__description" style="color: white;">Paintings which touches your heart</p>
+                    </a>
                     </div>
 
                     <div class="category__data">
-                        <img src="assets/img/img6.png" alt="" class="category__img">
+                    <a href="users/index.php">
+                        <img src="src/music.jpg" alt="" class="category__img">
                         <h3 class="category__title">Music</h3>
-                        <p class="category__description">Pick your daily drive</p>
+                        <p class="category__description" style="color: white;">Pick your daily drive</p>
+                    </a>
                     </div>
 
                     <div class="category__data">
-                        <img src="assets/img/img7.png" alt="" class="category__img">
-                        <h3 class="category__title">sculpture</h3>
-                        <p class="category__description">Pick the most loved sculpture</p>
+                    <a href="users/index.php">
+                        <img src="src/visual.jpg" alt="" class="category__img">
+                        <h3 class="category__title">Visual</h3>
+                        <p class="category__description" style="color: white;">Enjoy the shorts</p>
+                    </a>
                     </div>
                 </div>
             </section>
@@ -179,7 +179,7 @@
             <section class="section about" id="about">
                 <div class="about__container container grid">
                     <div class="about__data">
-                        <h2 class="section__title about__title">About WebSite <br> ArtRise</h2>
+                        <h2 class="section__title about__title">About ArtRise</h2>
                         <p class="about__description">At ArtRise, we're passionate about promoting emerging artists and helping them gain the recognition they deserve. We believe that art has the power to inspire, challenge, and transform, and we're excited to be a part of that journey.
                         </p>
                         <a href="#" class="button">Know more</a>
@@ -217,7 +217,7 @@
                             ArtRise
                         </a>
 
-                        <p class="footer__description">Enjoy the scariest night <br> of your life.</p>
+                        <p class="footer__description">Enjoy the thrill of creativity</p>
                         
                         <div class="footer__social">
                             <a href="https://www.facebook.com/" target="_blank" class="footer__social-link">
@@ -242,9 +242,6 @@
                             <li>
                                 <a href="#" class="footer__link">Features</a>
                             </li>
-                            <li>
-                                <a href="#" class="footer__link">News</a>
-                            </li>
                         </ul>
                     </div>
 
@@ -253,35 +250,22 @@
                         
                         <ul class="footer__links">
                             <li>
-                                <a href="#" class="footer__link">Pricing</a>
+                                <a href="users/index.php" class="footer__link">Dive into Art</a>
                             </li>
                             <li>
-                                <a href="#" class="footer__link">Discounts</a>
+                                <a href="users/index.php" class="footer__link">Dive into Music </a>
                             </li>
                             <li>
-                                <a href="#" class="footer__link">Shipping mode</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="footer__content">
-                        <h3 class="footer__title">Our Company</h3>
-                        
-                        <ul class="footer__links">
-                            <li>
-                                <a href="#" class="footer__link">Blog</a>
+                                <a href="users/index.php" class="footer__link">Dive into Visual Treats</a>
                             </li>
                             <li>
-                                <a href="#" class="footer__link">About us</a>
-                            </li>
-                            <li>
-                                <a href="#" class="footer__link">Our mision</a>
+                                <a href="users/index.php" class="footer__link">Dive into Literature</a>
                             </li>
                         </ul>
                     </div>
                 </div>
 
-                <span class="footer__copy">&#169; Bedimcode. All rigths reserved</span>
+                <span class="footer__copy">&#169; ArtRise. All rigths reserved</span>
 
             </footer>
 
