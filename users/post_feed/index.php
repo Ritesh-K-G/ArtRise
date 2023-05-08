@@ -140,14 +140,14 @@
             </section>
         </main>
         <!--==================== FOOTER ====================-->
-            <footer class="footer section">
+        <footer class="footer section">
                 <div class="footer__container container grid">
                     <div class="footer__content">
-                        <a href="#" class="footer__logo">
-                            <img src="../../assets/img/logo.png" alt="" class="footer__logo-img">
-                            Halloween
-                        </a>
-                        <p class="footer__description">Enjoy the scariest night <br> of your life.</p>
+                    <a href="#" class="footer__logo">
+                    <img src="../../assets/img/logo3.png" alt="" class="footer__logo-img">
+                    </a>
+
+                    <p class="footer__description"> Let your Art <br> Beautify the world.</p>
                         
                         <div class="footer__social">
                             <a href="https://www.facebook.com/" target="_blank" class="footer__social-link">
@@ -162,51 +162,42 @@
                         </div>
                     </div>
 
-            <div class="footer__content">
-                <h3 class="footer__title">About</h3>
-                <ul class="footer__links">
-                    <li>
-                        <a href="#" class="footer__link">About Us</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer__link">Features</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer__link">News</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="footer__content">
-                <h3 class="footer__title">Our Services</h3>
+                    <div class="footer__content">
+                        <h3 class="footer__title">About</h3>
+                        
+                        <ul class="footer__links">
+                            <li>
+                                <a href="#" class="footer__link">About Us</a>
+                            </li>
+                            <li>
+                                <a href="#" class="footer__link">Features</a>
+                            </li>
+                        </ul>
+                    </div>
 
-                <ul class="footer__links">
-                    <li>
-                        <a href="#" class="footer__link">Pricing</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer__link">Discounts</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer__link">Shipping mode</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="footer__content">
-                <h3 class="footer__title">Our Company</h3>
-                <ul class="footer__links">
-                    <li>
-                        <a href="#" class="footer__link">Blog</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer__link">About us</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer__link">Our mision</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </footer>
+                    <div class="footer__content">
+                        <h3 class="footer__title">Our Services</h3>
+                        
+                        <ul class="footer__links">
+                            <li>
+                                <a href="../drawing/index.php" class="footer__link">Dive into Art</a>
+                            </li>
+                            <li>
+                                <a href="../music/index.php" class="footer__link">Dive into Music </a>
+                            </li>
+                            <li>
+                                <a href="../visual/index.php" class="footer__link">Dive into Visual Treats</a>
+                            </li>
+                            <li>
+                                <a href="../literary/index.php" class="footer__link">Dive into Literature</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <span class="footer__copy">&#169; ArtRise. All rigths reserved</span>
+
+            </footer>
     <!--=============== SCROLL UP ===============-->
     <a href="#" class="scrollup" id="scroll-up">
         <i class='bx bx-up-arrow-alt scrollup__icon'></i>

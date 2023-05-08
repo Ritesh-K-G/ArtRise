@@ -23,13 +23,13 @@
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'imironman497@gmail.com';
-            $mail->Password = 'bnqyuiuspzkxzsis';
+            $mail->Username = 'artrise.mail.verify@gmail.com';
+            $mail->Password = 'kijqnshwkwtkljer';
 
             $mail->SMTPSecure = 'ssl';
             $mail->Port = 465;
 
-            $mail->setFrom('imironman497@gmail.com');
+            $mail->setFrom('artrise.mail.verify@gmail.com');
             $mail->addAddress($emailid);
             $mail->isHTML(true);
 

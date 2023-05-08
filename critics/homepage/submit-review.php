@@ -28,7 +28,7 @@ if (empty($star_index) || empty($review)) {
     echo "Error: " . mysqli_error($conn);
   }
 
-  $sqlk = "insert into judges values ('$critic_id', '$content_id', '$review');";
+  $sqlk = "insert into judges (critics_id, content_id, review) values ('$critic_id', '$content_id', '$review');";
   $resultk = mysqli_query($conn, $sqlk);
 
   $sql2 = "select * from critics_content where content_id = '$content_id';";
@@ -51,9 +51,9 @@ if (empty($star_index) || empty($review)) {
     $rating = $row['rating'];
     $art_type = $row['art_type'];
     $file_type = $row['file_type'];
-    $upload_date = $row['upload_date'];
-    $sql3 = "insert into users_content (content_id, content, creator_id, description, ratings, art_type, file_type, upload_date)
-          values ('$content_id', '$content', '$user_id', '$description', '$rating', '$art_type', '$file_type', '$upload_date');";
+    // $upload_date = $row['upload_date'];
+    $sql3 = "insert into users_content (content_id, content, creator_id, description, ratings, art_type, file_type)
+          values ('$content_id', '$content', '$user_id', '$description', '$rating', '$art_type', '$file_type');";
     $result = mysqli_query($conn, $sql3);
     $msg = "Your Content with id = " . $content_id . " has been approved.";
     $sql = "INSERT INTO notification (user_id, msg) VALUES ('$user_id', '$msg');";
