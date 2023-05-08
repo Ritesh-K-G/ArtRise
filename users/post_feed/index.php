@@ -146,11 +146,11 @@
             <footer class="footer section">
                 <div class="footer__container container grid">
                     <div class="footer__content">
-                        <a href="#" class="footer__logo">
-                            <img src="../../assets/img/logo.png" alt="" class="footer__logo-img">
-                            Halloween
-                        </a>
-                        <p class="footer__description">Enjoy the scariest night <br> of your life.</p>
+                    <a href="#" class="footer__logo">
+                    <img src="../../assets/img/logo3.png" alt="" class="footer__logo-img">
+                    </a>
+
+                    <p class="footer__description"> Let your Art <br> Beautify the world.</p>
                         
                         <div class="footer__social">
                             <a href="https://www.facebook.com/" target="_blank" class="footer__social-link">
