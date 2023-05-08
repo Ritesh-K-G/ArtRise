@@ -491,7 +491,6 @@ if (!isset($_SESSION['user_id'])) {
         //     });
         // });
     </script>
-
     <!--=============== MAIN JS ===============-->
     <!-- <script src="../../assets/js/main.js"></script> -->
     <script src="script.js"></script>

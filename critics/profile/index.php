@@ -85,7 +85,7 @@
                                 <span class="glyphicon glyphicon-camera"></span>
                                 <span>Change Image</span>
                             </label>
-                            <input id="file" type="file" onchange="loadFile(event)" />
+                            <input id="file" type="file" onchange="updateProfilePic(event)" />
                             <?php echo "<img src='../../src/" . $row['profile_pic'] ."' id='output' width='200' />"; ?>
                         </div>
                     </div>
@@ -283,6 +283,30 @@
     </a>
     <!--=============== SCROLL REVEAL ===============-->
     <script src="../../assets/js/scrollreveal.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+    // var loadFile = function (event) {
+      // var image = document.getElementById("output");
+      // image.src = URL.createObjectURL(event.target.files[0]);
+    // };
+      function updateProfilePic(event) {
+        console.log("doing");
+        var image = document.getElementById("output");
+        image.src = URL.createObjectURL(event.target.files[0]);
+    
+        // Create FormData object and append file data
+        var formData = new FormData();
+        formData.append("file", event.target.files[0]);
+    
+        // Make AJAX request to PHP script
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "update_pic.php");
+        xhr.send(formData);
+        console.log("done");
+      }
+</script>
 
     <!--=============== SWIPER JS ===============-->
     <script src="../../assets/js/swiper-bundle.min.js"></script>
