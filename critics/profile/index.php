@@ -50,14 +50,6 @@
                     </li>
 
                     <li class="nav__item">
-                        <a href="#" class="nav__link">About</a>
-                    </li>
-
-                    <li class="nav__item">
-                        <a href="#" class="nav__link">Contact</a>
-                    </li>
-
-                    <li class="nav__item">
                         <a href="../profile" class="nav__link active-link">Profile</a>
                     </li>
 
@@ -90,7 +82,7 @@
                                 <span>Change Image</span>
                             </label>
                             <input id="file" type="file" onchange="loadFile(event)" />
-                            <img src="../../src/singing.png" id="output" width="200" />
+                            <?php echo "<img src='../../src/" . $row['profile_pic'] ."' id='output' width='200' />"; ?>
                         </div>
                     </div>
 
@@ -162,7 +154,7 @@
                           <div id="carding" class="discount__container container grid">
                             <div class="feed-card">
                               <div class="profile-picture">
-                                <img src="https://m.media-amazon.com/images/I/415MsdCcduL.png" alt="Profile Picture">
+                                <img src="../../src/'.$nrow['profile_pic'].'" alt="Profile Picture">
                               </div>
                               <div class="feed-content">
                                 <div class="username">';
