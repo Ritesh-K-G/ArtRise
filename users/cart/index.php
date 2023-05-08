@@ -48,10 +48,6 @@
                     </li>
 
                     <li class="nav__item">
-                        <a href="#" class="nav__link">About</a>
-                    </li>
-
-                    <li class="nav__item">
                         <a href="../market/index.php" class="nav__link">Market</a>
                     </li>
 

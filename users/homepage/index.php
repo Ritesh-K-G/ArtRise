@@ -54,11 +54,6 @@ if (!isset($_SESSION['user_id'])) {
                     <li class="nav__item">
                         <a href="#" class="nav__link active-link">Home</a>
                     </li>
-
-                    <li class="nav__item">
-                        <a href="#" class="nav__link">About</a>
-                    </li>
-
                     <li class="nav__item">
                         <a href="../market/index.php" class="nav__link">Market</a>
                     </li>
@@ -182,19 +177,20 @@ if (!isset($_SESSION['user_id'])) {
             while ($row = mysqli_fetch_array($result)) {
                 $file_type = $row['file_type'];
                 $content_id = $row['content_id'];
+                $creator = $row['creator_id'];
+                $sql = "select * from users where user_id = '$creator';";
+                $result_inner = mysqli_query($conn, $sql);
+                $nrow = mysqli_fetch_assoc($result_inner);
                 echo '
                     <section id="my_feed">
                         <div id="carding" class="discount__container container grid">
                             <div class="feed-card">
                                 <div class="profile-picture">
-                                    <img src="https://m.media-amazon.com/images/I/415MsdCcduL.png" alt="Profile Picture">
+                                    <img src="../../src/'.$nrow['profile_pic'].'" alt="Profile Picture">
                                 </div>
                                 <div class="feed-content">
-                                    <div class="username">';
-                                    $creator = $row['creator_id'];
-                                    $sql = "select * from users where user_id = '$creator';";
-                                    $result_inner = mysqli_query($conn, $sql);
-                                    $nrow = mysqli_fetch_assoc($result_inner);
+                                <div class="username">';
+
                                     $uploader_name = $nrow['name'];
                                     echo $uploader_name;
                                 echo 
