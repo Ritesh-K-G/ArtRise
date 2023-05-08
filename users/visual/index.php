@@ -200,15 +200,15 @@
       </main>
 
         <!--==================== FOOTER ====================-->
-            <footer class="footer section">
+        <footer class="footer section">
                 <div class="footer__container container grid">
                     <div class="footer__content">
                         <a href="#" class="footer__logo">
-                            <img src="../../assets/img/logo.png" alt="" class="footer__logo-img">
-                            Halloween
+                            <img src="../../assets/img/logo1.png" alt="" class="footer__logo-img">
+                            ArtRise
                         </a>
 
-                        <p class="footer__description">Enjoy the scariest night <br> of your life.</p>
+                        <p class="footer__description">Enjoy the thrill of creativity</p>
                         
                         <div class="footer__social">
                             <a href="https://www.facebook.com/" target="_blank" class="footer__social-link">
@@ -225,6 +225,7 @@
 
                     <div class="footer__content">
                         <h3 class="footer__title">About</h3>
+                        
                         <ul class="footer__links">
                             <li>
                                 <a href="#" class="footer__link">About Us</a>
@@ -232,42 +233,31 @@
                             <li>
                                 <a href="#" class="footer__link">Features</a>
                             </li>
-                            <li>
-                                <a href="#" class="footer__link">News</a>
-                            </li>
                         </ul>
                     </div>
+
                     <div class="footer__content">
                         <h3 class="footer__title">Our Services</h3>
                         
                         <ul class="footer__links">
                             <li>
-                                <a href="#" class="footer__link">Pricing</a>
+                                <a href="../drawing/index.php" class="footer__link">Dive into Art</a>
                             </li>
                             <li>
-                                <a href="#" class="footer__link">Discounts</a>
+                                <a href="../music/index.php" class="footer__link">Dive into Music </a>
                             </li>
                             <li>
-                                <a href="#" class="footer__link">Shipping mode</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="footer__content">
-                        <h3 class="footer__title">Our Company</h3>
-                        
-                        <ul class="footer__links">
-                            <li>
-                                <a href="#" class="footer__link">Blog</a>
+                                <a href="../visual/index.php" class="footer__link">Dive into Visual Treats</a>
                             </li>
                             <li>
-                                <a href="#" class="footer__link">About us</a>
-                            </li>
-                            <li>
-                                <a href="#" class="footer__link">Our mision</a>
+                                <a href="#" class="footer__link">Dive into Literature</a>
                             </li>
                         </ul>
                     </div>
                 </div>
+
+                <span class="footer__copy">&#169; ArtRise. All rigths reserved</span>
+
             </footer>
             <!--=============== SCROLL UP ===============-->
             <a href="#" class="scrollup" id="scroll-up">
