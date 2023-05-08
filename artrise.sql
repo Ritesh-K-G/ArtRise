@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 08, 2023 at 01:42 AM
+-- Generation Time: May 08, 2023 at 10:04 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -73,13 +73,7 @@ INSERT INTO `chatroom` (`room_id`, `user1`, `user2`, `last_msg`) VALUES
 (7, 8, 8, 'Say Hello'),
 (8, 9, 9, 'Say Hello'),
 (9, 10, 10, 'Say Hello'),
-(10, 11, 11, 'hi'),
-(11, 8, 25, 'Say Hello'),
-(12, 9, 25, 'Say Hello'),
-(13, 10, 25, 'Say Hello'),
-(14, 11, 25, 'Say Hello'),
-(15, 24, 25, 'Say Hello'),
-(16, 25, 25, 'Say Hello');
+(10, 11, 11, 'hi');
 
 -- --------------------------------------------------------
 
@@ -103,7 +97,7 @@ CREATE TABLE `critics` (
 --
 
 INSERT INTO `critics` (`critics_id`, `name`, `profile_pic`, `email`, `critic_type`, `qualification`, `password`, `about`) VALUES
-(4, 'parth', 'noimage.png', 'parth@gmail.com', 'art', 'B-tech', '$2y$10$lgMbGiNYJWYNosXlpUXI8OgrjJ0nrjT0JmAWe9Jll3cfcgtpA3Zey', 'i am a disco dancer'),
+(4, 'parth', '6459533619894.jpg', 'parth@gmail.com', 'art', 'B-tech', '$2y$10$lgMbGiNYJWYNosXlpUXI8OgrjJ0nrjT0JmAWe9Jll3cfcgtpA3Zey', 'i am a disco dancer'),
 (5, 'Dhairya', 'noimage.png', 'dhairya@gmail.com', 'art', 'B-Tech', '$2y$10$NFzs/5inMNVNaEi1k6/5m.kLM7BwV0k9m63by3cI5C5xfiWFcE5VC', 'User has not added this field'),
 (6, 'Jinam Jain', 'noimage.png', 'jinam@gmail.com', 'art', 'B-Tech', '$2y$10$eNP0VAdqJcJhgNaAYNPh3O42Ink6ao6IHlVRdTqlTxYHLQEB6gI0e', 'User has not added this field'),
 (7, 'pankti@gmail.com', 'noimage.png', 'pankti@gmail.com', 'art', 'B-Tech', '$2y$10$D1/9Y28wvkG.Zvkrev3exe9AC5m.vA9oGUI/yQ2sQ.No8tjyFfSeC', 'User has not added this field'),
@@ -392,7 +386,7 @@ INSERT INTO `users` (`user_id`, `name`, `profile_pic`, `email`, `contact`, `age`
 (8, 'jinam', 'noimage.png', 'jinam@gmail.com', '1234457887', 69, '$2y$10$wDku1uQwRDu9mXvydSX7qerDtTFY38Isxn/R40UKTmXPKodaM.WmC', '', 0),
 (9, 'Ritesh', 'noimage.png', 'r@g.com', '123', 10, '$2y$10$TPScjiCd5rAt1cKMI0iS5ueQMzv1RmAMEHXP9R14MWobPjhq105nS', '', 0),
 (10, 'parth', 'noimage.png', 'parth@gmail.com', '123445321', 19, '$2y$10$g/4Ac5hFfvuSKoE.5LbVieH22uzm/WOCoSyoBmhdf3eCE/BpzrEM2', '', 1),
-(11, 'Ritesh K G', 'noimage.png', 'ritesh.kumargupta.7549@gmail.com', '7903653934', 20, '$2y$10$.NhNdm7vWDj/jLcEdxSwYuk2jPoXac.n1V63qdD0znyf6X2MS3rle', 'e8b0d244ae3527c19f3e5d6dd48fdf25', 1);
+(11, 'Ritesh K G', '645952b05fbfd.jpg', 'ritesh.kumargupta.7549@gmail.com', '7903653934', 20, '$2y$10$.NhNdm7vWDj/jLcEdxSwYuk2jPoXac.n1V63qdD0znyf6X2MS3rle', 'e8b0d244ae3527c19f3e5d6dd48fdf25', 1);
 
 -- --------------------------------------------------------
 
