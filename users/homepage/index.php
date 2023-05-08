@@ -196,88 +196,88 @@ if (!isset($_SESSION['user_id'])) {
                                 echo 
                                     '</div>
                                     <div class="post-content">';
-                                    echo $row['description'];
-                                    echo '
+                echo $row['description'];
+                echo '
                                     </div>
                                     <div class="post-image">';
-                                        if (strpos($file_type, 'image/') === 0) {
-                                            echo "<img src='../../uploads/critics_content/" . $row['content'] . "'>";
-                                        } else if (strpos($file_type, 'video/') === 0) {
-                                            echo "<video width='320' height='240' controls><source src='../../uploads/critics_content/" . $row['content'] . "' type='$file_type'></video>";
-                                        }
-                                echo '
+                if (strpos($file_type, 'image/') === 0) {
+                    echo "<img src='../../uploads/critics_content/" . $row['content'] . "'>";
+                } else if (strpos($file_type, 'video/') === 0) {
+                    echo "<video width='320' height='240' controls><source src='../../uploads/critics_content/" . $row['content'] . "' type='$file_type'></video>";
+                }
+                echo '
                                     </div>
                                     <div class="like-comment">
                                         <div class="post-actions">
                                         ';
-                                
-                                    ?>
-                                
-                                    <span class="post-likes">
-                                    <form id="post-<?php echo $content_id; ?>" action="increase_likes.php" method="POST">
-                                        <input type="hidden" name="post_id" value="<?php echo $content_id; ?>">
-                                        <button type="submit" id="thumbs-up-<?php echo $content_id; ?>" class="thumbs-up-btn" style="color:white;background:linear-gradient(136deg, hwb(260 3% 80%) 0%, hsl(266, 48%, 16%) 100%);" onclick="event.preventDefault(); increaseLikes(<?php echo $content_id; ?>);">
-                                        <?php
-                                        $sql_likes = "SELECT * FROM likes WHERE content_id = $content_id AND user_id = $user_id";
-                                        $resultl = mysqli_query($conn, $sql_likes);
-                                        if (mysqli_num_rows($resultl) == 0)
-                                            echo '<i class="material-icons" id="thumbs-up-icon-' . $content_id . '">thumb_up</i>';
-                                        else
-                                            echo '<i class="material-icons" id="thumbs-up-icon-' . $content_id . '" style="color: blue;">thumb_up</i>';
-                                        ?>
-                                        </button>
-                                    </form>
-                                    <span id="like-count-<?php echo $content_id; ?>"><?php echo $row["likes"]; ?>&nbsp;likes</span>
-                                    </span>
 
-                                    <?php
+        ?>
 
-                                        echo
-                                        '<span class="post-comments"><i class="material-icons">mode_comment</i>';
-                                        $sql1 = "SELECT * from reviews where content_id = $content_id;";
-                                        $result1 = mysqli_query($conn, $sql1);
-                                        $numComments = mysqli_num_rows($result1);
-                                        echo $numComments;
-                                        echo
-                                        '&nbsp;comments
+                <span class="post-likes">
+                    <form id="post-<?php echo $content_id; ?>" action="increase_likes.php" method="POST">
+                        <input type="hidden" name="post_id" value="<?php echo $content_id; ?>">
+                        <button type="submit" id="thumbs-up-<?php echo $content_id; ?>" class="thumbs-up-btn" style="color:white;background:linear-gradient(136deg, hwb(260 3% 80%) 0%, hsl(266, 48%, 16%) 100%);" onclick="event.preventDefault(); increaseLikes(<?php echo $content_id; ?>);">
+                            <?php
+                            $sql_likes = "SELECT * FROM likes WHERE content_id = $content_id AND user_id = $user_id";
+                            $resultl = mysqli_query($conn, $sql_likes);
+                            if (mysqli_num_rows($resultl) == 0)
+                                echo '<i class="material-icons" id="thumbs-up-icon-' . $content_id . '">thumb_up</i>';
+                            else
+                                echo '<i class="material-icons" id="thumbs-up-icon-' . $content_id . '" style="color: blue;">thumb_up</i>';
+                            ?>
+                        </button>
+                    </form>
+                    <span id="like-count-<?php echo $content_id; ?>"><?php echo $row["likes"]; ?>&nbsp;likes</span>
+                </span>
+
+                <?php
+
+                echo
+                '<span class="post-comments"><i class="material-icons">mode_comment</i>';
+                $sql1 = "SELECT * from reviews where content_id = $content_id;";
+                $result1 = mysqli_query($conn, $sql1);
+                $numComments = mysqli_num_rows($result1);
+                echo $numComments;
+                echo
+                '&nbsp;comments
                                         </span>';
-                                         ?>
+                ?>
 
-                                        
-                                        <span class="post-favorites">
-                                            <form id="post-<?php echo $content_id; ?>" action="add_favourites.php" method="POST">
-                                                <input type="hidden" name="fav_id" value="<?php echo $content_id; ?>">
-                                                <button type="submit" id="fav-btn-<?php echo $content_id; ?>" class="fav-btn" style="color:white;background:linear-gradient(136deg, hwb(260 3% 80%) 0%, hsl(266, 48%, 16%) 100%);" onclick="event.preventDefault(); addFavorite(<?php echo $content_id; ?>);">
-                                                    <?php
-                                                    $sqlf = "SELECT * FROM favourites WHERE content_id = $content_id AND user_id = $user_id";
-                                                    $resultf = mysqli_query($conn, $sqlf);
-                                                    if (mysqli_num_rows($resultf) == 0)
-                                                        echo '<i class="material-icons" id="fav-icon-' . $content_id . '">favorite_border</i>';
-                                                    else
-                                                        echo '<i class="material-icons" id="fav-icon-' . $content_id . '" style="color: red;">favorite</i>';
-                                                    ?>
-                                                </button>
-                                            </form>
-                                            <span>&nbsp;Favorites</span>
-                                        </span>
 
-                                        <?php
-                            echo '</div>
+                <span class="post-favorites">
+                    <form id="post-<?php echo $content_id; ?>" action="add_favourites.php" method="POST">
+                        <input type="hidden" name="fav_id" value="<?php echo $content_id; ?>">
+                        <button type="submit" id="fav-btn-<?php echo $content_id; ?>" class="fav-btn" style="color:white;background:linear-gradient(136deg, hwb(260 3% 80%) 0%, hsl(266, 48%, 16%) 100%);" onclick="event.preventDefault(); addFavorite(<?php echo $content_id; ?>);">
+                            <?php
+                            $sqlf = "SELECT * FROM favourites WHERE content_id = $content_id AND user_id = $user_id";
+                            $resultf = mysqli_query($conn, $sqlf);
+                            if (mysqli_num_rows($resultf) == 0)
+                                echo '<i class="material-icons" id="fav-icon-' . $content_id . '">favorite_border</i>';
+                            else
+                                echo '<i class="material-icons" id="fav-icon-' . $content_id . '" style="color: red;">favorite</i>';
+                            ?>
+                        </button>
+                    </form>
+                    <span>&nbsp;Favorites</span>
+                </span>
+
+        <?php
+                echo '</div>
                                 <div class="post-comments-section">';
-                            while ($row1 = mysqli_fetch_array($result1)) {
-                                echo '
+                while ($row1 = mysqli_fetch_array($result1)) {
+                    echo '
                                     <div class="post-comment">
                                         <p class="comment-author">';
-                                    echo $row1['name'];
-                                    echo 
-                                        '</p>
+                    echo $row1['name'];
+                    echo
+                    '</p>
                                         <p class="comment-text">';
-                                    echo $row1['comment'];
-                                    echo 
-                                        '</p>
+                    echo $row1['comment'];
+                    echo
+                    '</p>
                                     </div>';
-                            }
-                                    echo '
+                }
+                echo '
                                     <form class="add-comment-form" action="add_comment.php" method="post">
                                     <div class="add-comment">
                                         <input type="hidden" name="content_id_comment" value="' . $content_id . '">
@@ -295,30 +295,30 @@ if (!isset($_SESSION['user_id'])) {
         ?>
         <script>
             $('.add-comment-form').submit(function(event) {
-                                        // Prevent the form from submitting normally
-                                        event.preventDefault();
-                                        
-                                        // Get the form data
-                                        var formData = $(this).serialize();
-                                        
-                                        // Send an AJAX request to add_comment.php
-                                        $.ajax({
-                                            type: 'POST',
-                                            url: 'add_comment.php',
-                                            data: formData,
-                                            success: function(response) {
-                                                // Append the new comment to the comments list
-                                                // $('#comments-list').append(response);
-                                                
-                                                // // Reset the form
-                                                // $('#add-comment-form')[0].reset();
-                                                $(this).closest('.post').find('.comments-list').append(response);
-            
-                                                // Reset the form
-                                                $(this)[0].reset();
-                                            }.bind(this)
-                                        });
-                                    });
+                // Prevent the form from submitting normally
+                event.preventDefault();
+
+                // Get the form data
+                var formData = $(this).serialize();
+
+                // Send an AJAX request to add_comment.php
+                $.ajax({
+                    type: 'POST',
+                    url: 'add_comment.php',
+                    data: formData,
+                    success: function(response) {
+                        // Append the new comment to the comments list
+                        // $('#comments-list').append(response);
+
+                        // // Reset the form
+                        // $('#add-comment-form')[0].reset();
+                        $(this).closest('.post').find('.comments-list').append(response);
+
+                        // Reset the form
+                        $(this)[0].reset();
+                    }.bind(this)
+                });
+            });
         </script>
         <?php
         mysqli_close($conn);
@@ -405,90 +405,91 @@ if (!isset($_SESSION['user_id'])) {
             var FavOn = document.getElementById('fav_on');
             FavOn.style.color = 'red';
         }
+
         function addFavorite(contentId) {
-                                                var favIcon = document.getElementById("fav-icon-" + contentId);
+            var favIcon = document.getElementById("fav-icon-" + contentId);
 
-                                                if (favIcon.style.color !== "red") {
-                                                    // User has not favorited the content yet, so add it to favorites
-                                                    console.log("hii");
-                                                    var xhttp = new XMLHttpRequest();
-                                                    xhttp.onreadystatechange = function() {
-                                                        if (this.readyState == 4 && this.status == 200) {
-                                                            favIcon.style.color = "red";
-                                                            // document.getElementById("fav-count-" + contentId).innerHTML = favCount + 1 + "&nbsp;favorites";
-                                                        }
-                                                    };
-                                                    xhttp.open("POST", "add_favourites.php", true);
-                                                    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                                                    xhttp.send("fav_id=" + contentId);
-                                                } else {
-                                                    // User has already favorited the content, so remove it from favorites
-                                                    var xhttp = new XMLHttpRequest();
-                                                    xhttp.onreadystatechange = function() {
-                                                        if (this.readyState == 4 && this.status == 200) {
-                                                            favIcon.style.color = "";
-                                                            // document.getElementById("fav-count-" + contentId).innerHTML = favCount - 1 + "&nbsp;favorites";
-                                                        }
-                                                    };
-                                                    xhttp.open("POST", "remove_favourites.php", true);
-                                                    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                                                    xhttp.send("fav_id=" + contentId);
-                                                }
-                                            }
-                                            function increaseLikes(contentId) {
-                                            var thumbsUpIcon = document.getElementById("thumbs-up-icon-" + contentId);
-                                            var likeCount = parseInt(document.getElementById("like-count-" + contentId).innerHTML);
+            if (favIcon.style.color !== "red") {
+                // User has not favorited the content yet, so add it to favorites
+                console.log("hii");
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        favIcon.style.color = "red";
+                        // document.getElementById("fav-count-" + contentId).innerHTML = favCount + 1 + "&nbsp;favorites";
+                    }
+                };
+                xhttp.open("POST", "add_favourites.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send("fav_id=" + contentId);
+            } else {
+                // User has already favorited the content, so remove it from favorites
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        favIcon.style.color = "";
+                        // document.getElementById("fav-count-" + contentId).innerHTML = favCount - 1 + "&nbsp;favorites";
+                    }
+                };
+                xhttp.open("POST", "remove_favourites.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send("fav_id=" + contentId);
+            }
+        }
 
-                                            if (thumbsUpIcon.style.color !== "blue") {
-                                            console.log("hii");
-                                            // User has not liked the post yet, so increase the like count
-                                            var xhttp = new XMLHttpRequest();
-                                            xhttp.onreadystatechange = function() {
-                                                if (this.readyState == 4 && this.status == 200) {
-                                                thumbsUpIcon.style.color = "blue";
-                                                document.getElementById("like-count-" + contentId).innerHTML = likeCount + 1 + "&nbsp;likes";
+        function increaseLikes(contentId) {
+            var thumbsUpIcon = document.getElementById("thumbs-up-icon-" + contentId);
+            var likeCount = parseInt(document.getElementById("like-count-" + contentId).innerHTML);
 
-                                                }
-                                            };
-                                            xhttp.open("POST", "increase_likes.php", true);
-                                            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                                            xhttp.send("post_id=" + contentId);
-                                            } else {
-                                            // User has already liked the post, so decrease the like count
-                                            var xhttp = new XMLHttpRequest();
-                                            xhttp.onreadystatechange = function() {
-                                                if (this.readyState == 4 && this.status == 200) {
-                                                thumbsUpIcon.style.color = "";
-                                                document.getElementById("like-count-" + contentId).innerHTML = likeCount - 1 + "&nbsp;likes";
-                                                }
-                                            };
-                                            xhttp.open("POST", "decrease_likes.php", true);
-                                            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                                            xhttp.send("post_id=" + contentId);
-                                            }
-                                        }
-                                    //     $('#add-comment-form').submit(function(event) {
-                                    //     // Prevent the form from submitting normally
-                                    //     event.preventDefault();
-                                        
-                                    //     // Get the form data
-                                    //     var formData = $(this).serialize();
-                                        
-                                    //     // Send an AJAX request to add_comment.php
-                                    //     $.ajax({
-                                    //         type: 'POST',
-                                    //         url: 'add_comment.php',
-                                    //         data: formData,
-                                    //         success: function(response) {
-                                    //             // Append the new comment to the comments list
-                                    //             $('#comments-list').append(response);
-                                                
-                                    //             // Reset the form
-                                    //             $('#add-comment-form')[0].reset();
-                                    //         }
-                                    //     });
-                                    // });
+            if (thumbsUpIcon.style.color !== "blue") {
+                console.log("hii");
+                // User has not liked the post yet, so increase the like count
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        thumbsUpIcon.style.color = "blue";
+                        document.getElementById("like-count-" + contentId).innerHTML = likeCount + 1 + "&nbsp;likes";
 
+                    }
+                };
+                xhttp.open("POST", "increase_likes.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send("post_id=" + contentId);
+            } else {
+                // User has already liked the post, so decrease the like count
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        thumbsUpIcon.style.color = "";
+                        document.getElementById("like-count-" + contentId).innerHTML = likeCount - 1 + "&nbsp;likes";
+                    }
+                };
+                xhttp.open("POST", "decrease_likes.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send("post_id=" + contentId);
+            }
+        }
+        //     $('#add-comment-form').submit(function(event) {
+        //     // Prevent the form from submitting normally
+        //     event.preventDefault();
+
+        //     // Get the form data
+        //     var formData = $(this).serialize();
+
+        //     // Send an AJAX request to add_comment.php
+        //     $.ajax({
+        //         type: 'POST',
+        //         url: 'add_comment.php',
+        //         data: formData,
+        //         success: function(response) {
+        //             // Append the new comment to the comments list
+        //             $('#comments-list').append(response);
+
+        //             // Reset the form
+        //             $('#add-comment-form')[0].reset();
+        //         }
+        //     });
+        // });
     </script>
 
     <!--=============== MAIN JS ===============-->

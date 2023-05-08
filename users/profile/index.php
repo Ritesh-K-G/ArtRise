@@ -138,112 +138,127 @@
                         in (select content_id from uploads where user_id=$user_id);";
                         $result=mysqli_query($conn,$sql);
                 
-                        if(mysqli_num_rows($result) > 0)
-                        {
-                            while($row = mysqli_fetch_array($result))
-                            {
-                            $file_type = $row['file_type'];
-                            $content_id = $row['content_id'];
-                            $creator_id= $row['creator_id'];
-                            $sql1="select * from users where user_id=$creator_id;";
-                            $resultu=mysqli_query($conn,$sql1);
-                            $rowu = mysqli_fetch_array($resultu);
-                            echo '
-                            <section id="my_feed">
-                            <div id="carding" class="discount__container container grid">
-                                <div class="feed-card">
-                                <div class="profile-picture">
-                                    <img src="../../src/'.$rowu['profile_pic'].'" alt="Profile Picture">
-                                </div>
-                                <div class="feed-content">
-                                    <div class="username">';
-                                        echo $rowu['name'];
-                                    echo '</div>
-                                    <div class="post-content">';
-                                        echo $row['description'];
-                                    echo '</div>
-                                    <div class="post-image">';
-                                    if (strpos($file_type, 'image/') === 0) {
+                        if (mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_array($result)) {
+                                $file_type = $row['file_type'];
+                                $content_id = $row['content_id'];
+                                $creator = $row['creator_id'];
+                                $sql = "select * from users where user_id = '$creator';";
+                                $result_inner = mysqli_query($conn, $sql);
+                                $nrow = mysqli_fetch_assoc($result_inner);
+                                echo '
+                                    <section id="my_feed">
+                                        <div id="carding" class="discount__container container grid">
+                                            <div class="feed-card">
+                                                <div class="profile-picture">
+                                                    <img src="../../src/'.$nrow['profile_pic'].'" alt="Profile Picture">
+                                                </div>
+                                                <div class="feed-content">
+                                                <div class="username">';
+                
+                                                    $uploader_name = $nrow['name'];
+                                                    echo $uploader_name;
+                                                echo 
+                                                    '</div>
+                                                    <div class="post-content">';
+                                echo $row['description'];
+                                echo '
+                                                    </div>
+                                                    <div class="post-image">';
+                                if (strpos($file_type, 'image/') === 0) {
                                     echo "<img src='../../uploads/critics_content/" . $row['content'] . "'>";
-                                    } else if (strpos($file_type, 'video/') === 0) {
+                                } else if (strpos($file_type, 'video/') === 0) {
                                     echo "<video width='320' height='240' controls><source src='../../uploads/critics_content/" . $row['content'] . "' type='$file_type'></video>";
-                                    }
-                                    echo'</div>
-                                    <div class="like-comment">
-                                        <div class="post-actions">
-                                            <span class="post-likes">
-                                            <form id="post" action="../homepage/increase_likes.php" method="POST">
-                                                <input type="hidden" name="post_id" value="' . $content_id . '">
-                                                <button type="submit" id="thumbs-up" class="thumbs-up-btn" style="color:white;background:linear-gradient(136deg, hwb(260 3% 80%) 0%, hsl(266, 48%, 16%) 100%);">';
-                                                    $sql_likes= "SELECT * FROM likes WHERE content_id= $content_id AND user_id = $user_id";
-                                                    $resultl = mysqli_query($conn, $sql_likes);
-                                                    if(mysqli_num_rows($resultl) == 0)
-                                                        echo '<i class="material-icons" onclick="changeColor_thumbsUp()">thumb_up</i>';
-                                                    else 
-                                                        echo '<i class="material-icons" style="color: blue;">thumb_up</i>';
-                                                    echo '
-                                                </button>
-                                            </form>';
-                                            echo $row["likes"];        
-                                            echo '&nbsp;likes</span>';
-                                            echo '<span class="post-comments"><i class="material-icons">mode_comment</i>';
-                                            $sql1="SELECT * from reviews where content_id = $content_id;";
-                                            $result1=mysqli_query($conn,$sql1);
-                                            $numComments = mysqli_num_rows($result1);
-                                            echo $numComments;
-                                            echo '&nbsp;comments</span>
-
-                                            
-                                            <span class="post-favorites">
-                                            <form id="post" action="../homepage/add_favourites.php" method="POST">
-                                                <input type="hidden" name="fav_id" value="' . $content_id . '">
-                                                <button type="submit" id="fav_on" class="fav-btn" style="color:white;background:linear-gradient(136deg, hwb(260 3% 80%) 0%, hsl(266, 48%, 16%) 100%);">';
-                                                    $sqlf= "SELECT * FROM favourites WHERE content_id= $content_id AND user_id = $user_id";
-                                                    $resultf = mysqli_query($conn, $sqlf);                                        
-                                                    if(mysqli_num_rows($resultf) == 0)
-                                                        echo '<i class="material-icons" onclick="changeColor_Fav()">favorite_border</i>';
-                                                    else
-                                                        echo '<i class="material-icons" onclick="changeColor_Fav()" style="color: red;">favorite</i></i>';
-                                                echo '
-                                                </button>
-                                            </form>';
-                                            echo '&nbsp;Add to favorites
-                                            </span>
+                                }
+                                echo '
+                                                    </div>
+                                                    <div class="like-comment">
+                                                        <div class="post-actions">
+                                                        ';
+                
+                        ?>
+                
+                                <span class="post-likes">
+                                    <form id="post-<?php echo $content_id; ?>" action="increase_likes.php" method="POST">
+                                        <input type="hidden" name="post_id" value="<?php echo $content_id; ?>">
+                                        <button type="submit" id="thumbs-up-<?php echo $content_id; ?>" class="thumbs-up-btn" style="color:white;background:linear-gradient(136deg, hwb(260 3% 80%) 0%, hsl(266, 48%, 16%) 100%);" onclick="event.preventDefault(); increaseLikes(<?php echo $content_id; ?>);">
+                                            <?php
+                                            $sql_likes = "SELECT * FROM likes WHERE content_id = $content_id AND user_id = $user_id";
+                                            $resultl = mysqli_query($conn, $sql_likes);
+                                            if (mysqli_num_rows($resultl) == 0)
+                                                echo '<i class="material-icons" id="thumbs-up-icon-' . $content_id . '">thumb_up</i>';
+                                            else
+                                                echo '<i class="material-icons" id="thumbs-up-icon-' . $content_id . '" style="color: blue;">thumb_up</i>';
+                                            ?>
+                                        </button>
+                                    </form>
+                                    <span id="like-count-<?php echo $content_id; ?>"><?php echo $row["likes"]; ?>&nbsp;likes</span>
+                                </span>
+                
+                                <?php
+                
+                                echo
+                                '<span class="post-comments"><i class="material-icons">mode_comment</i>';
+                                $sql1 = "SELECT * from reviews where content_id = $content_id;";
+                                $result1 = mysqli_query($conn, $sql1);
+                                $numComments = mysqli_num_rows($result1);
+                                echo $numComments;
+                                echo
+                                '&nbsp;comments
+                                                        </span>';
+                                ?>
+                
+                
+                                <span class="post-favorites">
+                                    <form id="post-<?php echo $content_id; ?>" action="add_favourites.php" method="POST">
+                                        <input type="hidden" name="fav_id" value="<?php echo $content_id; ?>">
+                                        <button type="submit" id="fav-btn-<?php echo $content_id; ?>" class="fav-btn" style="color:white;background:linear-gradient(136deg, hwb(260 3% 80%) 0%, hsl(266, 48%, 16%) 100%);" onclick="event.preventDefault(); addFavorite(<?php echo $content_id; ?>);">
+                                            <?php
+                                            $sqlf = "SELECT * FROM favourites WHERE content_id = $content_id AND user_id = $user_id";
+                                            $resultf = mysqli_query($conn, $sqlf);
+                                            if (mysqli_num_rows($resultf) == 0)
+                                                echo '<i class="material-icons" id="fav-icon-' . $content_id . '">favorite_border</i>';
+                                            else
+                                                echo '<i class="material-icons" id="fav-icon-' . $content_id . '" style="color: red;">favorite</i>';
+                                            ?>
+                                        </button>
+                                    </form>
+                                    <span>&nbsp;Favorites</span>
+                                </span>
+                
+                        <?php
+                                echo '</div>
+                                                <div class="post-comments-section">';
+                                while ($row1 = mysqli_fetch_array($result1)) {
+                                    echo '
+                                                    <div class="post-comment">
+                                                        <p class="comment-author">';
+                                    echo $row1['name'];
+                                    echo
+                                    '</p>
+                                                        <p class="comment-text">';
+                                    echo $row1['comment'];
+                                    echo
+                                    '</p>
+                                                    </div>';
+                                }
+                                echo '
+                                                    <form class="add-comment-form" action="add_comment.php" method="post">
+                                                    <div class="add-comment">
+                                                        <input type="hidden" name="content_id_comment" value="' . $content_id . '">
+                                                        <input type="text" name="comment" placeholder="Write a comment">
+                                                        <button type="submit">Post</button>
+                                                    </div>
+                                                    </form>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="post-comments-section">
-                                        ';
-
-                                        // Comment section
-                                        while($row1 = mysqli_fetch_array($result1)) 
-                                        {    
-                                            echo '
-                                            <div class="post-comment">
-                                            <p class="comment-author">';
-                                            echo $row1['name'];
-                                            echo '</p>
-                                            <p class="comment-text">';
-                                            echo $row1['comment'];
-                                            echo '</p>
-                                            </div>
-                                            ';
-                                        }
-
-                                        echo '
-                                        <form action="../homepage/add_comment.php" method="post">
-                                            <div class="add-comment">
-                                                <input type="hidden" name="content_id_comment" value="' . $content_id . '">
-                                                <input type="text" name="comment" placeholder="Write a comment">
-                                                <button type="submit">Post</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                            </section>';
+                                    </section>';
                             }
                         }
-                    ?>
+                        ?>
+                        
                 </div>
 
                 <div id="my_likes">
@@ -255,112 +270,126 @@
                         $sql="SELECT * from users_content where content_id in
                         (select content_id from likes where user_id = $user_id);";
                         $result=mysqli_query($conn,$sql);
-                        if(mysqli_num_rows($result) > 0)
-                        {
-                            while($row = mysqli_fetch_array($result))
-                            {
-                            $file_type = $row['file_type'];
-                            $content_id = $row['content_id'];
-                            $creator_id= $row['creator_id'];
-                            $sql1="select * from users where user_id=$creator_id;";
-                            $resultu=mysqli_query($conn,$sql1);
-                            $rowu = mysqli_fetch_array($resultu);
-                            echo '
-                            <section id="my_feed">
-                            <div id="carding" class="discount__container container grid">
-                                <div class="feed-card">
-                                <div class="profile-picture">
-                                    <img src="../../src/'.$rowu['profile_pic'].'" alt="Profile Picture">
-                                </div>
-                                <div class="feed-content">
-                                    <div class="username">';
-                                        echo $rowu['name'];
-                                    echo '</div>
-                                    <div class="post-content">';
-                                        echo $row['description'];
-                                    echo '</div>
-                                    <div class="post-image">';
-                                    if (strpos($file_type, 'image/') === 0) {
+                        if (mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_array($result)) {
+                                $file_type = $row['file_type'];
+                                $content_id = $row['content_id'];
+                                $creator = $row['creator_id'];
+                                $sql = "select * from users where user_id = '$creator';";
+                                $result_inner = mysqli_query($conn, $sql);
+                                $nrow = mysqli_fetch_assoc($result_inner);
+                                echo '
+                                    <section id="my_feed">
+                                        <div id="carding" class="discount__container container grid">
+                                            <div class="feed-card">
+                                                <div class="profile-picture">
+                                                    <img src="../../src/'.$nrow['profile_pic'].'" alt="Profile Picture">
+                                                </div>
+                                                <div class="feed-content">
+                                                <div class="username">';
+                
+                                                    $uploader_name = $nrow['name'];
+                                                    echo $uploader_name;
+                                                echo 
+                                                    '</div>
+                                                    <div class="post-content">';
+                                echo $row['description'];
+                                echo '
+                                                    </div>
+                                                    <div class="post-image">';
+                                if (strpos($file_type, 'image/') === 0) {
                                     echo "<img src='../../uploads/critics_content/" . $row['content'] . "'>";
-                                    } else if (strpos($file_type, 'video/') === 0) {
+                                } else if (strpos($file_type, 'video/') === 0) {
                                     echo "<video width='320' height='240' controls><source src='../../uploads/critics_content/" . $row['content'] . "' type='$file_type'></video>";
-                                    }
-                                    echo'</div>
-                                    <div class="like-comment">
-                                        <div class="post-actions">
-                                            <span class="post-likes">
-                                            <form id="post" action="../homepage/increase_likes.php" method="POST">
-                                                <input type="hidden" name="post_id" value="' . $content_id . '">
-                                                <button type="submit" id="thumbs-up" class="thumbs-up-btn" style="color:white;background:linear-gradient(136deg, hwb(260 3% 80%) 0%, hsl(266, 48%, 16%) 100%);">';
-                                                    $sql_likes= "SELECT * FROM likes WHERE content_id= $content_id AND user_id = $user_id";
-                                                    $resultl = mysqli_query($conn, $sql_likes);
-                                                    if(mysqli_num_rows($resultl) == 0)
-                                                        echo '<i class="material-icons" onclick="changeColor_thumbsUp()">thumb_up</i>';
-                                                    else 
-                                                        echo '<i class="material-icons" style="color: blue;">thumb_up</i>';
-                                                    echo '
-                                                </button>
-                                            </form>';
-                                            echo $row["likes"];        
-                                            echo '&nbsp;likes</span>';
-                                            echo '<span class="post-comments"><i class="material-icons">mode_comment</i>';
-                                            $sql1="SELECT * from reviews where content_id = $content_id;";
-                                            $result1=mysqli_query($conn,$sql1);
-                                            $numComments = mysqli_num_rows($result1);
-                                            echo $numComments;
-                                            echo '&nbsp;comments</span>
-
-                                            
-                                            <span class="post-favorites">
-                                            <form id="post" action="../homepage/add_favourites.php" method="POST">
-                                                <input type="hidden" name="fav_id" value="' . $content_id . '">
-                                                <button type="submit" id="fav_on" class="fav-btn" style="color:white;background:linear-gradient(136deg, hwb(260 3% 80%) 0%, hsl(266, 48%, 16%) 100%);">';
-                                                    $sqlf= "SELECT * FROM favourites WHERE content_id= $content_id AND user_id = $user_id";
-                                                    $resultf = mysqli_query($conn, $sqlf);                                        
-                                                    if(mysqli_num_rows($resultf) == 0)
-                                                        echo '<i class="material-icons" onclick="changeColor_Fav()">favorite_border</i>';
-                                                    else
-                                                        echo '<i class="material-icons" onclick="changeColor_Fav()" style="color: red;">favorite</i></i>';
-                                                echo '
-                                                </button>
-                                            </form>';
-                                            echo '&nbsp;Add to favorites
-                                            </span>
+                                }
+                                echo '
+                                                    </div>
+                                                    <div class="like-comment">
+                                                        <div class="post-actions">
+                                                        ';
+                
+                        ?>
+                
+                                <span class="post-likes">
+                                    <form id="post-<?php echo $content_id; ?>" action="increase_likes.php" method="POST">
+                                        <input type="hidden" name="post_id" value="<?php echo $content_id; ?>">
+                                        <button type="submit" id="thumbs-up-<?php echo $content_id; ?>" class="thumbs-up-btn" style="color:white;background:linear-gradient(136deg, hwb(260 3% 80%) 0%, hsl(266, 48%, 16%) 100%);" onclick="event.preventDefault(); increaseLikes(<?php echo $content_id; ?>);">
+                                            <?php
+                                            $sql_likes = "SELECT * FROM likes WHERE content_id = $content_id AND user_id = $user_id";
+                                            $resultl = mysqli_query($conn, $sql_likes);
+                                            if (mysqli_num_rows($resultl) == 0)
+                                                echo '<i class="material-icons" id="thumbs-up-icon-' . $content_id . '">thumb_up</i>';
+                                            else
+                                                echo '<i class="material-icons" id="thumbs-up-icon-' . $content_id . '" style="color: blue;">thumb_up</i>';
+                                            ?>
+                                        </button>
+                                    </form>
+                                    <span id="like-count-<?php echo $content_id; ?>"><?php echo $row["likes"]; ?>&nbsp;likes</span>
+                                </span>
+                
+                                <?php
+                
+                                echo
+                                '<span class="post-comments"><i class="material-icons">mode_comment</i>';
+                                $sql1 = "SELECT * from reviews where content_id = $content_id;";
+                                $result1 = mysqli_query($conn, $sql1);
+                                $numComments = mysqli_num_rows($result1);
+                                echo $numComments;
+                                echo
+                                '&nbsp;comments
+                                                        </span>';
+                                ?>
+                
+                
+                                <span class="post-favorites">
+                                    <form id="post-<?php echo $content_id; ?>" action="add_favourites.php" method="POST">
+                                        <input type="hidden" name="fav_id" value="<?php echo $content_id; ?>">
+                                        <button type="submit" id="fav-btn-<?php echo $content_id; ?>" class="fav-btn" style="color:white;background:linear-gradient(136deg, hwb(260 3% 80%) 0%, hsl(266, 48%, 16%) 100%);" onclick="event.preventDefault(); addFavorite(<?php echo $content_id; ?>);">
+                                            <?php
+                                            $sqlf = "SELECT * FROM favourites WHERE content_id = $content_id AND user_id = $user_id";
+                                            $resultf = mysqli_query($conn, $sqlf);
+                                            if (mysqli_num_rows($resultf) == 0)
+                                                echo '<i class="material-icons" id="fav-icon-' . $content_id . '">favorite_border</i>';
+                                            else
+                                                echo '<i class="material-icons" id="fav-icon-' . $content_id . '" style="color: red;">favorite</i>';
+                                            ?>
+                                        </button>
+                                    </form>
+                                    <span>&nbsp;Favorites</span>
+                                </span>
+                
+                        <?php
+                                echo '</div>
+                                                <div class="post-comments-section">';
+                                while ($row1 = mysqli_fetch_array($result1)) {
+                                    echo '
+                                                    <div class="post-comment">
+                                                        <p class="comment-author">';
+                                    echo $row1['name'];
+                                    echo
+                                    '</p>
+                                                        <p class="comment-text">';
+                                    echo $row1['comment'];
+                                    echo
+                                    '</p>
+                                                    </div>';
+                                }
+                                echo '
+                                                    <form class="add-comment-form" action="add_comment.php" method="post">
+                                                    <div class="add-comment">
+                                                        <input type="hidden" name="content_id_comment" value="' . $content_id . '">
+                                                        <input type="text" name="comment" placeholder="Write a comment">
+                                                        <button type="submit">Post</button>
+                                                    </div>
+                                                    </form>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="post-comments-section">
-                                        ';
-
-                                        // Comment section
-                                        while($row1 = mysqli_fetch_array($result1)) 
-                                        {    
-                                            echo '
-                                            <div class="post-comment">
-                                            <p class="comment-author">';
-                                            echo $row1['name'];
-                                            echo '</p>
-                                            <p class="comment-text">';
-                                            echo $row1['comment'];
-                                            echo '</p>
-                                            </div>
-                                            ';
-                                        }
-
-                                        echo '
-                                        <form action="../homepage/add_comment.php" method="post">
-                                            <div class="add-comment">
-                                                <input type="hidden" name="content_id_comment" value="' . $content_id . '">
-                                                <input type="text" name="comment" placeholder="Write a comment">
-                                                <button type="submit">Post</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                            </section>';
+                                    </section>';
                             }
                         }
-                    ?>
+                        ?>
                 </div>
 
                 <div id="my_fav">
@@ -372,110 +401,126 @@
                         $sql="SELECT * from users_content where content_id in
                         (select content_id from favourites where user_id=$user_id);";
                         $result=mysqli_query($conn,$sql);
-                        if(mysqli_num_rows($result) > 0)
-                        {
-                            while($row = mysqli_fetch_array($result))
-                            {
-                            $file_type = $row['file_type'];
-                            $content_id = $row['content_id'];
-                            $creator_id= $row['creator_id'];
-                            $sql1="select * from users where user_id=$creator_id;";
-                            $resultu=mysqli_query($conn,$sql1);
-                            $rowu = mysqli_fetch_array($resultu);
-                            echo '
-                            <section id="my_feed">
-                            <div id="carding" class="discount__container container grid">
-                                <div class="feed-card">
-                                <div class="profile-picture">
-                                    <img src="../../src/'.$rowu['profile_pic'].'" alt="Profile Picture">
-                                </div>
-                                <div class="feed-content">
-                                    <div class="username">';
-                                        echo $rowu['name'];
-                                    echo '</div>
-                                    <div class="post-content">';
-                                        echo $row['description'];
-                                    echo '</div>
-                                    <div class="post-image">';
-                                    if (strpos($file_type, 'image/') === 0) {
+                        if (mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_array($result)) {
+                                $file_type = $row['file_type'];
+                                $content_id = $row['content_id'];
+                                $creator = $row['creator_id'];
+                                $sql = "select * from users where user_id = '$creator';";
+                                $result_inner = mysqli_query($conn, $sql);
+                                $nrow = mysqli_fetch_assoc($result_inner);
+                                echo '
+                                    <section id="my_feed">
+                                        <div id="carding" class="discount__container container grid">
+                                            <div class="feed-card">
+                                                <div class="profile-picture">
+                                                    <img src="../../src/'.$nrow['profile_pic'].'" alt="Profile Picture">
+                                                </div>
+                                                <div class="feed-content">
+                                                <div class="username">';
+                
+                                                    $uploader_name = $nrow['name'];
+                                                    echo $uploader_name;
+                                                echo 
+                                                    '</div>
+                                                    <div class="post-content">';
+                                echo $row['description'];
+                                echo '
+                                                    </div>
+                                                    <div class="post-image">';
+                                if (strpos($file_type, 'image/') === 0) {
                                     echo "<img src='../../uploads/critics_content/" . $row['content'] . "'>";
-                                    } else if (strpos($file_type, 'video/') === 0) {
+                                } else if (strpos($file_type, 'video/') === 0) {
                                     echo "<video width='320' height='240' controls><source src='../../uploads/critics_content/" . $row['content'] . "' type='$file_type'></video>";
-                                    }
-                                    echo'</div>
-                                    <div class="like-comment">
-                                        <div class="post-actions">
-                                            <span class="post-likes">
-                                            <form id="post" action="../homepage/increase_likes.php" method="POST">
-                                                <input type="hidden" name="post_id" value="' . $content_id . '">
-                                                <button type="submit" id="thumbs-up" class="thumbs-up-btn" style="color:white;background:linear-gradient(136deg, hwb(260 3% 80%) 0%, hsl(266, 48%, 16%) 100%);">';
-                                                    $sql_likes= "SELECT * FROM likes WHERE content_id= $content_id AND user_id = $user_id";
-                                                    $resultl = mysqli_query($conn, $sql_likes);
-                                                    if(mysqli_num_rows($resultl) == 0)
-                                                        echo '<i class="material-icons" onclick="changeColor_thumbsUp()">thumb_up</i>';
-                                                    else 
-                                                        echo '<i class="material-icons" style="color: blue;">thumb_up</i>';
-                                                    echo '
-                                                </button>
-                                            </form>';
-                                            echo $row["likes"];        
-                                            echo '&nbsp;likes</span>';
-                                            echo '<span class="post-comments"><i class="material-icons">mode_comment</i>';
-                                            $sql1="SELECT * from reviews where content_id = $content_id;";
-                                            $result1=mysqli_query($conn,$sql1);
-                                            $numComments = mysqli_num_rows($result1);
-                                            echo $numComments;
-                                            echo '&nbsp;comments</span>                                            
-                                            <span class="post-favorites">
-                                            <form id="post" action="../homepage/add_favourites.php" method="POST">
-                                                <input type="hidden" name="fav_id" value="' . $content_id . '">
-                                                <button type="submit" id="fav_on" class="fav-btn" style="color:white;background:linear-gradient(136deg, hwb(260 3% 80%) 0%, hsl(266, 48%, 16%) 100%);">';
-                                                    $sqlf= "SELECT * FROM favourites WHERE content_id= $content_id AND user_id = $user_id";
-                                                    $resultf = mysqli_query($conn, $sqlf);                                        
-                                                    if(mysqli_num_rows($resultf) == 0)
-                                                        echo '<i class="material-icons" onclick="changeColor_Fav()">favorite_border</i>';
-                                                    else
-                                                        echo '<i class="material-icons" onclick="changeColor_Fav()" style="color: red;">favorite</i></i>';
-                                                echo '
-                                                </button>
-                                            </form>';
-                                            echo '&nbsp;Add to favorites
-                                            </span>
+                                }
+                                echo '
+                                                    </div>
+                                                    <div class="like-comment">
+                                                        <div class="post-actions">
+                                                        ';
+                
+                        ?>
+                
+                                <span class="post-likes">
+                                    <form id="post-<?php echo $content_id; ?>" action="increase_likes.php" method="POST">
+                                        <input type="hidden" name="post_id" value="<?php echo $content_id; ?>">
+                                        <button type="submit" id="thumbs-up-<?php echo $content_id; ?>" class="thumbs-up-btn" style="color:white;background:linear-gradient(136deg, hwb(260 3% 80%) 0%, hsl(266, 48%, 16%) 100%);" onclick="event.preventDefault(); increaseLikes(<?php echo $content_id; ?>);">
+                                            <?php
+                                            $sql_likes = "SELECT * FROM likes WHERE content_id = $content_id AND user_id = $user_id";
+                                            $resultl = mysqli_query($conn, $sql_likes);
+                                            if (mysqli_num_rows($resultl) == 0)
+                                                echo '<i class="material-icons" id="thumbs-up-icon-' . $content_id . '">thumb_up</i>';
+                                            else
+                                                echo '<i class="material-icons" id="thumbs-up-icon-' . $content_id . '" style="color: blue;">thumb_up</i>';
+                                            ?>
+                                        </button>
+                                    </form>
+                                    <span id="like-count-<?php echo $content_id; ?>"><?php echo $row["likes"]; ?>&nbsp;likes</span>
+                                </span>
+                
+                                <?php
+                
+                                echo
+                                '<span class="post-comments"><i class="material-icons">mode_comment</i>';
+                                $sql1 = "SELECT * from reviews where content_id = $content_id;";
+                                $result1 = mysqli_query($conn, $sql1);
+                                $numComments = mysqli_num_rows($result1);
+                                echo $numComments;
+                                echo
+                                '&nbsp;comments
+                                                        </span>';
+                                ?>
+                
+                
+                                <span class="post-favorites">
+                                    <form id="post-<?php echo $content_id; ?>" action="add_favourites.php" method="POST">
+                                        <input type="hidden" name="fav_id" value="<?php echo $content_id; ?>">
+                                        <button type="submit" id="fav-btn-<?php echo $content_id; ?>" class="fav-btn" style="color:white;background:linear-gradient(136deg, hwb(260 3% 80%) 0%, hsl(266, 48%, 16%) 100%);" onclick="event.preventDefault(); addFavorite(<?php echo $content_id; ?>);">
+                                            <?php
+                                            $sqlf = "SELECT * FROM favourites WHERE content_id = $content_id AND user_id = $user_id";
+                                            $resultf = mysqli_query($conn, $sqlf);
+                                            if (mysqli_num_rows($resultf) == 0)
+                                                echo '<i class="material-icons" id="fav-icon-' . $content_id . '">favorite_border</i>';
+                                            else
+                                                echo '<i class="material-icons" id="fav-icon-' . $content_id . '" style="color: red;">favorite</i>';
+                                            ?>
+                                        </button>
+                                    </form>
+                                    <span>&nbsp;Favorites</span>
+                                </span>
+                
+                        <?php
+                                echo '</div>
+                                                <div class="post-comments-section">';
+                                while ($row1 = mysqli_fetch_array($result1)) {
+                                    echo '
+                                                    <div class="post-comment">
+                                                        <p class="comment-author">';
+                                    echo $row1['name'];
+                                    echo
+                                    '</p>
+                                                        <p class="comment-text">';
+                                    echo $row1['comment'];
+                                    echo
+                                    '</p>
+                                                    </div>';
+                                }
+                                echo '
+                                                    <form class="add-comment-form" action="add_comment.php" method="post">
+                                                    <div class="add-comment">
+                                                        <input type="hidden" name="content_id_comment" value="' . $content_id . '">
+                                                        <input type="text" name="comment" placeholder="Write a comment">
+                                                        <button type="submit">Post</button>
+                                                    </div>
+                                                    </form>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="post-comments-section">
-                                        ';
-
-                                        // Comment section
-                                        while($row1 = mysqli_fetch_array($result1)) 
-                                        {    
-                                            echo '
-                                            <div class="post-comment">
-                                            <p class="comment-author">';
-                                            echo $row1['name'];
-                                            echo '</p>
-                                            <p class="comment-text">';
-                                            echo $row1['comment'];
-                                            echo '</p>
-                                            </div>
-                                            ';
-                                        }
-
-                                        echo '
-                                        <form action="../homepage/add_comment.php" method="post">
-                                            <div class="add-comment">
-                                                <input type="hidden" name="content_id_comment" value="' . $content_id . '">
-                                                <input type="text" name="comment" placeholder="Write a comment">
-                                                <button type="submit">Post</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                            </section>';
+                                    </section>';
                             }
                         }
-                    ?>
+                        ?>
                 </div>
       </main>
 
@@ -545,5 +590,96 @@
         <!--=============== MAIN JS ===============-->
         <script src="../../assets/js/main.js"></script>
         <script src="script.js"></script>
+        <script>
+        $('.add-comment-form').submit(function(event) {
+            // Prevent the form from submitting normally
+            event.preventDefault();
+
+            // Get the form data
+            var formData = $(this).serialize();
+
+            // Send an AJAX request to add_comment.php
+            $.ajax({
+                type: 'POST',
+                url: '../homepage/add_comment.php',
+                data: formData,
+                success: function(response) {
+                    // Append the new comment to the comments list
+                    // $('#comments-list').append(response);
+
+                    // // Reset the form
+                    // $('#add-comment-form')[0].reset();
+                    $(this).closest('.post').find('.comments-list').append(response);
+
+                    // Reset the form
+                    $(this)[0].reset();
+                }.bind(this)
+            });
+        });
+
+        function addFavorite(contentId) {
+            var favIcon = document.getElementById("fav-icon-" + contentId);
+
+            if (favIcon.style.color !== "red") {
+                // User has not favorited the content yet, so add it to favorites
+                console.log("hii");
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        favIcon.style.color = "red";
+                        // document.getElementById("fav-count-" + contentId).innerHTML = favCount + 1 + "&nbsp;favorites";
+                    }
+                };
+                xhttp.open("POST", "../homepage/add_favourites.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send("fav_id=" + contentId);
+            } else {
+                // User has already favorited the content, so remove it from favorites
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        favIcon.style.color = "";
+                        // document.getElementById("fav-count-" + contentId).innerHTML = favCount - 1 + "&nbsp;favorites";
+                    }
+                };
+                xhttp.open("POST", "../homepage/remove_favourites.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send("fav_id=" + contentId);
+            }
+        }
+
+        function increaseLikes(contentId) {
+            var thumbsUpIcon = document.getElementById("thumbs-up-icon-" + contentId);
+            var likeCount = parseInt(document.getElementById("like-count-" + contentId).innerHTML);
+
+            if (thumbsUpIcon.style.color !== "blue") {
+                console.log("hii");
+                // User has not liked the post yet, so increase the like count
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        thumbsUpIcon.style.color = "blue";
+                        document.getElementById("like-count-" + contentId).innerHTML = likeCount + 1 + "&nbsp;likes";
+
+                    }
+                };
+                xhttp.open("POST", "../homepage/increase_likes.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send("post_id=" + contentId);
+            } else {
+                // User has already liked the post, so decrease the like count
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        thumbsUpIcon.style.color = "";
+                        document.getElementById("like-count-" + contentId).innerHTML = likeCount - 1 + "&nbsp;likes";
+                    }
+                };
+                xhttp.open("POST", "../homepage/decrease_likes.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send("post_id=" + contentId);
+            }
+        }
+    </script>
     </body>
 </html>
