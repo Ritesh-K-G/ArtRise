@@ -154,7 +154,7 @@
                           <div id="carding" class="discount__container container grid">
                             <div class="feed-card">
                               <div class="profile-picture">
-                                <img src="https://m.media-amazon.com/images/I/415MsdCcduL.png" alt="Profile Picture">
+                                <img src="../../src/'.$nrow['profile_pic'].'" alt="Profile Picture">
                               </div>
                               <div class="feed-content">
                                 <div class="username">';
