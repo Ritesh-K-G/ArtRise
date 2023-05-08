@@ -44,9 +44,6 @@
                             <a href="../homepage/index.php" class="nav__link">Home</a>
                         </li>
                         <li class="nav__item">
-                            <a href="#" class="nav__link">About</a>
-                        </li>
-                        <li class="nav__item">
                             <a href="../market/index.php" class="nav__link active-link">Market</a>
                         </li>
                         <li class="nav__item">
