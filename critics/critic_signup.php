@@ -68,12 +68,15 @@
         echo '<script>alert(" Enter Your Art Speciality");setTimeout(()=>{window.location.replace("index.php");},500);</script>';
         exit();
     }
+    else if (strlen($logpass) < 6) {
+        echo '<script>alert("Password should not contain less than 6 characters");setTimeout(()=>{window.location.replace("index.php");},500);</script>';
+    }
     else{
         $v_code = bin2hex(random_bytes(16));
         $sql = "INSERT INTO critics_request (name,email,critic_type,qualification,password,verification_code, is_verified) Values('$logname','$logemail','$logtype','$logqualifi','$loghash','$v_code','0');";
 
         if(sendMail($logemail,$v_code) && $conn->query($sql) == true){
-            echo '<script>alert(" Request to become  Critic sent to admin");setTimeout(()=>{window.location.replace("../index.php");},500);</script>';
+            echo '<script>alert(" Request to become Critic sent to admin");setTimeout(()=>{window.location.replace("../index.php");},500);</script>';
         }
         else{
             // echo '<script>alert(" Some error occured");setTimeout(()=>{window.location.replace("../index.php");},500);</script>';

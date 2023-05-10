@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 08, 2023 at 10:04 PM
+-- Generation Time: May 10, 2023 at 11:34 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -73,7 +73,25 @@ INSERT INTO `chatroom` (`room_id`, `user1`, `user2`, `last_msg`) VALUES
 (7, 8, 8, 'Say Hello'),
 (8, 9, 9, 'Say Hello'),
 (9, 10, 10, 'Say Hello'),
-(10, 11, 11, 'hi');
+(10, 11, 11, 'hi'),
+(17, 8, 28, 'Say Hello'),
+(18, 9, 28, 'Say Hello'),
+(19, 10, 28, 'Say Hello'),
+(20, 11, 28, 'Say Hello'),
+(21, 28, 28, 'Say Hello'),
+(22, 8, 29, 'Say Hello'),
+(23, 9, 29, 'Say Hello'),
+(24, 10, 29, 'Say Hello'),
+(25, 11, 29, 'Say Hello'),
+(26, 28, 29, 'Say Hello'),
+(27, 29, 29, 'Say Hello'),
+(28, 8, 30, 'Say Hello'),
+(29, 9, 30, 'Say Hello'),
+(30, 10, 30, 'Say Hello'),
+(31, 11, 30, 'Say Hello'),
+(32, 28, 30, 'Say Hello'),
+(33, 29, 30, 'Say Hello'),
+(34, 30, 30, 'Say Hello');
 
 -- --------------------------------------------------------
 
@@ -97,12 +115,16 @@ CREATE TABLE `critics` (
 --
 
 INSERT INTO `critics` (`critics_id`, `name`, `profile_pic`, `email`, `critic_type`, `qualification`, `password`, `about`) VALUES
-(4, 'parth', '6459533619894.jpg', 'parth@gmail.com', 'art', 'B-tech', '$2y$10$lgMbGiNYJWYNosXlpUXI8OgrjJ0nrjT0JmAWe9Jll3cfcgtpA3Zey', 'i am a disco dancer'),
-(5, 'Dhairya', 'noimage.png', 'dhairya@gmail.com', 'art', 'B-Tech', '$2y$10$NFzs/5inMNVNaEi1k6/5m.kLM7BwV0k9m63by3cI5C5xfiWFcE5VC', 'User has not added this field'),
-(6, 'Jinam Jain', 'noimage.png', 'jinam@gmail.com', 'art', 'B-Tech', '$2y$10$eNP0VAdqJcJhgNaAYNPh3O42Ink6ao6IHlVRdTqlTxYHLQEB6gI0e', 'User has not added this field'),
-(7, 'pankti@gmail.com', 'noimage.png', 'pankti@gmail.com', 'art', 'B-Tech', '$2y$10$D1/9Y28wvkG.Zvkrev3exe9AC5m.vA9oGUI/yQ2sQ.No8tjyFfSeC', 'User has not added this field'),
-(8, 'Ritesh', 'noimage.png', 'ritesh@gmail.com', 'writing', 'PhD', '$2y$10$Un9MvR10sPpJZqvdVretfeqvpl4qNc4Du5Yaf/My223YEJJcs8CUC', 'User has not added this field'),
-(9, 'Kuber Jain', 'noimage.png', 'kuber@gmail.com', 'art', 'God Level Developer', '$2y$10$uFQtGSDp3wXmIQrv7VDeIeAkwueW9HID7hFjuDJQHJIo1xYu1Dh4y', 'User has not added this field');
+(4, 'parth', '6459533619894.jpg', 'parth@gmail.com', 'art', 'B-tech', '$2y$10$1/.tbEpFg15LSTXj9Se.xunKixXApHEwZOkeCnU3yy.fnZO5FOLxm', 'i am a disco dancer'),
+(5, 'Dhairya', 'noimage.png', 'dhairya@gmail.com', 'art', 'B-Tech', '$2y$10$1/.tbEpFg15LSTXj9Se.xunKixXApHEwZOkeCnU3yy.fnZO5FOLxm', 'User has not added this field'),
+(6, 'Jinam Jain', 'noimage.png', 'jinam@gmail.com', 'art', 'B-Tech', '$2y$10$1/.tbEpFg15LSTXj9Se.xunKixXApHEwZOkeCnU3yy.fnZO5FOLxm', 'User has not added this field'),
+(7, 'pankti@gmail.com', 'noimage.png', 'pankti@gmail.com', 'writing', 'B-Tech', '$2y$10$1/.tbEpFg15LSTXj9Se.xunKixXApHEwZOkeCnU3yy.fnZO5FOLxm', 'User has not added this field'),
+(8, 'Ritesh', 'noimage.png', 'ritesh@gmail.com', 'writing', 'PhD', '$2y$10$1/.tbEpFg15LSTXj9Se.xunKixXApHEwZOkeCnU3yy.fnZO5FOLxm', 'User has not added this field'),
+(9, 'Kuber Jain', 'noimage.png', 'kuber@gmail.com', 'writing', 'God Level Developer', '$2y$10$1/.tbEpFg15LSTXj9Se.xunKixXApHEwZOkeCnU3yy.fnZO5FOLxm', 'User has not added this field'),
+(10, 'Sonu Kumar', 'noimage.png', 'iit2021135@iiita.ac.in', 'visarts', 'B. Tech', '$2y$10$1/.tbEpFg15LSTXj9Se.xunKixXApHEwZOkeCnU3yy.fnZO5FOLxm', 'User has not added this field'),
+(11, 'Dhairya Bhadani', 'noimage.png', 'dhairyabh96@gmail.com', 'music', 'B-Tech', '$2y$10$QSD4RQDybtGdUnKx50l2c.OioSfnFtzMXssI0Q8d9FEsKcOyDy6z2', 'User has not added this field'),
+(12, 'parthGarg', '645b55faa4337.jpg', 'parthgarg497@gmail.com', 'visarts', 'B-tech', '$2y$10$1/.tbEpFg15LSTXj9Se.xunKixXApHEwZOkeCnU3yy.fnZO5FOLxm', 'User has not added this field'),
+(13, 'Tushar Kumar', '645b63b656200.jpg', 'tushar@gmail.com', 'music', 'B-Tech', '$2y$10$1/.tbEpFg15LSTXj9Se.xunKixXApHEwZOkeCnU3yy.fnZO5FOLxm', 'User has not added this field');
 
 -- --------------------------------------------------------
 
@@ -160,6 +182,14 @@ CREATE TABLE `critics_request` (
   `is_verified` int(10) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `critics_request`
+--
+
+INSERT INTO `critics_request` (`name`, `email`, `critic_type`, `qualification`, `password`, `verification_code`, `is_verified`) VALUES
+('Gaurav Singh', 'gaurav@gmail.com', 'visarts', 'B-Tech', '$2y$10$1/.tbEpFg15LSTXj9Se.xunKixXApHEwZOkeCnU3yy.fnZO5FOLxm', '', 1),
+('Parth Maheshwari', 'maheshwari@gmail.com', 'music', 'B-Tech', '$2y$10$1/.tbEpFg15LSTXj9Se.xunKixXApHEwZOkeCnU3yy.fnZO5FOLxm', '', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -180,7 +210,9 @@ INSERT INTO `favourites` (`user_id`, `content_id`) VALUES
 (11, 18),
 (11, 17),
 (11, 18),
-(10, 17);
+(10, 17),
+(28, 18),
+(28, 17);
 
 -- --------------------------------------------------------
 
@@ -226,7 +258,9 @@ CREATE TABLE `likes` (
 
 INSERT INTO `likes` (`user_id`, `content_id`) VALUES
 (11, 17),
-(10, 17);
+(10, 17),
+(28, 18),
+(28, 17);
 
 -- --------------------------------------------------------
 
@@ -330,7 +364,7 @@ CREATE TABLE `reviews` (
 --
 
 INSERT INTO `reviews` (`user_id`, `name`, `content_id`, `comment`) VALUES
-(11, 'Ritesh K G', 18, 'Sneha is the best singer');
+(11, 'Ritesh K G', 18, 'nice');
 
 -- --------------------------------------------------------
 
@@ -383,10 +417,14 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `name`, `profile_pic`, `email`, `contact`, `age`, `password`, `verification_code`, `is_verified`) VALUES
-(8, 'jinam', 'noimage.png', 'jinam@gmail.com', '1234457887', 69, '$2y$10$wDku1uQwRDu9mXvydSX7qerDtTFY38Isxn/R40UKTmXPKodaM.WmC', '', 0),
-(9, 'Ritesh', 'noimage.png', 'r@g.com', '123', 10, '$2y$10$TPScjiCd5rAt1cKMI0iS5ueQMzv1RmAMEHXP9R14MWobPjhq105nS', '', 0),
-(10, 'parth', 'noimage.png', 'parth@gmail.com', '123445321', 19, '$2y$10$g/4Ac5hFfvuSKoE.5LbVieH22uzm/WOCoSyoBmhdf3eCE/BpzrEM2', '', 1),
-(11, 'Ritesh K G', '645952b05fbfd.jpg', 'ritesh.kumargupta.7549@gmail.com', '7903653934', 20, '$2y$10$.NhNdm7vWDj/jLcEdxSwYuk2jPoXac.n1V63qdD0znyf6X2MS3rle', 'e8b0d244ae3527c19f3e5d6dd48fdf25', 1);
+(8, 'jinam', 'noimage.png', 'jinam@gmail.com', '1234457887', 69, '$2y$10$PRiyTjF3yR9VQawU/nzkn.ShMqqTI2xHPPhAqsbFdyhKNG8iel/ge', '', 1),
+(9, 'Pankti', 'noimage.png', 'pankti@gmail.com', '123', 10, '$2y$10$PRiyTjF3yR9VQawU/nzkn.ShMqqTI2xHPPhAqsbFdyhKNG8iel/ge', '', 1),
+(10, 'parth', 'noimage.png', 'parth@gmail.com', '123445321', 19, '$2y$10$PRiyTjF3yR9VQawU/nzkn.ShMqqTI2xHPPhAqsbFdyhKNG8iel/ge', '', 1),
+(11, 'Ritesh K G', '645952b05fbfd.jpg', 'ritesh.kumargupta.7549@gmail.com', '7903653934', 20, '$2y$10$PRiyTjF3yR9VQawU/nzkn.ShMqqTI2xHPPhAqsbFdyhKNG8iel/ge', 'e8b0d244ae3527c19f3e5d6dd48fdf25', 1),
+(28, 'Ritesh Kumar', 'noimage.png', 'iit2021135@iiita.ac.in', '7903653934', 21, '$2y$10$Oujg8TcNLHy8T3XjfT1gR.3.3MSQXpkUPsboPwdCf0T/WNUMFqVN2', '35e5a541c519712d26bd53066d56754a', 1),
+(29, 'Dhairya Bhadani', 'noimage.png', 'dhairyabh96@gmail.com', '9549953685', 19, '$2y$10$oyq7aQL/z7Ok2VoBIy/7GuIyUbB7U8IU7wWHx/9PZNOHXR9uVfDz6', '91423c596556fdd843c975e9e9722bb2', 1),
+(30, 'parthGarg', 'noimage.png', 'iit2021116@iiita.ac.in', '7879231828', 20, '$2y$10$PRiyTjF3yR9VQawU/nzkn.ShMqqTI2xHPPhAqsbFdyhKNG8iel/ge', '4ea665a39e43a21d7657423640952b28', 1),
+(31, 'Gaurav Singh', 'noimage.png', 'gaurav@gmail.com', '6544789546', 20, '$2y$10$PRiyTjF3yR9VQawU/nzkn.ShMqqTI2xHPPhAqsbFdyhKNG8iel/ge', '', 1);
 
 -- --------------------------------------------------------
 
@@ -410,8 +448,8 @@ CREATE TABLE `users_content` (
 --
 
 INSERT INTO `users_content` (`content_id`, `creator_id`, `content`, `description`, `ratings`, `likes`, `art_type`, `file_type`) VALUES
-(17, 9, '644fa5b89f0b5.jpg', 'Sample artwork for test', 12, 3, 'art', 'image/jpeg'),
-(18, 9, '644fa5cce1778.jpg', 'Sample artwork for test', 11, 0, 'art', 'image/jpeg');
+(17, 9, '644fa5b89f0b5.jpg', 'Sample artwork for test', 12, 4, 'art', 'image/jpeg'),
+(18, 9, '644fa5cce1778.jpg', 'Sample artwork for test', 11, 1, 'art', 'image/jpeg');
 
 --
 -- Indexes for dumped tables
@@ -521,13 +559,13 @@ ALTER TABLE `users_content`
 -- AUTO_INCREMENT for table `chatroom`
 --
 ALTER TABLE `chatroom`
-  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `critics`
 --
 ALTER TABLE `critics`
-  MODIFY `critics_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `critics_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `critics_content`
@@ -551,7 +589,7 @@ ALTER TABLE `notification`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `users_content`

@@ -68,12 +68,25 @@
         echo '<script>alert(" Enter contact");setTimeout(()=>{window.location.replace("index.php");},500);</script>';
         exit();
     }
+    else if (strlen($password) < 6) {
+        echo '<script>alert("Password should not contain less than 6 characters");setTimeout(()=>{window.location.replace("index.php");},500);</script>';
+    }
+    else if (strlen($contact) != 10) {
+        echo '<script>alert("Contact number must contain 10 digits");setTimeout(()=>{window.location.replace("index.php");},500);</script>';
+    }
     else{
         $v_code = bin2hex(random_bytes(16));
         $path='noimage.png';
-        $sql = "INSERT INTO users (password,name,profile_pic,age,email,contact,verification_code, is_verified) Values('$hashpass','$name','$path'.'$age','$email','$contact','$v_code','0');";
+        echo '<script>console.log('.$hashpass.')</script>';
+        echo '<script>console.log('.$name.')</script>';
+        echo '<script>console.log('.$path.')</script>';
+        echo '<script>console.log('.$age.')</script>';
+        echo '<script>console.log('.$email.')</script>';
+        echo '<script>console.log('.$contact.')</script>';
+        echo '<script>console.log('.$v_code.')</script>';
+        $sql = "INSERT INTO users (password,name,profile_pic,age,email,contact,verification_code, is_verified) Values('$hashpass','$name','$path','$age','$email','$contact','$v_code','0');";
 
-        if(sendMail($email,$v_code) && $conn->query($sql) == true ){
+        if($conn->query($sql) == true && sendMail($email,$v_code)){
             $new_id = mysqli_insert_id($conn);
             $sql = "SELECT * from users;";
             $result=mysqli_query($conn,$sql);
@@ -82,7 +95,7 @@
                 $sql = "INSERT INTO chatroom (user1, user2, last_msg) values($f, $new_id, 'Say Hello');";
                 $result1=mysqli_query($conn,$sql);
             }
-            echo '<script>alert(" Succesfully inserted");setTimeout(()=>{window.location.replace("./index.php");},500);</script>';
+            echo '<script>alert(" Please check your email for verification");setTimeout(()=>{window.location.replace("./index.php");},500);</script>';
         }
         else{
             echo '<script>alert(" Some error occured");setTimeout(()=>{window.location.replace("./index.php");},500);</script>';
