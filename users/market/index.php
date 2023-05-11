@@ -88,7 +88,9 @@
                                             echo $row['seller'];
                                         echo '</div>
                                         <div class="post-content">';
+                                        echo '<div class="description">';
                                             echo $row['description'];
+                                            echo '</div>';
                                         echo '</div>
                                         <div class="post-image">';
                                             if (strpos($file_type, 'image/') === 0) {

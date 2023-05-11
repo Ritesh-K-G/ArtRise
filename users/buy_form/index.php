@@ -77,7 +77,7 @@
                     <div id="cost-field" style="display: none;">
                         <label for="qr">Scan this QR code to pay:</label>
                         <br>
-                        <img id="qr" name="qr" src="../../src/QR.jpeg" style="max-height: 400px;>
+                        <img id="qr" name="qr" src="../../src/QR.jpeg" style="max-height: 400px;">
                         <br>
                         <label for="file">Give screenshot of payment:</label>
                         <input type="file" id="file" name="qr_img" accept=".jpg,.png,.jpeg">

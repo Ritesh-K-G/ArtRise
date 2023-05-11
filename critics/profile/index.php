@@ -96,11 +96,6 @@
                         ?>
                         <h1 id="name"><?php echo $row['name']; ?></h1>
                         <p id="email"><?php echo $row['email']; ?></p>
-                        <ul>
-                            <li><a href="#">Posts</a></li>
-                            <li><a href="#">Likes</a></li>
-                            <li><a href="#">Friends</a></li>
-                        </ul>
                     </div>
                 </div>
                 <div class="profile-body">

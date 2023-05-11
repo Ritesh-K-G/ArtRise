@@ -56,6 +56,13 @@
     font-size: 16px;
   }
   
+  .description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limit the description to 3 lines */
+    -webkit-box-orient: vertical;
+  }
   
   .feed-card {
       display: block;
