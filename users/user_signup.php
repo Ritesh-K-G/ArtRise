@@ -47,7 +47,6 @@
             return false;
         }
     }
-
     if(empty($name)){
         echo '<script>alert(" Enter Name");setTimeout(()=>{window.location.replace("index.php");},500);</script>';
         exit();

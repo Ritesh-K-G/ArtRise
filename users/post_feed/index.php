@@ -132,7 +132,7 @@
                     <label><input type="radio" name="sell" value="no" required>No</label>
                     <div id="cost-field" style="display: none;">
                         <label for="cost">Cost:</label>
-                        <input type="number" id="cost" name="cost" required>
+                        <input type="number" id="cost" name="cost">
                     </div>
                     <br>
                     <button>POST</button>
