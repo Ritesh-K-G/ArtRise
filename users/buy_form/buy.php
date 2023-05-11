@@ -17,7 +17,7 @@
     VALUES ('$work', '$seller_id', '$content', '$seller', '$file_type', '$art_type', '$description', '$cost', '$user');";
     $result=mysqli_query($conn, $sql);
     $msg = "Your Content with id = " . $work . " has been sold.";
-    $sql = "INSERT INTO notification (user_id, msg) VALUES ('$user', '$msg');";
+    $sql = "INSERT INTO notification (user_id, msg) VALUES ('$seller_id', '$msg');";
     mysqli_query($conn, $sql);
     $sql = "DELETE from market where content_id = '$work';";
     mysqli_query($conn, $sql);

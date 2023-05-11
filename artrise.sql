@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2023 at 11:34 AM
+-- Generation Time: May 11, 2023 at 05:02 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -91,7 +91,12 @@ INSERT INTO `chatroom` (`room_id`, `user1`, `user2`, `last_msg`) VALUES
 (31, 11, 30, 'Say Hello'),
 (32, 28, 30, 'Say Hello'),
 (33, 29, 30, 'Say Hello'),
-(34, 30, 30, 'Say Hello');
+(34, 30, 30, 'Say Hello'),
+(35, 8, 31, 'hello'),
+(36, 9, 31, 'hi'),
+(37, 10, 31, 'Hello party'),
+(38, 11, 31, 'say hello'),
+(39, 31, 31, 'say hello');
 
 -- --------------------------------------------------------
 
@@ -124,7 +129,7 @@ INSERT INTO `critics` (`critics_id`, `name`, `profile_pic`, `email`, `critic_typ
 (10, 'Sonu Kumar', 'noimage.png', 'iit2021135@iiita.ac.in', 'visarts', 'B. Tech', '$2y$10$1/.tbEpFg15LSTXj9Se.xunKixXApHEwZOkeCnU3yy.fnZO5FOLxm', 'User has not added this field'),
 (11, 'Dhairya Bhadani', 'noimage.png', 'dhairyabh96@gmail.com', 'music', 'B-Tech', '$2y$10$QSD4RQDybtGdUnKx50l2c.OioSfnFtzMXssI0Q8d9FEsKcOyDy6z2', 'User has not added this field'),
 (12, 'parthGarg', '645b55faa4337.jpg', 'parthgarg497@gmail.com', 'visarts', 'B-tech', '$2y$10$1/.tbEpFg15LSTXj9Se.xunKixXApHEwZOkeCnU3yy.fnZO5FOLxm', 'User has not added this field'),
-(13, 'Tushar Kumar', '645b63b656200.jpg', 'tushar@gmail.com', 'music', 'B-Tech', '$2y$10$1/.tbEpFg15LSTXj9Se.xunKixXApHEwZOkeCnU3yy.fnZO5FOLxm', 'User has not added this field');
+(13, 'Tushar Kumar', '645cfe1dbe6fc.jpg', 'tushar@gmail.com', 'music', 'B-Tech', '$2y$10$1/.tbEpFg15LSTXj9Se.xunKixXApHEwZOkeCnU3yy.fnZO5FOLxm', 'User has not added this field');
 
 -- --------------------------------------------------------
 
@@ -164,7 +169,10 @@ INSERT INTO `critics_content` (`content_id`, `content`, `user_id`, `name`, `desc
 (26, '645390008a861.jpg', 11, '', 'Avatar 3', 0, 0, 'image/jpeg', 'visarts'),
 (27, '645390871dca0.png', 11, '', 'Power', 0, 0, 'image/png', 'writing'),
 (28, '645590c703d6e.jpg', 11, '', 'Rohee pics', 0, 0, 'image/jpeg', 'art'),
-(29, '6456a15503e8f.jpg', 11, '', 'Legend warrior', 0, 0, 'image/jpeg', 'music');
+(29, '6456a15503e8f.jpg', 11, '', 'Legend warrior', 0, 0, 'image/jpeg', 'music'),
+(30, '645badf1dc26f.jpg', 28, '', 'roheee', 0, 0, 'image/jpeg', 'writing'),
+(31, '645cfdd39d5cd.mp4', 31, '', 'Holy earth', 0, 0, 'video/mp4', 'music'),
+(32, '645cfe8e44274.mp4', 31, '', 'Fifa song by me', 4, 1, 'video/mp4', 'music');
 
 -- --------------------------------------------------------
 
@@ -212,7 +220,8 @@ INSERT INTO `favourites` (`user_id`, `content_id`) VALUES
 (11, 18),
 (10, 17),
 (28, 18),
-(28, 17);
+(28, 17),
+(31, 18);
 
 -- --------------------------------------------------------
 
@@ -239,7 +248,8 @@ INSERT INTO `judges` (`critics_id`, `content_id`, `rating`, `review`) VALUES
 (5, 17, 0, 'All hail Gandalf the grey'),
 (5, 18, 0, 'Send him back to hogwarts'),
 (6, 18, 0, 'Where is my letter?'),
-(6, 17, 0, 'Nice scene of khazad-dum');
+(6, 17, 0, 'Nice scene of khazad-dum'),
+(13, 32, 0, 'Best stadium experience');
 
 -- --------------------------------------------------------
 
@@ -260,7 +270,9 @@ INSERT INTO `likes` (`user_id`, `content_id`) VALUES
 (11, 17),
 (10, 17),
 (28, 18),
-(28, 17);
+(28, 17),
+(31, 18),
+(31, 17);
 
 -- --------------------------------------------------------
 
@@ -286,7 +298,10 @@ CREATE TABLE `market` (
 INSERT INTO `market` (`content_id`, `seller_id`, `content`, `seller`, `file_type`, `description`, `art_type`, `cost`) VALUES
 (27, 11, '645390871dca0.png', 'Ritesh K G', 'image/png', 'Power', 'writing', 50),
 (28, 11, '645590c703d6e.jpg', 'Ritesh K G', 'image/jpeg', 'Rohee pics', 'art', 50000),
-(29, 11, '6456a15503e8f.jpg', 'Ritesh K G', 'image/jpeg', 'Legend warrior', 'music', 1000);
+(29, 11, '6456a15503e8f.jpg', 'Ritesh K G', 'image/jpeg', 'Legend warrior', 'music', 1000),
+(30, 28, '645badf1dc26f.jpg', 'Ritesh Kumar', 'image/jpeg', 'roheee', 'writing', 10000),
+(31, 31, '645cfdd39d5cd.mp4', 'Gaurav Singh', 'video/mp4', 'Holy earth', 'music', 100),
+(32, 31, '645cfe8e44274.mp4', 'Gaurav Singh', 'video/mp4', 'Fifa song by me', 'music', 200);
 
 -- --------------------------------------------------------
 
@@ -324,7 +339,10 @@ INSERT INTO `messages` (`room_id`, `msg_id`, `msg`, `sender`, `receiver`) VALUES
 (5, 76, 'hi', 11, 9),
 (5, 77, 'hi', 11, 9),
 (6, 78, 'Yo', 11, 10),
-(4, 79, '180', 11, 8);
+(4, 79, '180', 11, 8),
+(35, 80, 'hello', 31, 8),
+(36, 81, 'hi', 31, 9),
+(37, 82, 'Hello party', 31, 10);
 
 -- --------------------------------------------------------
 
@@ -392,7 +410,10 @@ INSERT INTO `uploads` (`content_id`, `user_id`) VALUES
 (26, 11),
 (27, 11),
 (28, 11),
-(29, 11);
+(29, 11),
+(30, 28),
+(31, 31),
+(32, 31);
 
 -- --------------------------------------------------------
 
@@ -424,7 +445,7 @@ INSERT INTO `users` (`user_id`, `name`, `profile_pic`, `email`, `contact`, `age`
 (28, 'Ritesh Kumar', 'noimage.png', 'iit2021135@iiita.ac.in', '7903653934', 21, '$2y$10$Oujg8TcNLHy8T3XjfT1gR.3.3MSQXpkUPsboPwdCf0T/WNUMFqVN2', '35e5a541c519712d26bd53066d56754a', 1),
 (29, 'Dhairya Bhadani', 'noimage.png', 'dhairyabh96@gmail.com', '9549953685', 19, '$2y$10$oyq7aQL/z7Ok2VoBIy/7GuIyUbB7U8IU7wWHx/9PZNOHXR9uVfDz6', '91423c596556fdd843c975e9e9722bb2', 1),
 (30, 'parthGarg', 'noimage.png', 'iit2021116@iiita.ac.in', '7879231828', 20, '$2y$10$PRiyTjF3yR9VQawU/nzkn.ShMqqTI2xHPPhAqsbFdyhKNG8iel/ge', '4ea665a39e43a21d7657423640952b28', 1),
-(31, 'Gaurav Singh', 'noimage.png', 'gaurav@gmail.com', '6544789546', 20, '$2y$10$PRiyTjF3yR9VQawU/nzkn.ShMqqTI2xHPPhAqsbFdyhKNG8iel/ge', '', 1);
+(31, 'Gaurav Singh', '645cf96563752.jpg', 'gaurav@gmail.com', '6544789546', 20, '$2y$10$PRiyTjF3yR9VQawU/nzkn.ShMqqTI2xHPPhAqsbFdyhKNG8iel/ge', '', 1);
 
 -- --------------------------------------------------------
 
@@ -448,8 +469,8 @@ CREATE TABLE `users_content` (
 --
 
 INSERT INTO `users_content` (`content_id`, `creator_id`, `content`, `description`, `ratings`, `likes`, `art_type`, `file_type`) VALUES
-(17, 9, '644fa5b89f0b5.jpg', 'Sample artwork for test', 12, 4, 'art', 'image/jpeg'),
-(18, 9, '644fa5cce1778.jpg', 'Sample artwork for test', 11, 1, 'art', 'image/jpeg');
+(17, 9, '644fa5b89f0b5.jpg', 'Sample artwork for test', 12, 5, 'art', 'image/jpeg'),
+(18, 9, '644fa5cce1778.jpg', 'Sample artwork for test', 11, 2, 'art', 'image/jpeg');
 
 --
 -- Indexes for dumped tables
@@ -559,7 +580,7 @@ ALTER TABLE `users_content`
 -- AUTO_INCREMENT for table `chatroom`
 --
 ALTER TABLE `chatroom`
-  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `critics`
@@ -571,13 +592,13 @@ ALTER TABLE `critics`
 -- AUTO_INCREMENT for table `critics_content`
 --
 ALTER TABLE `critics_content`
-  MODIFY `content_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `content_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT for table `notification`
