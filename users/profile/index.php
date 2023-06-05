@@ -134,7 +134,7 @@
                 </section>
                 <?php
                         $user_id=$_SESSION['user_id'];
-                        $sql="SELECT * from users_content where content_id 
+                        $sql="Select * from users_content where content_id 
                         in (select content_id from uploads where user_id=$user_id);";
                         $result=mysqli_query($conn,$sql);
                 
@@ -267,7 +267,7 @@
                     </section>
                     <?php
                         $user_id=$_SESSION['user_id'];
-                        $sql="SELECT * from users_content where content_id in
+                        $sql="Select * from users_content where content_id in
                         (select content_id from likes where user_id = $user_id);";
                         $result=mysqli_query($conn,$sql);
                         if (mysqli_num_rows($result) > 0) {
@@ -398,7 +398,7 @@
                     </section>
                     <?php
                         $user_id=$_SESSION['user_id'];
-                        $sql="SELECT * from users_content where content_id in
+                        $sql="Select  * from users_content where content_id in
                         (select content_id from favourites where user_id=$user_id);";
                         $result=mysqli_query($conn,$sql);
                         if (mysqli_num_rows($result) > 0) {
