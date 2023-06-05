@@ -1,2 +1,2 @@
 # ArtRise
-Website to support aspiring actors
+Website to support aspiring artists,actors,singers,etc
