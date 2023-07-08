@@ -16,7 +16,7 @@ Artrise is a web platform for artists to showcase and sell their artwork. It all
 - Backend: PHP
 - Database: MySQL
 - Authentication: PHP inbuilt finctions
-- Emai: PHPMailer (for sending account-related emails)
+- Email: PHPMailer (for sending account-related emails)
 
 ## Installation
 
