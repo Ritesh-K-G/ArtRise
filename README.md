@@ -74,9 +74,13 @@ If you would like to contribute to Artrise, follow these steps:
 
 ## Images
 
-
 ![Screenshot 2023-07-12 215228](https://github.com/Ritesh-K-G/ArtRise/assets/96720123/f092dc3f-06c2-4cb0-a934-5096be8e4b16)
-![Uploading Screenshot 2023-07-12 214930.png…]()
-![Uploading Screenshot 2023-07-12 215413.png…]()
-![Uploading Screenshot 2023-07-12 215336.png…]()
-![Uploading Screenshot 2023-07-12 215305.png…]()
+![Screenshot 2023-07-12 215305](https://github.com/Ritesh-K-G/ArtRise/assets/96720123/24c26361-8860-4d9c-959b-80af1a941eb6)
+![Screenshot 2023-07-12 215413](https://github.com/Ritesh-K-G/ArtRise/assets/96720123/1576b121-3c5c-403c-ab51-4862f8272fbd)
+![Screenshot 2023-07-12 215336](https://github.com/Ritesh-K-G/ArtRise/assets/96720123/c4bf0185-f63a-4700-a780-d0b512a8679e)
+![Screenshot 2023-07-12 215413](https://github.com/Ritesh-K-G/ArtRise/assets/96720123/eb078b62-bec9-46f5-8424-b0a0db5ddfe4)
+
+
+
+
+
