@@ -71,3 +71,12 @@ If you would like to contribute to Artrise, follow these steps:
 - Push your changes to your forked repository.
 - Submit a pull request to the main repository.
 - Please ensure your code follows the established coding style and includes relevant tests.
+
+## Images
+
+
+![Screenshot 2023-07-12 215228](https://github.com/Ritesh-K-G/ArtRise/assets/96720123/f092dc3f-06c2-4cb0-a934-5096be8e4b16)
+![Uploading Screenshot 2023-07-12 214930.png…]()
+![Uploading Screenshot 2023-07-12 215413.png…]()
+![Uploading Screenshot 2023-07-12 215336.png…]()
+![Uploading Screenshot 2023-07-12 215305.png…]()
