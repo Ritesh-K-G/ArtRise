@@ -81,6 +81,9 @@ If you would like to contribute to Artrise, follow these steps:
 ![Screenshot 2023-07-12 215413](https://github.com/Ritesh-K-G/ArtRise/assets/96720123/eb078b62-bec9-46f5-8424-b0a0db5ddfe4)
 
 
+## ER Diagram
+![ArtRise_ERD](https://github.com/user-attachments/assets/981b18c8-40a2-4047-b59f-4d77dee6e0c9)
 
-
+## Schema Of Project
+![ArtRise_Schema](https://github.com/user-attachments/assets/7e140bd5-cfd3-472a-98b5-c3554569c5e6)
 
